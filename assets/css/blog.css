@@ -24,7 +24,9 @@ html {
   text-align: center; }
 
 .navbar-brand {
-  float: none; }
+  float: none;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.5px; }
 
 .navbar a:hover, .navbar-nav li a:hover {
   text-decoration: none; }
@@ -47,37 +49,59 @@ html {
 ============================================== */
 body {
   height: 100%;
-  font-family: 'Roboto', sans-serif; }
+  font-family: "Lato", sans-serif; }
+
+h1, h2, h3, h4 {
+  color: #444; }
 
 h1 {
-  font-size: 4rem; }
+  font-size: 3.5rem;
+  letter-spacing: 0.1px; }
 
-h3 {
+h4 {
+  font-size: 2.2rem; }
+
+h6 {
+  font-variant: small-caps;
   font-size: 2.2rem; }
 
 p {
-  font-size: 1.7rem; }
+  font-size: 1.7rem;
+  color: #444; }
 
 /* =============================================
 	index/post body
 ============================================== */
 main.content {
-  padding-top: 0.5em; }
+  padding-top: 1em; }
 
 main.content a {
   color: #337ab7; }
 
-.post-footer h4 {
-  font-size: 1.5rem; }
+.post {
+  max-width: 33em; }
 
-.post-footer p {
-  font-size: 1.3rem; }
-
-.post-footer {
-  padding-top: 4rem; }
+.author h4 {
+  font-size: 1.6rem;
+  font-family: "Lato", sans-serif; }
+.author p {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-family: "Lato", sans-serif; }
+.author p a {
+  font-style: normal; }
 
 .post-footer .share {
   top: 4rem; }
+  .post-footer .share h4 {
+    font-size: 1.6rem;
+    font-family: "Lato", sans-serif; }
+
+.post-template .post-header {
+  margin-bottom: 2.25rem; }
+
+.post-footer {
+  padding-top: 4rem; }
 
 /* =============================================
 	index footer

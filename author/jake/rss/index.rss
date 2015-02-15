@@ -1,6 +1,6 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jacob Gardner - Jacob Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 05 Jan 2015 05:26:07 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking Thinkful's Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 15 Feb 2015 22:59:22 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking Thinkful's Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
 
-&lt;h4 id="thinkful"&gt;Thinkful&lt;/h4&gt;
+&lt;h4 id="thecourse"&gt;The Course&lt;/h4&gt;
 
 &lt;p&gt;Overall I was very satisfied with the course. The task-specific projects help build skills one on top of another, and the community is very responsive and encouraging for newbies.&lt;/p&gt;
 
@@ -8,19 +8,19 @@
 
 &lt;h4 id="additionalfewdresources"&gt;Additional FEWD Resources&lt;/h4&gt;
 
-&lt;h6 id="html5"&gt;HTML5&lt;/h6&gt;
+&lt;h6 id="html"&gt;html&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://html5forwebdesigners.com/"&gt;HTML5 for Web Designers&lt;/a&gt;
 This title from A Book Apart gives a history of HTML, describes the features of HTML5, and discusses the all-important semantic use of markup. If you are wondering which is the correct tag to use for a particular element on your page, this is the book for you (read for free at link above).&lt;/p&gt;
 
-&lt;h6 id="uiresponsivedesign"&gt;UI/Responsive Design&lt;/h6&gt;
+&lt;h6 id="uiresponsivedesign"&gt;ui/responsive design&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758"&gt;Don't Make Me Think&lt;/a&gt;
 This is the classic guide on web usability design. The advice is sound even if a lot of the examples are dated.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's book by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
 
-&lt;h6 id="css"&gt;CSS&lt;/h6&gt;
+&lt;h6 id="css"&gt;css&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/css3-in-depth"&gt;CSS3 In-Depth&lt;/a&gt;
 If you want to know about every property in the CSS3 spec with demos, Estelle Weyl's course has you covered. Especially with something as visual as CSS, reading the documentation doesn't always give you the answer you're looking for.&lt;/p&gt;
@@ -28,17 +28,17 @@ If you want to know about every property in the CSS3 spec with demos, Estelle We
 &lt;p&gt;&lt;a href="http://sass-lang.com/guide"&gt;Sass&lt;/a&gt;
 If you are a programmer writing CSS (like me), you probably wonder "how can I make this more modular/maintainable/readable/etc?". Enter Sass. Getting started with variables, imports, and nesting is pretty straightforward.&lt;/p&gt;
 
-&lt;h6 id="javascript"&gt;Javascript&lt;/h6&gt;
+&lt;h6 id="javascript"&gt;javascript&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://eloquentjavascript.net/"&gt;Eloquent Javascript&lt;/a&gt;
 Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and Node.js.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752"&gt;Javascript Patterns&lt;/a&gt;
-Usually when you see Patterns in a title you think of Gang-of-Four Design Patterns. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
+Usually when you see Patterns in a title you think of &lt;a href="http://en.wikipedia.org/wiki/Design_Patterns"&gt;Gang-of-Four Design Patterns&lt;/a&gt;. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/build-process-workflows-tooling-gruntjs"&gt;Build Process, Workflows and Tooling With Grunt.js and Beyond&lt;/a&gt;
 Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a Grunt workflow step-by-step, covering everything from minification to testing to scaffolding tools Yeoman &amp;amp; Lineman.&lt;/p&gt;
 
 &lt;h4 id="wrapup"&gt;Wrap-up&lt;/h4&gt;
 
-&lt;p&gt;Front-End Web Development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><dc:creator>Jacob Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
