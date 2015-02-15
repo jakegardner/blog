@@ -81,6 +81,9 @@ main.content a {
 .post {
   max-width: 33em; }
 
+.post-meta {
+  font-family: "Lato", sans-serif; }
+
 .author h4 {
   font-size: 1.6rem;
   font-family: "Lato", sans-serif; }
