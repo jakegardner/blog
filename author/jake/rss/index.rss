@@ -1,4 +1,36 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 15 Feb 2015 23:07:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking Thinkful's Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 29 Mar 2015 11:58:28 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Publish a blog on GitHub Pages with Ghost and Buster</title><description>&lt;p&gt;It's no secret: I am using &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.&lt;/p&gt;
+
+&lt;p&gt;I assume you have &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; setup locally. &lt;br&gt;
+I assume you have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&gt;
+
+&lt;h4 id="getbuster"&gt;Get Buster&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install pip. &lt;br&gt;
+&lt;ul&gt;&lt;li&gt;Download the get-pip.py script from &lt;a href="https://pip.pypa.io/en/latest/installing.html#install-pip"&gt;https://pip.pypa.io/en/latest/installing.html#install-pip&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python get-pip.py --no-index --find-links=/local/copies&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Install buster. &lt;br&gt;
+&lt;ul&gt;&lt;li&gt;Run &lt;code&gt;pip install buster&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id="generatestaticsite"&gt;Generate static site&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you have not used buster before, run &lt;code&gt;buster setup&lt;/code&gt;. It will ask you for the URL of your GitHub repository.  &lt;/li&gt;
+&lt;li&gt;Start your local ghost instance with &lt;code&gt;npm start&lt;/code&gt; in your ghost directory. This serves your ghost content at &lt;a href="http://127.0.0.1:2368/"&gt;http://127.0.0.1:2368&lt;/a&gt;.  &lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;buster generate --domain=http://127.0.0.1:2368 --dir=/path/to/store/static/content&lt;/code&gt;. The path you specify in the dir parameter will now contain a static copy of your ghost content.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id="pushtogithub"&gt;Push to GitHub&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run &lt;code&gt;git init&lt;/code&gt; in your static content directory.  &lt;/li&gt;
+&lt;li&gt;Add a remote linking to a repository on your GitHub account &lt;code&gt;git remote add https://github.com/yourusername/repo.git&lt;/code&gt;.  &lt;/li&gt;
+&lt;li&gt;Create a gh-pages branch with &lt;code&gt;git checkout -b gh-pages&lt;/code&gt;. This is critical! If you do not push your changes to this version, GitHub will not serve your content.  &lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;git push origin gh-pages&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking &lt;a href="https://www.thinkful.com/"&gt;Thinkful's&lt;/a&gt; Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
 
 &lt;h4 id="thecourse"&gt;The Course&lt;/h4&gt;
 
@@ -18,7 +50,7 @@ This title from A Book Apart gives a history of HTML, describes the features of 
 &lt;p&gt;&lt;a href="http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758"&gt;Don't Make Me Think&lt;/a&gt;
 This is the classic guide on web usability design. The advice is sound even if a lot of the examples are dated.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's book by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's &lt;a href="http://abookapart.com/products/responsive-web-design"&gt;book&lt;/a&gt; by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
 
 &lt;h6 id="css"&gt;css&lt;/h6&gt;
 
@@ -31,13 +63,13 @@ If you are a programmer writing CSS (like me), you probably wonder "how can I ma
 &lt;h6 id="javascript"&gt;javascript&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://eloquentjavascript.net/"&gt;Eloquent Javascript&lt;/a&gt;
-Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and Node.js.&lt;/p&gt;
+Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752"&gt;Javascript Patterns&lt;/a&gt;
 Usually when you see Patterns in a title you think of &lt;a href="http://en.wikipedia.org/wiki/Design_Patterns"&gt;Gang-of-Four Design Patterns&lt;/a&gt;. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/build-process-workflows-tooling-gruntjs"&gt;Build Process, Workflows and Tooling With Grunt.js and Beyond&lt;/a&gt;
-Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a Grunt workflow step-by-step, covering everything from minification to testing to scaffolding tools Yeoman &amp;amp; Lineman.&lt;/p&gt;
+Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a &lt;a href="http://gruntjs.com/"&gt;Grunt&lt;/a&gt; workflow step-by-step, covering everything from minification to testing to scaffolding tools &lt;a href="http://yeoman.io/"&gt;Yeoman&lt;/a&gt; &amp;amp; &lt;a href="http://linemanjs.com/"&gt;Lineman&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id="wrapup"&gt;Wrap-up&lt;/h4&gt;
 
