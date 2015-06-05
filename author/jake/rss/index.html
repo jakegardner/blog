@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jake Gardner - Jake Gardner]]></title><description><![CDATA[Explorations in development.]]></description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Fri, 05 Jun 2015 11:39:07 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Authenticate User with Instagram API]]></title><description><![CDATA[<p>Recently, I was working with the Instagram API for one of my side-projects. This is a short walkthrough of how to implement the <a href="https://instagram.com/developer/authentication/">server-side flow</a> of Instagram user authentication in Node.js. </p>
+
+<p>In order for your application to make queries to the <a href="https://instagram.com/developer">Instagram API</a> on your user's behalf, they must authorize your application by logging in with their Instagram credentials. Your application will receive an authorization code in return, and you then need to authenticate this code with Instagram to receive an access token. The access token grants you access to query the REST API.</p>
+
+<p>Instagram requires that the authentication query be sent as form data (<a href="http://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>) instead of JSON. The documentation shows how to make the query using curl -- since I was doing this in Node, I installed a module called <a href="http://unirest.io/nodejs.html">unirest</a>. Here's the code:</p>
+
+<pre><code>var unirest = require('unirest');
+unirest.post("https://api.instagram.com/oauth/access_token")
+      .send("client_id=XXXXXXXXXXXXXXXXXXXXXX")
+      .send("client_secret=XXXXXXXXXXXXXXXXXX")
+      .send("grant_type=authorization_code")
+      .send("redirect_uri=http://url.me")
+      .send("code=XXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+      .end(function (response) {
+        console.log(response.body);
+      }); 
+</code></pre>
+
+<p>In response, you will receive a JSON object similar to the following:</p>
+
+<pre><code>    {
+        "access_token":"fb2e77d.47a0479900504cb3ab4a1f626d174d2d",
+        "user": {
+            "id": "1000000",
+            ...
+        }
+    }
+</code></pre>
+
+<p>When you query one of the Instagram API endpoints, include the access_token as a query (URL) parameter.</p>
+
+<pre><code>unirest.get("https://api.instagram.com/v1/users/self/feed")
+     .query("access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d")
+      .end(function(response) {
+        console.log(response);
+      });
+</code></pre>
+
+<p>You will probably consume the response instead of log to the console, but you get the idea!</p>]]></description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><dc:creator><![CDATA[Jake Gardner]]></dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item><item><title><![CDATA[Publish a blog on GitHub Pages with Ghost and Buster]]></title><description><![CDATA[<p>It's no secret: I am using <a href="http://ghost.org/">Ghost</a> as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.</p>
+
+<p>I assume you have <a href="http://ghost.org/">Ghost</a> setup locally. <br>
+I assume you have a <a href="https://github.com/">GitHub</a> account.</p>
+
+<h4 id="getbuster">Get Buster</h4>
+
+<ol>
+<li>Install pip. <br>
+<ul><li>Download the get-pip.py script from <a href="https://pip.pypa.io/en/latest/installing.html#install-pip">https://pip.pypa.io/en/latest/installing.html#install-pip</a>.</li>
+<li>Run <code>python get-pip.py --no-index --find-links=/local/copies</code>.</li></ul></li>
+<li>Install buster. <br>
+<ul><li>Run <code>pip install buster</code>.</li></ul></li>
+</ol>
+
+<h4 id="generatestaticsite">Generate static site</h4>
+
+<ol>
+<li>If you have not used buster before, run <code>buster setup</code>. It will ask you for the URL of your GitHub repository.  </li>
+<li>Start your local ghost instance with <code>npm start</code> in your ghost directory. This serves your ghost content at <a href="http://127.0.0.1:2368/">http://127.0.0.1:2368</a>.  </li>
+<li>Run <code>buster generate --domain=http://127.0.0.1:2368 --dir=/path/to/store/static/content</code>. The path you specify in the dir parameter will now contain a static copy of your ghost content.</li>
+</ol>
+
+<h4 id="pushtogithub">Push to GitHub</h4>
+
+<ol>
+<li>Run <code>git init</code> in your static content directory.  </li>
+<li>Add a remote linking to a repository on your GitHub account <code>git remote add https://github.com/yourusername/repo.git</code>.  </li>
+<li>Create a gh-pages branch with <code>git checkout -b gh-pages</code>. This is critical! If you do not push your changes to this version, GitHub will not serve your content.  </li>
+<li>Run <code>git push origin gh-pages</code>.</li>
+</ol>
+
+<p>That's all folks!</p>]]></description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><dc:creator><![CDATA[Jake Gardner]]></dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item><item><title><![CDATA[Thinkful FEWD Resources]]></title><description><![CDATA[<p>Last Fall I decided to update my front-end skills by taking <a href="https://www.thinkful.com/">Thinkful's</a> Front-End Web Development course. I have been using HTML &amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!</p>
+
+<h4 id="thecourse">The Course</h4>
+
+<p>Overall I was very satisfied with the course. The task-specific projects help build skills one on top of another, and the community is very responsive and encouraging for newbies.</p>
+
+<p>One thing I noticed during the course was that only an introduction was given to some topics which are quite hefty on their own. In my case, I am always wondering, what more is there to know on this topic? Where can I find a deeper explanation? The tutors will fill in the blanks or point you to other resources if you ask, but I gathered my own additional resources to share!</p>
+
+<h4 id="additionalfewdresources">Additional FEWD Resources</h4>
+
+<h6 id="html">html</h6>
+
+<p><a href="http://html5forwebdesigners.com/">HTML5 for Web Designers</a>
+This title from A Book Apart gives a history of HTML, describes the features of HTML5, and discusses the all-important semantic use of markup. If you are wondering which is the correct tag to use for a particular element on your page, this is the book for you (read for free at link above).</p>
+
+<h6 id="uiresponsivedesign">ui/responsive design</h6>
+
+<p><a href="http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758">Don't Make Me Think</a>
+This is the classic guide on web usability design. The advice is sound even if a lot of the examples are dated.</p>
+
+<p><a href="http://www.pluralsight.com/courses/responsive-web-design">Responsive Web Design</a> This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's <a href="http://abookapart.com/products/responsive-web-design">book</a> by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.</p>
+
+<h6 id="css">css</h6>
+
+<p><a href="http://www.pluralsight.com/courses/css3-in-depth">CSS3 In-Depth</a>
+If you want to know about every property in the CSS3 spec with demos, Estelle Weyl's course has you covered. Especially with something as visual as CSS, reading the documentation doesn't always give you the answer you're looking for.</p>
+
+<p><a href="http://sass-lang.com/guide">Sass</a>
+If you are a programmer writing CSS (like me), you probably wonder "how can I make this more modular/maintainable/readable/etc?". Enter Sass. Getting started with variables, imports, and nesting is pretty straightforward.</p>
+
+<h6 id="javascript">javascript</h6>
+
+<p><a href="http://eloquentjavascript.net/">Eloquent Javascript</a>
+Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and <a href="https://nodejs.org/">Node.js</a>.</p>
+
+<p><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">Javascript Patterns</a>
+Usually when you see Patterns in a title you think of <a href="http://en.wikipedia.org/wiki/Design_Patterns">Gang-of-Four Design Patterns</a>. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. </p>
+
+<p><a href="http://www.pluralsight.com/courses/build-process-workflows-tooling-gruntjs">Build Process, Workflows and Tooling With Grunt.js and Beyond</a>
+Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a <a href="http://gruntjs.com/">Grunt</a> workflow step-by-step, covering everything from minification to testing to scaffolding tools <a href="http://yeoman.io/">Yeoman</a> &amp; <a href="http://linemanjs.com/">Lineman</a>.</p>
+
+<h4 id="wrapup">Wrap-up</h4>
+
+<p>Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!</p>]]></description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><dc:creator><![CDATA[Jake Gardner]]></dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
