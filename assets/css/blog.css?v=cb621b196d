@@ -1,0 +1,193 @@
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0; }
+
+html {
+  height: 100%;
+  width: 100%; }
+
+/* =============================================
+	navbar.scss
+============================================== */
+.navbar {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  border-radius: 0px;
+  margin-bottom: 0;
+  padding-top: 1em; }
+  @media (min-width: 960px) {
+    .navbar {
+      padding-top: 3em; } }
+
+.navbar-header {
+  text-align: left;
+  padding-top: 1em;
+  border-top: 4px solid black; }
+  @media (min-width: 768px) {
+    .navbar-header {
+      font-size: 1.5rem; } }
+
+.navbar-brand {
+  float: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5px; }
+
+.navbar a:hover, .navbar-nav li a:hover {
+  text-decoration: none; }
+
+.navbar-nav {
+  height: auto;
+  margin-top: 3px; }
+
+.navbar-social {
+  list-style-type: none;
+  float: right; }
+  @media (min-width: 768px) {
+    .navbar-social {
+      border-left: solid 1px #aaa;
+      margin-top: -3px; } }
+  @media (min-width: 960px) {
+    .navbar-social {
+      border-left: 0; } }
+
+.navbar-social li {
+  font-size: 1.5rem;
+  display: inline-block;
+  padding-right: 0.75em;
+  margin: 0; }
+  @media (min-width: 960px) {
+    .navbar-social li {
+      padding-right: 0.25em; } }
+
+.nav-link {
+  text-decoration: none;
+  color: #444; }
+
+.social-link {
+  text-decoration: none;
+  color: #aaa; }
+
+.about {
+  padding-top: 5px;
+  text-align: right; }
+  @media (min-width: 960px) {
+    .about {
+      padding-top: 1.5em; } }
+  .about p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 145%;
+    color: #aaa;
+    margin: 0; }
+    @media (min-width: 960px) {
+      .about p {
+        font-size: 1.3rem; } }
+
+/* =============================================
+	ghost default overrides
+============================================== */
+* {
+  box-sizing: border-box; }
+
+body {
+  height: 100%;
+  font-family: "Droid Serif", serif; }
+
+h1, h2, h3, h4 {
+  color: #444; }
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: 0.1px; }
+
+h2 {
+  font-size: 3.25rem; }
+
+h3 {
+  font-size: 3rem; }
+
+h4 {
+  font-size: 2.5rem;
+  margin-top: 1em; }
+
+h6 {
+  font-variant: small-caps;
+  font-size: 2.2rem; }
+
+p {
+  font-size: 1.9rem;
+  color: #444; }
+
+ol {
+  margin-left: 2em; }
+
+pre {
+  background-color: #E1F1FA; }
+
+/* =============================================
+	index/post body
+============================================== */
+.content .post {
+  padding-top: 2rem;
+  margin-top: 0;
+  margin-bottom: 0; }
+.content .post-header {
+  padding-top: 3rem; }
+
+.post-content {
+  padding-top: 2rem; }
+  .post-content .post-header {
+    padding-top: 3rem; }
+
+.post-content a, .content a {
+  color: #337ab7; }
+
+.post-meta {
+  font-family: "Droid Serif", serif; }
+
+.author h4 {
+  font-size: 1.6rem;
+  font-family: "Droid Serif", serif; }
+.author p {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-family: "Droid Serif", serif; }
+.author p a {
+  font-style: normal; }
+
+.post-footer .share {
+  top: 4rem; }
+  .post-footer .share h4 {
+    font-size: 1.6rem;
+    font-family: "Droid Serif", serif; }
+
+.post-template .post-header {
+  margin-bottom: 2.25rem; }
+
+.post-footer {
+  padding-top: 4rem;
+  padding-bottom: 2rem; }
+
+/* =============================================
+	index footer
+============================================== */
+.jg-footer {
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 1.5rem; }
+
+.footer-wrapper {
+  text-align: center;
+  padding-bottom: 4em;
+  margin: 0 auto 0 auto; }
+
+.ghosticon {
+  position: absolute; }
+
+/*# sourceMappingURL=blog.css.map */
