@@ -1,4 +1,38 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 26 Jul 2015 05:40:55 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 25 Oct 2015 13:44:38 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Podcasts for Web Developers</title><description>&lt;p&gt;There are many resources to learn about web development and keep abreast of changes -- books, blogs, conferences, video tutorials. I make use of all of these, however podcasts are great in that you can listen while you're on the go. Take advantage of that time commuting/walking/standing in line to learn something.&lt;/p&gt;
+
+&lt;p&gt;These are some of my favorites. They cover a range of development related topics, from specific languages to developer worklife and career management.&lt;/p&gt;
+
+&lt;h4 id="giantrobotssmashingintoothergiantrobots"&gt;Giant Robots [Smashing Into Other Giant Robots]&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/"&gt;Giant Robots&lt;/a&gt; is a podcast produced by &lt;a href="http://thoughtbot.com/"&gt;Thoughtbot&lt;/a&gt;. If you don't know Thoughtbot -- go check them out! They have released many open-source tools, have an informative &lt;a href="https://robots.thoughtbot.com/"&gt;blog&lt;/a&gt;, as well as a &lt;a href="https://upcase.com/"&gt;learning community&lt;/a&gt; to help developers upgrade their skills.&lt;/p&gt;
+
+&lt;p&gt;Giant Robots was originally more Ruby/Rails focused, but lately has been more about developer process, interviews with noteworthy developers etc. They also keep episodes less than 40 minutes so that you can be sure to finish listening in one commute.&lt;/p&gt;
+
+&lt;p&gt;Giant Robots also produce another more technical podcast called &lt;a href="http://bikeshed.fm/"&gt;The Bike Shed&lt;/a&gt;. Worth a look if you're hungry for more content.&lt;/p&gt;
+
+&lt;h4 id="javascriptjabber"&gt;Javascript Jabber&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://devchat.tv/js-jabber"&gt;Javascript Jabber&lt;/a&gt; is a round-table discussion on the latest developments in the Javascript world. Joe Eames (&lt;a href="http://www.ng-conf.org/"&gt;ngconf&lt;/a&gt; founder) is a weekly co-host.&lt;/p&gt;
+
+&lt;p&gt;This podcast tends to get deeply techical and sometimes runs a bit long, but I find it invaluable to learn about libraries or features I haven't had a chance to try myself.&lt;/p&gt;
+
+&lt;h4 id="developertea"&gt;Developer Tea&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://developertea.com/"&gt;Developer Tea&lt;/a&gt; may be my favorite of this bunch, simply for the reason that the host &lt;a href="http://localhost:2368/"&gt;&lt;/a&gt; takes on issues that are not discussed in typical development podcasts. Topics include time management, career progression, choosing what to learn, how to handle interviews, and many more.&lt;/p&gt;
+
+&lt;p&gt;Most episodes are fifteen minutes or less so you have no excuse not to fit this into your day somewhere!&lt;/p&gt;
+
+&lt;h4 id="shoptalkshow"&gt;Shop Talk Show&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://shoptalkshow.com/"&gt;Shop Talk Show&lt;/a&gt; is probably better suited for pure front-enders or web designers, but nonetheless is unparalleled in content on design, useability, web standards etc. It is made only more awesome by the sense of humor of hosts Chris Coyier (&lt;a href="https://css-tricks.com/"&gt;CSS Tricks&lt;/a&gt;) and Dave Rupert.&lt;/p&gt;
+
+&lt;h4 id="the4hourworkweek"&gt;The 4-Hour Workweek&lt;/h4&gt;
+
+&lt;p&gt;Ok, this is not on web development! But I had to mention the &lt;a href="http://fourhourworkweek.com/podcast/"&gt;podcast&lt;/a&gt; of writer Tim Ferriss. In each episode, Tim interviews world-class performers in a broad array of fields. Athletes, entrepreneurs, investors, producers, you name it.&lt;/p&gt;
+
+&lt;p&gt;I find this is relevant to web developers in the sense of finding people (developers) you admire, deconstructing how they became successful and doing your best to emulate. It is hard not to draw inspiration from each of the interviewees stories' to set ambitious goals for oneself and relentlessly pursue them. &lt;/p&gt;
+
+&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
 
 &lt;p&gt;Token-based authentication is a very common solution to this problem. Many prominent public API's such as Twitter and Instagram utilize token-based authentication.&lt;/p&gt;
 

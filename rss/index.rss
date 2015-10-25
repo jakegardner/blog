@@ -1,26 +1,267 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jacob Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 05 Jan 2015 05:26:07 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking Thinkful's Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 25 Oct 2015 13:44:38 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Podcasts for Web Developers</title><description>&lt;p&gt;There are many resources to learn about web development and keep abreast of changes -- books, blogs, conferences, video tutorials. I make use of all of these, however podcasts are great in that you can listen while you're on the go. Take advantage of that time commuting/walking/standing in line to learn something.&lt;/p&gt;
 
-&lt;h4 id="thinkful"&gt;Thinkful&lt;/h4&gt;
+&lt;p&gt;These are some of my favorites. They cover a range of development related topics, from specific languages to developer worklife and career management.&lt;/p&gt;
+
+&lt;h4 id="giantrobotssmashingintoothergiantrobots"&gt;Giant Robots [Smashing Into Other Giant Robots]&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/"&gt;Giant Robots&lt;/a&gt; is a podcast produced by &lt;a href="http://thoughtbot.com/"&gt;Thoughtbot&lt;/a&gt;. If you don't know Thoughtbot -- go check them out! They have released many open-source tools, have an informative &lt;a href="https://robots.thoughtbot.com/"&gt;blog&lt;/a&gt;, as well as a &lt;a href="https://upcase.com/"&gt;learning community&lt;/a&gt; to help developers upgrade their skills.&lt;/p&gt;
+
+&lt;p&gt;Giant Robots was originally more Ruby/Rails focused, but lately has been more about developer process, interviews with noteworthy developers etc. They also keep episodes less than 40 minutes so that you can be sure to finish listening in one commute.&lt;/p&gt;
+
+&lt;p&gt;Giant Robots also produce another more technical podcast called &lt;a href="http://bikeshed.fm/"&gt;The Bike Shed&lt;/a&gt;. Worth a look if you're hungry for more content.&lt;/p&gt;
+
+&lt;h4 id="javascriptjabber"&gt;Javascript Jabber&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://devchat.tv/js-jabber"&gt;Javascript Jabber&lt;/a&gt; is a round-table discussion on the latest developments in the Javascript world. Joe Eames (&lt;a href="http://www.ng-conf.org/"&gt;ngconf&lt;/a&gt; founder) is a weekly co-host.&lt;/p&gt;
+
+&lt;p&gt;This podcast tends to get deeply techical and sometimes runs a bit long, but I find it invaluable to learn about libraries or features I haven't had a chance to try myself.&lt;/p&gt;
+
+&lt;h4 id="developertea"&gt;Developer Tea&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://developertea.com/"&gt;Developer Tea&lt;/a&gt; may be my favorite of this bunch, simply for the reason that the host &lt;a href="http://localhost:2368/"&gt;&lt;/a&gt; takes on issues that are not discussed in typical development podcasts. Topics include time management, career progression, choosing what to learn, how to handle interviews, and many more.&lt;/p&gt;
+
+&lt;p&gt;Most episodes are fifteen minutes or less so you have no excuse not to fit this into your day somewhere!&lt;/p&gt;
+
+&lt;h4 id="shoptalkshow"&gt;Shop Talk Show&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://shoptalkshow.com/"&gt;Shop Talk Show&lt;/a&gt; is probably better suited for pure front-enders or web designers, but nonetheless is unparalleled in content on design, useability, web standards etc. It is made only more awesome by the sense of humor of hosts Chris Coyier (&lt;a href="https://css-tricks.com/"&gt;CSS Tricks&lt;/a&gt;) and Dave Rupert.&lt;/p&gt;
+
+&lt;h4 id="the4hourworkweek"&gt;The 4-Hour Workweek&lt;/h4&gt;
+
+&lt;p&gt;Ok, this is not on web development! But I had to mention the &lt;a href="http://fourhourworkweek.com/podcast/"&gt;podcast&lt;/a&gt; of writer Tim Ferriss. In each episode, Tim interviews world-class performers in a broad array of fields. Athletes, entrepreneurs, investors, producers, you name it.&lt;/p&gt;
+
+&lt;p&gt;I find this is relevant to web developers in the sense of finding people (developers) you admire, deconstructing how they became successful and doing your best to emulate. It is hard not to draw inspiration from each of the interviewees stories' to set ambitious goals for oneself and relentlessly pursue them. &lt;/p&gt;
+
+&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
+
+&lt;p&gt;Token-based authentication is a very common solution to this problem. Many prominent public API's such as Twitter and Instagram utilize token-based authentication.&lt;/p&gt;
+
+&lt;p&gt;But first, you may ask...&lt;/p&gt;
+
+&lt;h3 id="whataretokens"&gt;What are tokens?&lt;/h3&gt;
+
+&lt;p&gt;A token is a server-generated string that is uniquely associated with a user and identifies them as authenticated. The string can encode certain user-specific informated such as username and profile.&lt;/p&gt;
+
+&lt;p&gt;When a user makes a request to your server, they can provide their token as proof that the server has verified their access.&lt;/p&gt;
+
+&lt;h3 id="whyaretheypreferred"&gt;Why are they preferred?&lt;/h3&gt;
+
+&lt;p&gt;Previously, session-based authentication was the most popular. It is still used in some scenarios, but is more complicated to configure, scale, and secure. Information about logged-in users must be kept in memory, oftentimes in a database such as &lt;a href="http://redis.io/"&gt;Redis&lt;/a&gt;. When a request is received, the user's information must be queried in the session database. &lt;/p&gt;
+
+&lt;p&gt;There are problems with this approach. If the server crashes, this information is lost. The user must re-authenticate and the server must re-construct the session profile. Also, since session information must be stored for every user, with a high volume of users you can quickly run into memory issues.&lt;/p&gt;
+
+&lt;p&gt;Whereas session-based authentication is &lt;em&gt;stateful&lt;/em&gt;, token-based authentication follows a &lt;em&gt;stateless&lt;/em&gt; paradigm. This just means that the server does not keep any information about users in memory. When a request is received, the token is validated. If it passes, the request is completed and a result returned. If not, the server can return an error. No in-memory database is required.&lt;/p&gt;
+
+&lt;p&gt;Authentication is a topic with many, many considerations. If you are looking to understand more of why and how tokens work, check out &lt;a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication"&gt;this&lt;/a&gt; article over on &lt;a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication"&gt;scotch.io&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;Now, let's get into the how-to.&lt;/p&gt;
+
+&lt;h3 id="serversidesetupnodejs"&gt;Server-side setup (Node.js)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/auth0/node-jsonwebtoken"&gt;Node-jsonwebtoken&lt;/a&gt; is the de-facto module for token functionality in a node application. &lt;/p&gt;
+
+&lt;p&gt;To grab that, you just need to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install --save jsonwebtoken
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In your node server file, add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var jwt = require('jsonwebtoken');
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You also need to set a json web token 'secret'. This string is used to make the tokens that your server generates unique, so preferably make it complex!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var jwtSecret = 'jsonWebTokensAreAGreatIdea!';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now all that's left is to create the token!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var token = jwt.sign('username', jwtSecret, {
+    expiresInMinutes: 60
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In place of the 'username' string, you could use an object instead. The second parameter is the secret you configured earlier. The last one is an options object (of which &lt;a href="https://www.npmjs.com/package/jsonwebtoken#jwt-sign-payload-secretorprivatekey-options"&gt;there are many available&lt;/a&gt;); here we just set the expiration time of the token in minutes.&lt;/p&gt;
+
+&lt;p&gt;All of the preceding code together in an Express route:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var app = require('express')();
+var jwt = require('jsonwebtoken');
+var jwtSecret = 'jsonWebTokensAreAGreatIdea!'; 
+
+app.get('/auth', function (req, res) {
+  var username = req.query.username;
+  var token = jwt.sign(username, jwtSecret, {
+    expiresInMinutes: 60
+  });
+
+  res.send(token);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now when  a request is received at &lt;a href="http://yourserver/auth?username=jakeg"&gt;http://yourserver/auth?username=jakeg&lt;/a&gt;, a token will be signed and returned to the client.&lt;/p&gt;
+
+&lt;h3 id="clientsidesetupangular"&gt;Client-side setup (Angular)&lt;/h3&gt;
+
+&lt;p&gt;On the Angular side, you first need to setup the request to retrieve the token. Here, I will just use $http.get():&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$http.get('http://yourserver/auth', { 
+    params: { username: 'username' } 
+  }).success( function(data, status, headers, config) {
+    // save the token for later queries
+    localStorage.token = data.token;
+  });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first parameter to $http.get is the API endpoint that will return the token. The second passes the username within a 'params' object. We save the resulting token in localStorage to persist on the client, but you could pass the token anywhere else in your application deemed appropriate.&lt;/p&gt;
+
+&lt;p&gt;If you want to retrieve the information encoded in the token, you need a couple extra functions to parse and decode:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function urlBase64Decode(str) {
+  var output = str.replace('-', '+').replace('_', '/');
+  switch (output.length % 4) {
+    case 0:
+      break;
+    case 2:
+      output += '==';
+      break;
+    case 3:
+      output += '=';
+      break;
+    default:
+      throw 'Illegal base64url string!';
+  }
+  return window.atob(output);
+}
+
+function getClaimsFromToken(token) {
+  var response = {};
+
+  if (typeof token !== "undefined") {
+    var encoded = token.split(".")[1];
+    response = JSON.parse(urlBase64Decode(encoded));
+  }
+  return response;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first function decodes the token string using base64. The second takes the chunk containing encoded data and parses it into a JSON object.&lt;/p&gt;
+
+&lt;p&gt;To include the token on remote requests (required!), just add it as a parameter. With Angular, you have two options:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://docs.angularjs.org/api/ng/service/$http"&gt;$http.get()&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$http.get('http://myapi.com/auth', 
+  { params: { username: 'username' } } );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://docs.angularjs.org/api/ngResource/service/$resource"&gt;$resource service&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myResource.bind( { token: localStorage.getItem("token") } );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You can also add it as a HTTP Header parameter. However, this will send your token on every HTTP request your application makes. &lt;em&gt;Only&lt;/em&gt; do this if you will only make remote requests to &lt;em&gt;your&lt;/em&gt; API. Sending your token elsewhere can interfere with communication and is also giving away keys to your service!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That's it! Now when you make remote requests, the token your application retrieved earlier will be sent along to authenticate your request.&lt;/p&gt;
+
+&lt;h3 id="wrapup"&gt;Wrap Up&lt;/h3&gt;
+
+&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item><item><title>Authenticate User with Instagram API</title><description>&lt;p&gt;Recently, I was working with the Instagram API for one of my side-projects. This is a short walkthrough of how to implement the &lt;a href="https://instagram.com/developer/authentication/"&gt;server-side flow&lt;/a&gt; of Instagram user authentication in Node.js. &lt;/p&gt;
+
+&lt;p&gt;In order for your application to make queries to the &lt;a href="https://instagram.com/developer"&gt;Instagram API&lt;/a&gt; on your user's behalf, they must authorize your application by logging in with their Instagram credentials. Your application will receive an authorization code in return, and you then need to authenticate this code with Instagram to receive an access token. The access token grants you access to query the REST API.&lt;/p&gt;
+
+&lt;p&gt;Instagram requires that the authentication query be sent as form data (&lt;a href="http://www.w3.org/TR/html5/forms.html#url-encoded-form-data"&gt;x-www-form-urlencoded&lt;/a&gt;) instead of JSON. The documentation shows how to make the query using curl -- since I was doing this in Node, I installed a module called &lt;a href="http://unirest.io/nodejs.html"&gt;unirest&lt;/a&gt;. Here's the code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var unirest = require('unirest');
+unirest.post("https://api.instagram.com/oauth/access_token")
+      .send("client_id=XXXXXXXXXXXXXXXXXXXXXX")
+      .send("client_secret=XXXXXXXXXXXXXXXXXX")
+      .send("grant_type=authorization_code")
+      .send("redirect_uri=http://url.me")
+      .send("code=XXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+      .end(function (response) {
+        console.log(response.body);
+      }); 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In response, you will receive a JSON object similar to the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    {
+        "access_token":"fb2e77d.47a0479900504cb3ab4a1f626d174d2d",
+        "user": {
+            "id": "1000000",
+            ...
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When you query one of the Instagram API endpoints, include the access_token as a query (URL) parameter.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;unirest.get("https://api.instagram.com/v1/users/self/feed")
+     .query("access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d")
+      .end(function(response) {
+        console.log(response);
+      });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item><item><title>Publish a blog on GitHub Pages with Ghost and Buster</title><description>&lt;p&gt;It's no secret: I am using &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.&lt;/p&gt;
+
+&lt;p&gt;I assume you have &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; setup locally. &lt;br&gt;
+I assume you have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&gt;
+
+&lt;h3 id="getbuster"&gt;Get Buster&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install pip. &lt;br&gt;
+&lt;ul&gt;&lt;li&gt;Download the get-pip.py script from &lt;a href="https://pip.pypa.io/en/latest/installing.html#install-pip"&gt;https://pip.pypa.io/en/latest/installing.html#install-pip&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python get-pip.py --no-index --find-links=/local/copies&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Install buster. &lt;br&gt;
+&lt;ul&gt;&lt;li&gt;Run &lt;code&gt;pip install buster&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="generatestaticsite"&gt;Generate static site&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you have not used buster before, run &lt;code&gt;buster setup&lt;/code&gt;. It will ask you for the URL of your GitHub repository.  &lt;/li&gt;
+&lt;li&gt;Start your local ghost instance with &lt;code&gt;npm start&lt;/code&gt; in your ghost directory. This serves your ghost content at &lt;a href="http://127.0.0.1:2368/"&gt;http://127.0.0.1:2368&lt;/a&gt;.  &lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;buster generate --domain=http://127.0.0.1:2368 --dir=/path/to/store/static/content&lt;/code&gt;. The path you specify in the dir parameter will now contain a static copy of your ghost content.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="pushtogithub"&gt;Push to GitHub&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run &lt;code&gt;git init&lt;/code&gt; in your static content directory.  &lt;/li&gt;
+&lt;li&gt;Add a remote linking to a repository on your GitHub account &lt;code&gt;git remote add https://github.com/yourusername/repo.git&lt;/code&gt;.  &lt;/li&gt;
+&lt;li&gt;Create a gh-pages branch with &lt;code&gt;git checkout -b gh-pages&lt;/code&gt;. This is critical! If you do not push your changes to this version, GitHub will not serve your content.  &lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;git push origin gh-pages&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking &lt;a href="https://www.thinkful.com/"&gt;Thinkful's&lt;/a&gt; Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
+
+&lt;h3 id="thecourse"&gt;The Course&lt;/h3&gt;
 
 &lt;p&gt;Overall I was very satisfied with the course. The task-specific projects help build skills one on top of another, and the community is very responsive and encouraging for newbies.&lt;/p&gt;
 
 &lt;p&gt;One thing I noticed during the course was that only an introduction was given to some topics which are quite hefty on their own. In my case, I am always wondering, what more is there to know on this topic? Where can I find a deeper explanation? The tutors will fill in the blanks or point you to other resources if you ask, but I gathered my own additional resources to share!&lt;/p&gt;
 
-&lt;h4 id="additionalfewdresources"&gt;Additional FEWD Resources&lt;/h4&gt;
+&lt;h3 id="additionalfewdresources"&gt;Additional FEWD Resources&lt;/h3&gt;
 
-&lt;h6 id="html5"&gt;HTML5&lt;/h6&gt;
+&lt;h6 id="html"&gt;html&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://html5forwebdesigners.com/"&gt;HTML5 for Web Designers&lt;/a&gt;
 This title from A Book Apart gives a history of HTML, describes the features of HTML5, and discusses the all-important semantic use of markup. If you are wondering which is the correct tag to use for a particular element on your page, this is the book for you (read for free at link above).&lt;/p&gt;
 
-&lt;h6 id="uiresponsivedesign"&gt;UI/Responsive Design&lt;/h6&gt;
+&lt;h6 id="uiresponsivedesign"&gt;ui/responsive design&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758"&gt;Don't Make Me Think&lt;/a&gt;
 This is the classic guide on web usability design. The advice is sound even if a lot of the examples are dated.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's book by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's &lt;a href="http://abookapart.com/products/responsive-web-design"&gt;book&lt;/a&gt; by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
 
-&lt;h6 id="css"&gt;CSS&lt;/h6&gt;
+&lt;h6 id="css"&gt;css&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/css3-in-depth"&gt;CSS3 In-Depth&lt;/a&gt;
 If you want to know about every property in the CSS3 spec with demos, Estelle Weyl's course has you covered. Especially with something as visual as CSS, reading the documentation doesn't always give you the answer you're looking for.&lt;/p&gt;
@@ -28,17 +269,17 @@ If you want to know about every property in the CSS3 spec with demos, Estelle We
 &lt;p&gt;&lt;a href="http://sass-lang.com/guide"&gt;Sass&lt;/a&gt;
 If you are a programmer writing CSS (like me), you probably wonder "how can I make this more modular/maintainable/readable/etc?". Enter Sass. Getting started with variables, imports, and nesting is pretty straightforward.&lt;/p&gt;
 
-&lt;h6 id="javascript"&gt;Javascript&lt;/h6&gt;
+&lt;h6 id="javascript"&gt;javascript&lt;/h6&gt;
 
 &lt;p&gt;&lt;a href="http://eloquentjavascript.net/"&gt;Eloquent Javascript&lt;/a&gt;
-Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and Node.js.&lt;/p&gt;
+Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752"&gt;Javascript Patterns&lt;/a&gt;
-Usually when you see Patterns in a title you think of Gang-of-Four Design Patterns. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
+Usually when you see Patterns in a title you think of &lt;a href="http://en.wikipedia.org/wiki/Design_Patterns"&gt;Gang-of-Four Design Patterns&lt;/a&gt;. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/build-process-workflows-tooling-gruntjs"&gt;Build Process, Workflows and Tooling With Grunt.js and Beyond&lt;/a&gt;
-Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a Grunt workflow step-by-step, covering everything from minification to testing to scaffolding tools Yeoman &amp;amp; Lineman.&lt;/p&gt;
+Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a &lt;a href="http://gruntjs.com/"&gt;Grunt&lt;/a&gt; workflow step-by-step, covering everything from minification to testing to scaffolding tools &lt;a href="http://yeoman.io/"&gt;Yeoman&lt;/a&gt; &amp;amp; &lt;a href="http://linemanjs.com/"&gt;Lineman&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h4 id="wrapup"&gt;Wrap-up&lt;/h4&gt;
+&lt;h3 id="wrapup"&gt;Wrap-up&lt;/h3&gt;
 
-&lt;p&gt;Front-End Web Development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://blog.jakegardner.me/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><dc:creator>Jacob Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
