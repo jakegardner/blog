@@ -1,4 +1,44 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 25 Oct 2015 13:44:38 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Podcasts for Web Developers</title><description>&lt;p&gt;There are many resources to learn about web development and keep abreast of changes -- books, blogs, conferences, video tutorials. I make use of all of these, however podcasts are great in that you can listen while you're on the go. Take advantage of that time commuting/walking/standing in line to learn something.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 01 Nov 2015 13:20:39 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Configuration files for your Node.js apps</title><description>&lt;p&gt;For any Node.js application that interacts with external resources (APIs, databases, etc), you will likely need some environment-specific configuration. Now, hopefully you are not hard-coding these values!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;            // BAD! 
+            mongodb.hostname = "databaseserver";
+            mongodb.port = "27017";
+            mongodb.database = "mydatabase";
+            ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Storing these values in an external file makes it easy to change environments without having to modify the code. Fortunately, &lt;a href="https://nodejs.org/api/modules.html#modules_modules"&gt;require&lt;/a&gt; makes it easy to load values from .js or .json files.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;            // Better!
+            var config = require('./dbconfig.js');
+
+            mongodb.hostname = config.hostname;
+            mongodb.port = config.port;
+            mongodb.database = config.database;
+            ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Require will parse either .js or .json files and return an object you can use in your code. &lt;/p&gt;
+
+&lt;p&gt;Why choose .js or .json? I prefer to use .js for configuration while only use .json  for data (for example, &lt;a href="https://github.com/junit-team/junit/wiki/Test-fixtures"&gt;test fixtures&lt;/a&gt;). However, both formats achieve the same result.&lt;/p&gt;
+
+&lt;h6 id="jsformat"&gt;.js format&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;            exports.hostname = "myserver";
+            exports.port = "27017";
+            exports.database = "mydatabase";
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id="jsonformat"&gt;.json format&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;            {
+              "hostname": "myserver",
+              "port": "27017",
+              "database": "mydatabase"
+            }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Knowing how easy this is to use, hope you will make use of external configuration files in your Node.js apps!&lt;/p&gt;</description><link>http://localhost:2368/configuration-files-for-your-node-js-apps/</link><guid isPermaLink="false">5a2060fe-ca31-46b7-ae7a-9fb852327856</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 01 Nov 2015 13:19:33 GMT</pubDate></item><item><title>Podcasts for Web Developers</title><description>&lt;p&gt;There are many resources to learn about web development and keep abreast of changes -- books, blogs, conferences, video tutorials. I make use of all of these, however podcasts are great in that you can listen while you're on the go. Take advantage of that time commuting/walking/standing in line to learn something.&lt;/p&gt;
 
 &lt;p&gt;These are some of my favorites. They cover a range of development related topics, from specific languages to developer worklife and career management.&lt;/p&gt;
 
