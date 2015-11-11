@@ -1,4 +1,64 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 01 Nov 2015 13:20:39 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Configuration files for your Node.js apps</title><description>&lt;p&gt;For any Node.js application that interacts with external resources (APIs, databases, etc), you will likely need some environment-specific configuration. Now, hopefully you are not hard-coding these values!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Wed, 11 Nov 2015 13:52:19 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Be A Software Craftsman</title><description>&lt;p&gt;I recently read &lt;a href="http://www.mcbreen.ab.ca/SoftwareCraftsmanship/"&gt;Software Craftsmanship&lt;/a&gt; by Pete McBreen. If you haven't read this book, run out and get a copy fast!&lt;/p&gt;
+
+&lt;p&gt;Pete suggests that software development should adopt an apprenticeship model. Simply teaching people language constructs in a classroom does not alone make them developers. Furthermore, people learn best by working with others more experienced than themselves. Pairing software "apprentices" with software "craftsmen" will result in a higher standard skill level in developers.&lt;/p&gt;
+
+&lt;p&gt;On your software developer journey, once you get past learning syntax and frameworks and patterns, you think more broadly about how you can improve. The road to craftsmanship is how you can do that.&lt;/p&gt;
+
+&lt;h4 id="howtobeasoftwarecraftsman"&gt;How to be a Software Craftsman&lt;/h4&gt;
+
+&lt;h6 id="gettoknowyourtools"&gt;Get to know your tools&lt;/h6&gt;
+
+&lt;p&gt;You can't expect to deliver high-quality solutions quickly if you are spending a lot of time figuring out how to use the tools. &lt;/p&gt;
+
+&lt;p&gt;Invest the time in a set of tools you enjoy using, but that also have a large community so you can be sure that they will be around.&lt;/p&gt;
+
+&lt;p&gt;Corollary to this is...&lt;/p&gt;
+
+&lt;h6 id="dontfollowthehype"&gt;Don't follow the hype&lt;/h6&gt;
+
+&lt;p&gt;Especially since the rebirth of Javascript, we have all been inundated with new frameworks, build tools, text editors, and every kind of widget inbetween.&lt;/p&gt;
+
+&lt;p&gt;You must exercise good judgment about what to learn. If you are constantly jumping on the latest bandwagon, you will never achieve mastery of your toolset (see above).&lt;/p&gt;
+
+&lt;h6 id="findamentor"&gt;Find a mentor&lt;/h6&gt;
+
+&lt;p&gt;Perhaps the most important element in your path towards mastery is finding those more experienced than yourself and working with them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Practice without feedback just reinforces errors&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Just as with any handcraft, art, or music, learning through imitation is a powerful force.&lt;/p&gt;
+
+&lt;h6 id="knowthewholepicture"&gt;Know the whole picture&lt;/h6&gt;
+
+&lt;p&gt;The industry seems to encourage role-specialization. While you should not attempt to master every &lt;em&gt;tool&lt;/em&gt; or &lt;em&gt;language&lt;/em&gt;, being as familiar with the end-to-end process of software development can only benefit you.&lt;/p&gt;
+
+&lt;p&gt;You're a Front-ender? You absolutely should know how API's are written, and what has to take place for data to reach the client from the server. &lt;/p&gt;
+
+&lt;p&gt;You're a Back-ender? You need to understand how the design is hindered or empowered by what you deliver from the server. &lt;/p&gt;
+
+&lt;p&gt;All web and mobile developers need to be keen on UX/Design as well. Our world is ever-more-focused on well-designed products, and without user-centric thinking our development efforts are fruitless.&lt;/p&gt;
+
+&lt;h6 id="neverstoplearning"&gt;Never stop learning&lt;/h6&gt;
+
+&lt;p&gt;While the general flux in our industry creates a lot of noise as far as what to learn, it's important to keep an eye on the general trajectory. &lt;/p&gt;
+
+&lt;p&gt;Fixed-width website designs gave way to fluid, responsive ones.&lt;/p&gt;
+
+&lt;p&gt;Fully server-generated web pages gave way to mostly client-based ones.&lt;/p&gt;
+
+&lt;p&gt;And recently more and more developers are moving from object-oriented languages to functional ones.&lt;/p&gt;
+
+&lt;p&gt;Make learning a habit.&lt;/p&gt;
+
+&lt;h6 id="wrapup"&gt;Wrap Up&lt;/h6&gt;
+
+&lt;p&gt;Being a software craftsman is about striving for expertise and seeking a breadth and depth of experience so that you can deliver the highest-quality solutions.&lt;/p&gt;
+
+&lt;p&gt;It's also about cultivating a intuition, knowing when it makes sense to deviate from a process or how to choose which technology to use.&lt;/p&gt;
+
+&lt;p&gt;Finally, it's about taking real pride in your work so that you are constantly looking for ways you can improve.&lt;/p&gt;</description><link>http://localhost:2368/be-a-software-craftsman/</link><guid isPermaLink="false">9bf0addd-0189-4c53-9495-8fd102f95882</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Wed, 11 Nov 2015 13:50:56 GMT</pubDate></item><item><title>Configuration files for your Node.js apps</title><description>&lt;p&gt;For any Node.js application that interacts with external resources (APIs, databases, etc), you will likely need some environment-specific configuration. Now, hopefully you are not hard-coding these values!&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;            // BAD! 
             mongodb.hostname = "databaseserver";
