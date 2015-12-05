@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>node - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/node/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Publish your Angular app to Heroku</title><description>&lt;p&gt;&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; is great for hosting your development projects (particularly in-progress). In fact, I recommend publishing your project sooner rather than later so that you don't have any surprises in deployment later on. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>angular - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/angular/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Publish your Angular app to Heroku</title><description>&lt;p&gt;&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; is great for hosting your development projects (particularly in-progress). In fact, I recommend publishing your project sooner rather than later so that you don't have any surprises in deployment later on. &lt;/p&gt;
 
 &lt;p&gt;Getting Heroku to serve your Angular application is pretty simple but does require a little bit of configuration. Moreover, these same steps could work for any front-end project, not just Angular.&lt;/p&gt;
 
@@ -42,47 +42,7 @@ To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. We
 
 &lt;h4 id="pushtoheroku"&gt;Push to Heroku&lt;/h4&gt;
 
-&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://localhost:2368/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item><item><title>Configuration files for your Node.js apps</title><description>&lt;p&gt;For any Node.js application that interacts with external resources (APIs, databases, etc), you will likely need some environment-specific configuration. Now, hopefully you are not hard-coding these values!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;            // BAD! 
-            mongodb.hostname = "databaseserver";
-            mongodb.port = "27017";
-            mongodb.database = "mydatabase";
-            ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Storing these values in an external file makes it easy to change environments without having to modify the code. Fortunately, &lt;a href="https://nodejs.org/api/modules.html#modules_modules"&gt;require&lt;/a&gt; makes it easy to load values from .js or .json files.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;            // Better!
-            var config = require('./dbconfig.js');
-
-            mongodb.hostname = config.hostname;
-            mongodb.port = config.port;
-            mongodb.database = config.database;
-            ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Require will parse either .js or .json files and return an object you can use in your code. &lt;/p&gt;
-
-&lt;p&gt;Why choose .js or .json? I prefer to use .js for configuration while only use .json  for data (for example, &lt;a href="https://github.com/junit-team/junit/wiki/Test-fixtures"&gt;test fixtures&lt;/a&gt;). However, both formats achieve the same result.&lt;/p&gt;
-
-&lt;h6 id="jsformat"&gt;.js format&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;            exports.hostname = "myserver";
-            exports.port = "27017";
-            exports.database = "mydatabase";
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id="jsonformat"&gt;.json format&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;            {
-              "hostname": "myserver",
-              "port": "27017",
-              "database": "mydatabase"
-            }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Knowing how easy this is to use, hope you will make use of external configuration files in your Node.js apps!&lt;/p&gt;</description><link>http://localhost:2368/configuration-files-for-your-node-js-apps/</link><guid isPermaLink="false">5a2060fe-ca31-46b7-ae7a-9fb852327856</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 01 Nov 2015 13:19:33 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
+&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://localhost:2368/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
 
 &lt;p&gt;Token-based authentication is a very common solution to this problem. Many prominent public API's such as Twitter and Instagram utilize token-based authentication.&lt;/p&gt;
 
@@ -219,42 +179,4 @@ function getClaimsFromToken(token) {
 
 &lt;h3 id="wrapup"&gt;Wrap Up&lt;/h3&gt;
 
-&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item><item><title>Authenticate User with Instagram API</title><description>&lt;p&gt;Recently, I was working with the Instagram API for one of my side-projects. This is a short walkthrough of how to implement the &lt;a href="https://instagram.com/developer/authentication/"&gt;server-side flow&lt;/a&gt; of Instagram user authentication in Node.js. &lt;/p&gt;
-
-&lt;p&gt;In order for your application to make queries to the &lt;a href="https://instagram.com/developer"&gt;Instagram API&lt;/a&gt; on your user's behalf, they must authorize your application by logging in with their Instagram credentials. Your application will receive an authorization code in return, and you then need to authenticate this code with Instagram to receive an access token. The access token grants you access to query the REST API.&lt;/p&gt;
-
-&lt;p&gt;Instagram requires that the authentication query be sent as form data (&lt;a href="http://www.w3.org/TR/html5/forms.html#url-encoded-form-data"&gt;x-www-form-urlencoded&lt;/a&gt;) instead of JSON. The documentation shows how to make the query using curl -- since I was doing this in Node, I installed a module called &lt;a href="http://unirest.io/nodejs.html"&gt;unirest&lt;/a&gt;. Here's the code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var unirest = require('unirest');
-unirest.post("https://api.instagram.com/oauth/access_token")
-      .send("client_id=XXXXXXXXXXXXXXXXXXXXXX")
-      .send("client_secret=XXXXXXXXXXXXXXXXXX")
-      .send("grant_type=authorization_code")
-      .send("redirect_uri=http://url.me")
-      .send("code=XXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-      .end(function (response) {
-        console.log(response.body);
-      }); 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In response, you will receive a JSON object similar to the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    {
-        "access_token":"fb2e77d.47a0479900504cb3ab4a1f626d174d2d",
-        "user": {
-            "id": "1000000",
-            ...
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When you query one of the Instagram API endpoints, include the access_token as a query (URL) parameter.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;unirest.get("https://api.instagram.com/v1/users/self/feed")
-     .query("access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d")
-      .end(function(response) {
-        console.log(response);
-      });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item></channel></rss>

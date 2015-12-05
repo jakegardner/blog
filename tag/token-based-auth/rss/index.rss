@@ -1,0 +1,138 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>token-based auth - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/token-based-auth/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
+
+&lt;p&gt;Token-based authentication is a very common solution to this problem. Many prominent public API's such as Twitter and Instagram utilize token-based authentication.&lt;/p&gt;
+
+&lt;p&gt;But first, you may ask...&lt;/p&gt;
+
+&lt;h3 id="whataretokens"&gt;What are tokens?&lt;/h3&gt;
+
+&lt;p&gt;A token is a server-generated string that is uniquely associated with a user and identifies them as authenticated. The string can encode certain user-specific informated such as username and profile.&lt;/p&gt;
+
+&lt;p&gt;When a user makes a request to your server, they can provide their token as proof that the server has verified their access.&lt;/p&gt;
+
+&lt;h3 id="whyaretheypreferred"&gt;Why are they preferred?&lt;/h3&gt;
+
+&lt;p&gt;Previously, session-based authentication was the most popular. It is still used in some scenarios, but is more complicated to configure, scale, and secure. Information about logged-in users must be kept in memory, oftentimes in a database such as &lt;a href="http://redis.io/"&gt;Redis&lt;/a&gt;. When a request is received, the user's information must be queried in the session database. &lt;/p&gt;
+
+&lt;p&gt;There are problems with this approach. If the server crashes, this information is lost. The user must re-authenticate and the server must re-construct the session profile. Also, since session information must be stored for every user, with a high volume of users you can quickly run into memory issues.&lt;/p&gt;
+
+&lt;p&gt;Whereas session-based authentication is &lt;em&gt;stateful&lt;/em&gt;, token-based authentication follows a &lt;em&gt;stateless&lt;/em&gt; paradigm. This just means that the server does not keep any information about users in memory. When a request is received, the token is validated. If it passes, the request is completed and a result returned. If not, the server can return an error. No in-memory database is required.&lt;/p&gt;
+
+&lt;p&gt;Authentication is a topic with many, many considerations. If you are looking to understand more of why and how tokens work, check out &lt;a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication"&gt;this&lt;/a&gt; article over on &lt;a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication"&gt;scotch.io&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;Now, let's get into the how-to.&lt;/p&gt;
+
+&lt;h3 id="serversidesetupnodejs"&gt;Server-side setup (Node.js)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/auth0/node-jsonwebtoken"&gt;Node-jsonwebtoken&lt;/a&gt; is the de-facto module for token functionality in a node application. &lt;/p&gt;
+
+&lt;p&gt;To grab that, you just need to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install --save jsonwebtoken
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In your node server file, add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var jwt = require('jsonwebtoken');
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You also need to set a json web token 'secret'. This string is used to make the tokens that your server generates unique, so preferably make it complex!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var jwtSecret = 'jsonWebTokensAreAGreatIdea!';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now all that's left is to create the token!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var token = jwt.sign('username', jwtSecret, {
+    expiresInMinutes: 60
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In place of the 'username' string, you could use an object instead. The second parameter is the secret you configured earlier. The last one is an options object (of which &lt;a href="https://www.npmjs.com/package/jsonwebtoken#jwt-sign-payload-secretorprivatekey-options"&gt;there are many available&lt;/a&gt;); here we just set the expiration time of the token in minutes.&lt;/p&gt;
+
+&lt;p&gt;All of the preceding code together in an Express route:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var app = require('express')();
+var jwt = require('jsonwebtoken');
+var jwtSecret = 'jsonWebTokensAreAGreatIdea!'; 
+
+app.get('/auth', function (req, res) {
+  var username = req.query.username;
+  var token = jwt.sign(username, jwtSecret, {
+    expiresInMinutes: 60
+  });
+
+  res.send(token);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now when  a request is received at &lt;a href="http://yourserver/auth?username=jakeg"&gt;http://yourserver/auth?username=jakeg&lt;/a&gt;, a token will be signed and returned to the client.&lt;/p&gt;
+
+&lt;h3 id="clientsidesetupangular"&gt;Client-side setup (Angular)&lt;/h3&gt;
+
+&lt;p&gt;On the Angular side, you first need to setup the request to retrieve the token. Here, I will just use $http.get():&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$http.get('http://yourserver/auth', { 
+    params: { username: 'username' } 
+  }).success( function(data, status, headers, config) {
+    // save the token for later queries
+    localStorage.token = data.token;
+  });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first parameter to $http.get is the API endpoint that will return the token. The second passes the username within a 'params' object. We save the resulting token in localStorage to persist on the client, but you could pass the token anywhere else in your application deemed appropriate.&lt;/p&gt;
+
+&lt;p&gt;If you want to retrieve the information encoded in the token, you need a couple extra functions to parse and decode:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function urlBase64Decode(str) {
+  var output = str.replace('-', '+').replace('_', '/');
+  switch (output.length % 4) {
+    case 0:
+      break;
+    case 2:
+      output += '==';
+      break;
+    case 3:
+      output += '=';
+      break;
+    default:
+      throw 'Illegal base64url string!';
+  }
+  return window.atob(output);
+}
+
+function getClaimsFromToken(token) {
+  var response = {};
+
+  if (typeof token !== "undefined") {
+    var encoded = token.split(".")[1];
+    response = JSON.parse(urlBase64Decode(encoded));
+  }
+  return response;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first function decodes the token string using base64. The second takes the chunk containing encoded data and parses it into a JSON object.&lt;/p&gt;
+
+&lt;p&gt;To include the token on remote requests (required!), just add it as a parameter. With Angular, you have two options:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://docs.angularjs.org/api/ng/service/$http"&gt;$http.get()&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$http.get('http://myapi.com/auth', 
+  { params: { username: 'username' } } );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://docs.angularjs.org/api/ngResource/service/$resource"&gt;$resource service&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myResource.bind( { token: localStorage.getItem("token") } );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You can also add it as a HTTP Header parameter. However, this will send your token on every HTTP request your application makes. &lt;em&gt;Only&lt;/em&gt; do this if you will only make remote requests to &lt;em&gt;your&lt;/em&gt; API. Sending your token elsewhere can interfere with communication and is also giving away keys to your service!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That's it! Now when you make remote requests, the token your application retrieved earlier will be sent along to authenticate your request.&lt;/p&gt;
+
+&lt;h3 id="wrapup"&gt;Wrap Up&lt;/h3&gt;
+
+&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item></channel></rss>

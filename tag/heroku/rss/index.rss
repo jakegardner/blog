@@ -1,0 +1,45 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>heroku - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/heroku/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Publish your Angular app to Heroku</title><description>&lt;p&gt;&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; is great for hosting your development projects (particularly in-progress). In fact, I recommend publishing your project sooner rather than later so that you don't have any surprises in deployment later on. &lt;/p&gt;
+
+&lt;p&gt;Getting Heroku to serve your Angular application is pretty simple but does require a little bit of configuration. Moreover, these same steps could work for any front-end project, not just Angular.&lt;/p&gt;
+
+&lt;p&gt;This article assumes: &lt;br&gt;
+You have a Heroku account &lt;br&gt;
+You have the &lt;a href="https://toolbelt.heroku.com/"&gt;Heroku Toolbelt&lt;/a&gt; installed on your machine&lt;/p&gt;
+
+&lt;h4 id="addexpress"&gt;Add Express&lt;/h4&gt;
+
+&lt;p&gt;Firstly, you'll want to &lt;code&gt;npm install --save express gzippo&lt;/code&gt; in your project directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.npmjs.com/package/express"&gt;Express&lt;/a&gt; is a node-based web server which Heroku will use to serve your application files.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.npmjs.com/package/gzippo"&gt;Gzippo&lt;/a&gt; allows you to compress (gzip) the files before they are sent on the wire to reduce the size, improving performance.&lt;/p&gt;
+
+&lt;h4 id="createanexpressserverfile"&gt;Create an Express server file&lt;/h4&gt;
+
+&lt;p&gt;Create a file named &lt;code&gt;web.js&lt;/code&gt; in your project root. In this file, add the following lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var gzippo = require('gzippo');
+var express = require('express');
+var morgan = require('morgan');
+var app = express();
+
+app.use(morgan('dev'));
+app.use(gzippo.staticGzip("" + __dirname + "/dist"));
+
+app.route('/*').get( function(req, res) {
+    return res.sendFile(__dirname + "/dist/index.html");
+});
+
+app.listen(process.env.PORT || 5000);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This file includes necessary dependencies, and configures Express to respond to all requests with the file at the path in the res.sendFile method. You will need to update this path according to where your final application bundle resides.&lt;/p&gt;
+
+&lt;h4 id="addprocfileandupdatepackagejson"&gt;Add Procfile and Update package.json&lt;/h4&gt;
+
+&lt;p&gt;Heroku relies on a file called &lt;code&gt;Procfile&lt;/code&gt; to know how to start your application. Note that &lt;a href="https://devcenter.heroku.com/articles/procfile"&gt;Procfile&lt;/a&gt; has no file extension. &lt;br&gt;
+To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. Web lets Heroku know that you want to serve HTTP content, and the remainder is command to invoke node with the Express file you created in the previous step.&lt;/p&gt;
+
+&lt;h4 id="pushtoheroku"&gt;Push to Heroku&lt;/h4&gt;
+
+&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://localhost:2368/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item></channel></rss>

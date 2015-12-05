@@ -173,6 +173,9 @@ pre {
   padding-top: 4rem;
   padding-bottom: 2rem; }
 
+.pagination {
+  margin-left: 10%; }
+
 /* =============================================
 	index footer
 ============================================== */

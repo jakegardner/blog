@@ -1,4 +1,48 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 14 Nov 2015 14:23:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Be A Software Craftsman</title><description>&lt;p&gt;I recently read &lt;a href="http://www.mcbreen.ab.ca/SoftwareCraftsmanship/"&gt;Software Craftsmanship&lt;/a&gt; by Pete McBreen. If you haven't read this book, run out and get a copy fast!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:11 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Publish your Angular app to Heroku</title><description>&lt;p&gt;&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; is great for hosting your development projects (particularly in-progress). In fact, I recommend publishing your project sooner rather than later so that you don't have any surprises in deployment later on. &lt;/p&gt;
+
+&lt;p&gt;Getting Heroku to serve your Angular application is pretty simple but does require a little bit of configuration. Moreover, these same steps could work for any front-end project, not just Angular.&lt;/p&gt;
+
+&lt;p&gt;This article assumes: &lt;br&gt;
+You have a Heroku account &lt;br&gt;
+You have the &lt;a href="https://toolbelt.heroku.com/"&gt;Heroku Toolbelt&lt;/a&gt; installed on your machine&lt;/p&gt;
+
+&lt;h4 id="addexpress"&gt;Add Express&lt;/h4&gt;
+
+&lt;p&gt;Firstly, you'll want to &lt;code&gt;npm install --save express gzippo&lt;/code&gt; in your project directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.npmjs.com/package/express"&gt;Express&lt;/a&gt; is a node-based web server which Heroku will use to serve your application files.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.npmjs.com/package/gzippo"&gt;Gzippo&lt;/a&gt; allows you to compress (gzip) the files before they are sent on the wire to reduce the size, improving performance.&lt;/p&gt;
+
+&lt;h4 id="createanexpressserverfile"&gt;Create an Express server file&lt;/h4&gt;
+
+&lt;p&gt;Create a file named &lt;code&gt;web.js&lt;/code&gt; in your project root. In this file, add the following lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var gzippo = require('gzippo');
+var express = require('express');
+var morgan = require('morgan');
+var app = express();
+
+app.use(morgan('dev'));
+app.use(gzippo.staticGzip("" + __dirname + "/dist"));
+
+app.route('/*').get( function(req, res) {
+    return res.sendFile(__dirname + "/dist/index.html");
+});
+
+app.listen(process.env.PORT || 5000);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This file includes necessary dependencies, and configures Express to respond to all requests with the file at the path in the res.sendFile method. You will need to update this path according to where your final application bundle resides.&lt;/p&gt;
+
+&lt;h4 id="addprocfileandupdatepackagejson"&gt;Add Procfile and Update package.json&lt;/h4&gt;
+
+&lt;p&gt;Heroku relies on a file called &lt;code&gt;Procfile&lt;/code&gt; to know how to start your application. Note that &lt;a href="https://devcenter.heroku.com/articles/procfile"&gt;Procfile&lt;/a&gt; has no file extension. &lt;br&gt;
+To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. Web lets Heroku know that you want to serve HTTP content, and the remainder is command to invoke node with the Express file you created in the previous step.&lt;/p&gt;
+
+&lt;h4 id="pushtoheroku"&gt;Push to Heroku&lt;/h4&gt;
+
+&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://localhost:2368/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item><item><title>Be A Software Craftsman</title><description>&lt;p&gt;I recently read &lt;a href="http://www.mcbreen.ab.ca/SoftwareCraftsmanship/"&gt;Software Craftsmanship&lt;/a&gt; by Pete McBreen. If you haven't read this book, run out and get a copy fast!&lt;/p&gt;
 
 &lt;p&gt;Pete suggests that software development should adopt an apprenticeship model. Simply teaching people language constructs in a classroom does not alone make them developers. Furthermore, people learn best by working with others more experienced than themselves. Pairing software "apprentices" with software "craftsmen" will result in a higher standard skill level in developers.&lt;/p&gt;
 
@@ -132,7 +176,7 @@
 
 &lt;p&gt;I find this is relevant to web developers in the sense of finding people (developers) you admire, deconstructing how they became successful and doing your best to emulate. It is hard not to draw inspiration from each of the interviewees stories' to set ambitious goals for oneself and relentlessly pursue them. &lt;/p&gt;
 
-&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
+&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
 
 &lt;p&gt;Token-based authentication is a very common solution to this problem. Many prominent public API's such as Twitter and Instagram utilize token-based authentication.&lt;/p&gt;
 
@@ -269,7 +313,7 @@ function getClaimsFromToken(token) {
 
 &lt;h3 id="wrapup"&gt;Wrap Up&lt;/h3&gt;
 
-&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item><item><title>Authenticate User with Instagram API</title><description>&lt;p&gt;Recently, I was working with the Instagram API for one of my side-projects. This is a short walkthrough of how to implement the &lt;a href="https://instagram.com/developer/authentication/"&gt;server-side flow&lt;/a&gt; of Instagram user authentication in Node.js. &lt;/p&gt;
+&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item><item><title>Authenticate User with Instagram API</title><description>&lt;p&gt;Recently, I was working with the Instagram API for one of my side-projects. This is a short walkthrough of how to implement the &lt;a href="https://instagram.com/developer/authentication/"&gt;server-side flow&lt;/a&gt; of Instagram user authentication in Node.js. &lt;/p&gt;
 
 &lt;p&gt;In order for your application to make queries to the &lt;a href="https://instagram.com/developer"&gt;Instagram API&lt;/a&gt; on your user's behalf, they must authorize your application by logging in with their Instagram credentials. Your application will receive an authorization code in return, and you then need to authenticate this code with Instagram to receive an access token. The access token grants you access to query the REST API.&lt;/p&gt;
 
@@ -307,10 +351,11 @@ unirest.post("https://api.instagram.com/oauth/access_token")
       });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item><item><title>Publish a blog on GitHub Pages with Ghost and Buster</title><description>&lt;p&gt;It's no secret: I am using &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.&lt;/p&gt;
+&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item><item><title>Publish a blog on GitHub Pages with Ghost and Buster</title><description>&lt;p&gt;It's no secret: I am using &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.&lt;/p&gt;
 
-&lt;p&gt;I assume you have &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; setup locally. &lt;br&gt;
-I assume you have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&gt;
+&lt;p&gt;This article assumes: &lt;br&gt;
+You have &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; setup locally. &lt;br&gt;
+You have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&gt;
 
 &lt;h3 id="getbuster"&gt;Get Buster&lt;/h3&gt;
 
@@ -339,7 +384,7 @@ I assume you have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account
 &lt;li&gt;Run &lt;code&gt;git push origin gh-pages&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking &lt;a href="https://www.thinkful.com/"&gt;Thinkful's&lt;/a&gt; Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
+&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><category>ghost</category><category>blogging</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking &lt;a href="https://www.thinkful.com/"&gt;Thinkful's&lt;/a&gt; Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
 
 &lt;h3 id="thecourse"&gt;The Course&lt;/h3&gt;
 
@@ -382,4 +427,4 @@ Another stellar course on Pluralsight from Dave Mosher. If you found yourself cu
 
 &lt;h3 id="wrapup"&gt;Wrap-up&lt;/h3&gt;
 
-&lt;p&gt;Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>

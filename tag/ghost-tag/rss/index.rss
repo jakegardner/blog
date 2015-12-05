@@ -1,0 +1,34 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ghost - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/ghost-tag/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Publish a blog on GitHub Pages with Ghost and Buster</title><description>&lt;p&gt;It's no secret: I am using &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.&lt;/p&gt;
+
+&lt;p&gt;This article assumes: &lt;br&gt;
+You have &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; setup locally. &lt;br&gt;
+You have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&gt;
+
+&lt;h3 id="getbuster"&gt;Get Buster&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install pip. &lt;br&gt;
+&lt;ul&gt;&lt;li&gt;Download the get-pip.py script from &lt;a href="https://pip.pypa.io/en/latest/installing.html#install-pip"&gt;https://pip.pypa.io/en/latest/installing.html#install-pip&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python get-pip.py --no-index --find-links=/local/copies&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Install buster. &lt;br&gt;
+&lt;ul&gt;&lt;li&gt;Run &lt;code&gt;pip install buster&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="generatestaticsite"&gt;Generate static site&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you have not used buster before, run &lt;code&gt;buster setup&lt;/code&gt;. It will ask you for the URL of your GitHub repository.  &lt;/li&gt;
+&lt;li&gt;Start your local ghost instance with &lt;code&gt;npm start&lt;/code&gt; in your ghost directory. This serves your ghost content at &lt;a href="http://127.0.0.1:2368/"&gt;http://127.0.0.1:2368&lt;/a&gt;.  &lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;buster generate --domain=http://127.0.0.1:2368 --dir=/path/to/store/static/content&lt;/code&gt;. The path you specify in the dir parameter will now contain a static copy of your ghost content.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="pushtogithub"&gt;Push to GitHub&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run &lt;code&gt;git init&lt;/code&gt; in your static content directory.  &lt;/li&gt;
+&lt;li&gt;Add a remote linking to a repository on your GitHub account &lt;code&gt;git remote add https://github.com/yourusername/repo.git&lt;/code&gt;.  &lt;/li&gt;
+&lt;li&gt;Create a gh-pages branch with &lt;code&gt;git checkout -b gh-pages&lt;/code&gt;. This is critical! If you do not push your changes to this version, GitHub will not serve your content.  &lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;git push origin gh-pages&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><category>ghost</category><category>blogging</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item></channel></rss>

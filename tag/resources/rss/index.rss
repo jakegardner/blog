@@ -1,0 +1,78 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>resources - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 05 Dec 2015 05:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/resources/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Podcasts for Web Developers</title><description>&lt;p&gt;There are many resources to learn about web development and keep abreast of changes -- books, blogs, conferences, video tutorials. I make use of all of these, however podcasts are great in that you can listen while you're on the go. Take advantage of that time commuting/walking/standing in line to learn something.&lt;/p&gt;
+
+&lt;p&gt;These are some of my favorites. They cover a range of development related topics, from specific languages to developer worklife and career management.&lt;/p&gt;
+
+&lt;h4 id="giantrobotssmashingintoothergiantrobots"&gt;Giant Robots [Smashing Into Other Giant Robots]&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/"&gt;Giant Robots&lt;/a&gt; is a podcast produced by &lt;a href="http://thoughtbot.com/"&gt;Thoughtbot&lt;/a&gt;. If you don't know Thoughtbot -- go check them out! They have released many open-source tools, have an informative &lt;a href="https://robots.thoughtbot.com/"&gt;blog&lt;/a&gt;, as well as a &lt;a href="https://upcase.com/"&gt;learning community&lt;/a&gt; to help developers upgrade their skills.&lt;/p&gt;
+
+&lt;p&gt;Giant Robots was originally more Ruby/Rails focused, but lately has been more about developer process, interviews with noteworthy developers etc. They also keep episodes less than 40 minutes so that you can be sure to finish listening in one commute.&lt;/p&gt;
+
+&lt;p&gt;Giant Robots also produce another more technical podcast called &lt;a href="http://bikeshed.fm/"&gt;The Bike Shed&lt;/a&gt;. Worth a look if you're hungry for more content.&lt;/p&gt;
+
+&lt;h4 id="javascriptjabber"&gt;Javascript Jabber&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://devchat.tv/js-jabber"&gt;Javascript Jabber&lt;/a&gt; is a round-table discussion on the latest developments in the Javascript world. Joe Eames (&lt;a href="http://www.ng-conf.org/"&gt;ngconf&lt;/a&gt; founder) is a weekly co-host.&lt;/p&gt;
+
+&lt;p&gt;This podcast tends to get deeply techical and sometimes runs a bit long, but I find it invaluable to learn about libraries or features I haven't had a chance to try myself.&lt;/p&gt;
+
+&lt;h4 id="developertea"&gt;Developer Tea&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://developertea.com/"&gt;Developer Tea&lt;/a&gt; may be my favorite of this bunch, simply for the reason that the host &lt;a href="http://localhost:2368/"&gt;&lt;/a&gt; takes on issues that are not discussed in typical development podcasts. Topics include time management, career progression, choosing what to learn, how to handle interviews, and many more.&lt;/p&gt;
+
+&lt;p&gt;Most episodes are fifteen minutes or less so you have no excuse not to fit this into your day somewhere!&lt;/p&gt;
+
+&lt;h4 id="shoptalkshow"&gt;Shop Talk Show&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://shoptalkshow.com/"&gt;Shop Talk Show&lt;/a&gt; is probably better suited for pure front-enders or web designers, but nonetheless is unparalleled in content on design, useability, web standards etc. It is made only more awesome by the sense of humor of hosts Chris Coyier (&lt;a href="https://css-tricks.com/"&gt;CSS Tricks&lt;/a&gt;) and Dave Rupert.&lt;/p&gt;
+
+&lt;h4 id="the4hourworkweek"&gt;The 4-Hour Workweek&lt;/h4&gt;
+
+&lt;p&gt;Ok, this is not on web development! But I had to mention the &lt;a href="http://fourhourworkweek.com/podcast/"&gt;podcast&lt;/a&gt; of writer Tim Ferriss. In each episode, Tim interviews world-class performers in a broad array of fields. Athletes, entrepreneurs, investors, producers, you name it.&lt;/p&gt;
+
+&lt;p&gt;I find this is relevant to web developers in the sense of finding people (developers) you admire, deconstructing how they became successful and doing your best to emulate. It is hard not to draw inspiration from each of the interviewees stories' to set ambitious goals for oneself and relentlessly pursue them. &lt;/p&gt;
+
+&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking &lt;a href="https://www.thinkful.com/"&gt;Thinkful's&lt;/a&gt; Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
+
+&lt;h3 id="thecourse"&gt;The Course&lt;/h3&gt;
+
+&lt;p&gt;Overall I was very satisfied with the course. The task-specific projects help build skills one on top of another, and the community is very responsive and encouraging for newbies.&lt;/p&gt;
+
+&lt;p&gt;One thing I noticed during the course was that only an introduction was given to some topics which are quite hefty on their own. In my case, I am always wondering, what more is there to know on this topic? Where can I find a deeper explanation? The tutors will fill in the blanks or point you to other resources if you ask, but I gathered my own additional resources to share!&lt;/p&gt;
+
+&lt;h3 id="additionalfewdresources"&gt;Additional FEWD Resources&lt;/h3&gt;
+
+&lt;h6 id="html"&gt;html&lt;/h6&gt;
+
+&lt;p&gt;&lt;a href="http://html5forwebdesigners.com/"&gt;HTML5 for Web Designers&lt;/a&gt;
+This title from A Book Apart gives a history of HTML, describes the features of HTML5, and discusses the all-important semantic use of markup. If you are wondering which is the correct tag to use for a particular element on your page, this is the book for you (read for free at link above).&lt;/p&gt;
+
+&lt;h6 id="uiresponsivedesign"&gt;ui/responsive design&lt;/h6&gt;
+
+&lt;p&gt;&lt;a href="http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758"&gt;Don't Make Me Think&lt;/a&gt;
+This is the classic guide on web usability design. The advice is sound even if a lot of the examples are dated.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's &lt;a href="http://abookapart.com/products/responsive-web-design"&gt;book&lt;/a&gt; by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
+
+&lt;h6 id="css"&gt;css&lt;/h6&gt;
+
+&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/css3-in-depth"&gt;CSS3 In-Depth&lt;/a&gt;
+If you want to know about every property in the CSS3 spec with demos, Estelle Weyl's course has you covered. Especially with something as visual as CSS, reading the documentation doesn't always give you the answer you're looking for.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://sass-lang.com/guide"&gt;Sass&lt;/a&gt;
+If you are a programmer writing CSS (like me), you probably wonder "how can I make this more modular/maintainable/readable/etc?". Enter Sass. Getting started with variables, imports, and nesting is pretty straightforward.&lt;/p&gt;
+
+&lt;h6 id="javascript"&gt;javascript&lt;/h6&gt;
+
+&lt;p&gt;&lt;a href="http://eloquentjavascript.net/"&gt;Eloquent Javascript&lt;/a&gt;
+Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752"&gt;Javascript Patterns&lt;/a&gt;
+Usually when you see Patterns in a title you think of &lt;a href="http://en.wikipedia.org/wiki/Design_Patterns"&gt;Gang-of-Four Design Patterns&lt;/a&gt;. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/build-process-workflows-tooling-gruntjs"&gt;Build Process, Workflows and Tooling With Grunt.js and Beyond&lt;/a&gt;
+Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a &lt;a href="http://gruntjs.com/"&gt;Grunt&lt;/a&gt; workflow step-by-step, covering everything from minification to testing to scaffolding tools &lt;a href="http://yeoman.io/"&gt;Yeoman&lt;/a&gt; &amp;amp; &lt;a href="http://linemanjs.com/"&gt;Lineman&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id="wrapup"&gt;Wrap-up&lt;/h3&gt;
+
+&lt;p&gt;Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
