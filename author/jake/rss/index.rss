@@ -1,4 +1,196 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Wed, 30 Dec 2015 06:43:35 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Testing CLI Tools</title><description>&lt;p&gt;While I was developing the &lt;a href="https://www.npmjs.com/package/s3syncr"&gt;s3syncr&lt;/a&gt; command-line (CLI) utility, I discovered I needed a way to test the function of the program as a whole. There are separate tests for the parsing of input to the program, but I wanted to verify the interaction of all the components as well as the output. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Tue, 12 Jan 2016 05:26:07 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Routing with Redux</title><description>&lt;p&gt;Last weekend I put together my first Redux &lt;a href="https://github.com/jakegardner/redux-bookcatalog"&gt;application&lt;/a&gt; by refactoring an old demo. Once you get familiar, the architecture seems like a very natural way to build applications.&lt;/p&gt;
+
+&lt;p&gt;One area that took some time to figure out was that of routing. While you can use &lt;a href="https://github.com/rackt/react-router"&gt;react-router&lt;/a&gt;, you need to do some extra wiring to get your state flowing as you would expect with vanilla React. &lt;/p&gt;
+
+&lt;p&gt;There are two projects to provide a seamless integration with Redux architecture, &lt;a href="https://github.com/acdlite/redux-router"&gt;redux-router&lt;/a&gt; and &lt;a href="https://github.com/rackt/redux-simple-router"&gt;redux-simple-router&lt;/a&gt;. Redux-router, at time of writing, is considered experimental, so I went with the redux-simple-router. It integrates seamlessly with react-router and redux.&lt;/p&gt;
+
+&lt;p&gt;I flet that some details were missing from documentation of integrating these projects, so I'm writing this simple how-to in the hopes that it helps someone else in the same situation in the future :)&lt;/p&gt;
+
+&lt;h4 id="background"&gt;Background&lt;/h4&gt;
+
+&lt;p&gt;Here I will provide some information on the components you need to get this working, namely react-router and redux-simple-router.&lt;/p&gt;
+
+&lt;h6 id="reactrouter"&gt;React-router&lt;/h6&gt;
+
+&lt;p&gt;The key rendered component of &lt;a href="https://github.com/rackt/react-router"&gt;react-router&lt;/a&gt; is the Router:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Router /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inside your Router element, you will put one or more Route elements: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Router&amp;gt;
+    &amp;lt;Route path="/" component={App} /&amp;gt;
+&amp;lt;/Router&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Each Route element can also have child routes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Router&amp;gt;
+    &amp;lt;Route path="/" component={App}&amp;gt;
+            &amp;lt;Route path="home" component={Home} /&amp;gt;
+    &amp;lt;/Route&amp;gt;
+&amp;lt;/Router&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you might expect, each Route element defines the expected route and the component should be rendered when hitting that route.&lt;/p&gt;
+
+&lt;p&gt;Where do the routes get rendered?&lt;/p&gt;
+
+&lt;p&gt;In the render method of a component with child routes (e.g. App in the above example), you will add something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
+    {this.props.children}
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;{this.props.children}&lt;/code&gt; identifies where in the render method child routes should be rendered. So for the /home route, the Home component would replace the contents of this div. &lt;/p&gt;
+
+&lt;h6 id="reduxsimplerouter"&gt;Redux-simple-router&lt;/h6&gt;
+
+&lt;p&gt;Redux-simple-router simply (ha!) stores your router state in your Redux store. So, whereever you have connected a React component to your store, you can access routing parameters, path etc as a property of state i.e. &lt;code&gt;state.router&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is enabled by this statement:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;syncReduxAndRouter(history, store, (state) =&amp;gt; state.router);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This should be included where you create your store. Don't worry; there is an example coming.&lt;/p&gt;
+
+&lt;h4 id="letsmakethishappen"&gt;Let's make this happen&lt;/h4&gt;
+
+&lt;p&gt;Now that we have some fundamental understanding, let's apply it.&lt;/p&gt;
+
+&lt;h6 id="installreactrouterreduxsimplerouter"&gt;Install react-router, redux-simple-router&lt;/h6&gt;
+
+&lt;p&gt;If you haven't already, run these:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install --save react-router
+npm install --save redux-simple-router
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id="setupreduxsimplerouter"&gt;Setup redux-simple-router&lt;/h6&gt;
+
+&lt;p&gt;The following should be in your application entry point file (I call mine index.js).&lt;/p&gt;
+
+&lt;p&gt;This is where the store is created, and the syncReduxAndRouter function is called.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import React, { Component, PropTypes } from "react";
+import { render } from "react-dom";
+import { createHistory, useBasename } from "history";
+import { syncReduxAndRouter } from "redux-simple-router";
+import routes from "./routes";
+import Root from "./containers/Root";
+import configureStore from "./store/configureStore";
+
+const history = useBasename(createHistory)({
+  basename: JSON.stringify(process.env.BASENAME || "/")
+});
+const store = configureStore();
+
+syncReduxAndRouter(history, store, (state) =&amp;gt; state.router);
+
+render(
+  &amp;lt;Root history={history} routes={routes} store={store} /&amp;gt;,
+  document.getElementById("root")
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After syncing redux and the router, the routes and store are passed as props to the Root container (component).&lt;/p&gt;
+
+&lt;p&gt;The store parameter is the &lt;a href="http://rackt.org/redux/docs/api/Store.html"&gt;Redux store&lt;/a&gt; returned by createStore(). The history parameter is created by createHistory(). The routes parameter are the routes defined as &lt;a href="https://facebook.github.io/jsx/"&gt;JSX&lt;/a&gt; in another file (see below). These can also be specified inline.&lt;/p&gt;
+
+&lt;h6 id="addrouterelement"&gt;Add Router element&lt;/h6&gt;
+
+&lt;p&gt;In the Root component file, and inside of your &lt;a href="http://localhost:2368/"&gt;Provider&lt;/a&gt; element, add the Router element:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Provider store={this.props.store}&amp;gt;
+    &amp;lt;Router history={this.props.history}&amp;gt;
+      {this.props.routes}
+    &amp;lt;/Router&amp;gt;
+&amp;lt;/Provider&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The props in this snippet are the same that we defined and passed in the previous code sample.&lt;/p&gt;
+
+&lt;p&gt;So the full Root component source should look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  import React, { Component, PropTypes } from "react";
+  import { Provider } from "react-redux";
+  import { Router } from "react-router";
+
+  class Root extends Component {
+    render() {
+      return (
+        &amp;lt;Provider store={this.props.store}&amp;gt;
+          &amp;lt;Router history={this.props.history}&amp;gt;
+            {this.props.routes}
+          &amp;lt;/Router&amp;gt;
+        &amp;lt;/Provider&amp;gt;
+      );
+    }
+  }
+  Root.propTypes = {
+    history: PropTypes.object.isRequired,
+    routes: PropTypes.element.isRequired,
+    store: PropTypes.object.isRequired
+  };
+
+export default Root;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id="configureroutes"&gt;Configure routes&lt;/h6&gt;
+
+&lt;p&gt;Now to define the routes. Add a top-level route and any needed sub-routes: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Route path="/" component={App}&amp;gt;
+    &amp;lt;IndexRoute component={Home} /&amp;gt;
+    &amp;lt;Route path="/book/:bookId" component={Detail} /&amp;gt;
+&amp;lt;/Route&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The parent &lt;a href="https://github.com/rackt/react-router/blob/latest/docs/guides/basics/RouteConfiguration.md"&gt;Route&lt;/a&gt; element with the root path encloses any other routes in your application.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://github.com/rackt/react-router/blob/latest/docs/guides/basics/IndexRoutes.md"&gt;IndexRoute&lt;/a&gt; is a special element that allows you to specify which component should receive the request with no additional route information, i.e. the root path. Even though this element specifies the destination, I found that the path and component properties in the parent Route element were required.&lt;/p&gt;
+
+&lt;p&gt;Finally, the child Route element specifies a sub-route of the root with a route parameter indicated by the leading colon. This parameter will be available as &lt;code&gt;state.router.params.bookId&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The full routes source file should look like: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import React, { Component, PropTypes } from "react";
+import { Route, IndexRoute } from "react-router";
+import App from "../components/App";
+import Home from "../components/Home";
+import Detail from "../components/Detail";
+
+export default (
+      &amp;lt;Route path="/" component={App}&amp;gt;
+        &amp;lt;IndexRoute component={Home} /&amp;gt;
+        &amp;lt;Route path="/book/:bookId" component={Detail} /&amp;gt;
+      &amp;lt;/Route&amp;gt;
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save this as &lt;code&gt;/routes/index.js&lt;/code&gt; or wherever is appropriate, but make sure to update the include path in the Root component file.&lt;/p&gt;
+
+&lt;h6 id="modifystateparameterincomponents"&gt;Modify state parameter in components&lt;/h6&gt;
+
+&lt;p&gt;The final step is to check any components that receive state. Before the routing configuration, your state object may have had the properties you defined at the root of the object. Afterwards, I found that the state object now includes a child object for the router and one for the reducer. Whatever state is returned by the &lt;a href="http://rackt.org/redux/docs/basics/Reducers.html"&gt;reducer&lt;/a&gt; is a child of this child reducer object, like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;state = {
+    router: {
+        changeId: 1,
+        path: "/book/12",
+        replace: false,
+        state: ...
+    },
+    reducer: {
+        *state here*
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The reducer will be named after your reducer. Update your props declarations or mapStateToProps methods as appropriate to ensure that &lt;a href="http://rackt.org/redux/docs/basics/DataFlow.html"&gt;state flows&lt;/a&gt; to your components as you expect.&lt;/p&gt;</description><link>http://localhost:2368/routing-with-redux/</link><guid isPermaLink="false">0213fc9b-798c-4a10-a5e2-93ef5e7b4d8f</guid><category>react</category><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 12 Jan 2016 05:22:30 GMT</pubDate></item><item><title>Testing CLI Tools</title><description>&lt;p&gt;While I was developing the &lt;a href="https://www.npmjs.com/package/s3syncr"&gt;s3syncr&lt;/a&gt; command-line (CLI) utility, I discovered I needed a way to test the function of the program as a whole. There are separate tests for the parsing of input to the program, but I wanted to verify the interaction of all the components as well as the output. &lt;/p&gt;
 
 &lt;p&gt;Since console output is the only interface given to the user in a CLI tool, consistent output is critical.&lt;/p&gt;
 
