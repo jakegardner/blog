@@ -1,4 +1,113 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 03 Mar 2016 07:24:27 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>February Reading</title><description>&lt;p&gt;In February, I was focused on Ruby. While familiar with the basics of Ruby and Rails, I wanted to dive deeper and discover any details that might be useful in projects I currently have in mind. Let's get into it!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 11 Apr 2016 23:09:27 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Extract Fetch calls with Redux Middleware</title><description>&lt;p&gt;The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too). &lt;br&gt;
+Since React is unopinionated on this point, you can do it however you like. &lt;/p&gt;
+
+&lt;p&gt;However, since I use Redux for any substantial application I develop with React, I wanted to find a good pattern to use to handle asynchronous behavior that takes advantage of the plumbing available.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I specifically use &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"&gt;Web API Fetch&lt;/a&gt; in this article, but any HTTP request library could be substituted.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id="asyncactioncreators"&gt;Async Action Creators&lt;/h4&gt;
+
+&lt;p&gt;A pattern offered in the Redux documentation is to have some action creators perform these asynchronous actions for you. I initially used this pattern.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A pre-requisite here is to include the &lt;a href="https://github.com/gaearon/redux-thunk"&gt;redux-thunk&lt;/a&gt; middleware. All this does is allow you to dispatch a function in addition to plain objects. See &lt;a href="https://github.com/gaearon/redux-thunk"&gt;this&lt;/a&gt; for more details.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Your asynchronous action creator will be something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export function fetchData(itemId) {  
+    return dispatch =&amp;gt; {
+        fetch(`${API}/items/${itemId}`, {
+            method: "GET",
+            headers: new Headers({
+                "Authorization": `Bearer ${TOKEN}`
+            })
+        })
+        .then( response =&amp;gt; response.json() )
+        .then( json =&amp;gt; dispatch(fetchDataSuccess(json)) )
+        .catch( error =&amp;gt; dispatch(fetchDataFailure(error)) );
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So in contrast to standard synchronous action creators which return a plain object, you return a function which takes dispatch as a parameter. Inside this function you perform your asynchronous behavior and potentially dispatch another function on completion.&lt;/p&gt;
+
+&lt;p&gt;With any substantial application, the number of these kinds of actions can grow wildly. Furthermore, they can be quite verbose depending on what parameters we need to pass to Fetch. Being diligent programmers that we are, we recognize this is an opportunity to eliminate redundancy by extracting these Fetch calls elsewhere.&lt;/p&gt;
+
+&lt;p&gt;You could easily create a module an just require it in every action file, but that approach also has some degree of repetition. Fortunately, Redux's middleware mechanism is designed for just this type of situation.&lt;/p&gt;
+
+&lt;h4 id="fetchmiddleware"&gt;Fetch Middleware&lt;/h4&gt;
+
+&lt;p&gt;Let's create a middleware that performs the Fetch if a Fetch parameter object exists in the action. We can define the properties of this object however we like. I have just included the most common Fetch parameters as well as success and failure handlers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const fetchMiddleware = store =&amp;gt; next =&amp;gt; action =&amp;gt; {  
+    if (!action || !action.fetchConfig) {
+        return next(action)
+    }
+
+    let dispatch = store.dispatch
+    let config = action.fetchConfig
+    dispatch(config.init)
+
+    const path = config.path || "/"
+    const method = config.method || "GET"
+    const headers = config.headers
+    const body = config.body
+    const successHandler = config.success
+    const failureHandler = config.failure
+
+    fetch(path, {
+        method: method,
+        headers: headers,
+        body: JSON.stringify(body)
+    })
+    .then( response =&amp;gt; response.json() )
+    .then( json =&amp;gt; successHandler(json) )
+    .catch( error =&amp;gt; failureHandler(error) )
+
+}
+
+export default fetchMiddleware  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A middleware is defined as a function that takes the store as a parameter, returns a function which takes the next middleware as parameter, which in turn returns a function that takes an action to run. (mind bent yet?)&lt;/p&gt;
+
+&lt;p&gt;For a detailed walkthrough of how middleware works and a number of other use cases, see the excellent write-up  &lt;a href="http://redux.js.org/docs/advanced/Middleware.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So we just check for the existence of fetchConfig on the action and proceed if so. If not, then we hand off to the next middleware.&lt;/p&gt;
+
+&lt;p&gt;Our function just takes apart the config object and sets any defaults as necessary. Then, execute the Fetch call and any handlers for Promise resolution.&lt;/p&gt;
+
+&lt;p&gt;If your success/failure handler is another action, you can just change the then/catch block to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    .then( json =&amp;gt; {
+        dispatch(successHandler(json))
+    })
+    .catch( error =&amp;gt; dispatch(failureHandler(error)) )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we can include our middleware in the createStore method to ensure it's called as part of the action flow.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let app = combineReducers(reducers)  
+let store = createStore(  
+  app,
+  applyMiddleware(thunk, fetchMiddleware)
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, we just update the action creator to pass the fetchConfig object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export function fetchData(itemId) {  
+    return {
+        type: "FETCH_ITEM",
+        fetchConfig: {
+            path: `${API}/items/${itemId}`,
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${TOKEN}`
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/consolidate-fetch-with-redux-middleware/</link><guid isPermaLink="false">3a909a86-bad6-4185-98bc-7ad281fa4b6f</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 11 Apr 2016 23:06:02 GMT</pubDate></item><item><title>February Reading</title><description>&lt;p&gt;In February, I was focused on Ruby. While familiar with the basics of Ruby and Rails, I wanted to dive deeper and discover any details that might be useful in projects I currently have in mind. Let's get into it!&lt;/p&gt;
 
 &lt;h4 id="thewellgroundedrubyist"&gt;The Well-Grounded Rubyist&lt;/h4&gt;
 
