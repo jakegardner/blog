@@ -1,4 +1,46 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 11 Apr 2016 23:09:28 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Extract Fetch calls with Redux Middleware</title><description>&lt;p&gt;The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too). &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Tue, 26 Apr 2016 16:53:31 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Pure Function</title><description>&lt;p&gt;This is the first part of a series covering some topics from functional programming. &lt;/p&gt;
+
+&lt;p&gt;What's functional programming? You can read entire books to answer that question, but I will just say that it is a programming paradigm in which a program is constructed with a series of simple, &lt;em&gt;pure&lt;/em&gt; functions.&lt;/p&gt;
+
+&lt;p&gt;This is contrasted with the imperative paradigm, in which you probably learn to program, where you write a series of instructions and conditional branches.&lt;/p&gt;
+
+&lt;p&gt;Whether you learn functional programming or not is another question, but you will see many of these concepts around the web (and in more and more frameworks) so you should understand what they mean.&lt;/p&gt;
+
+&lt;h4 id="whatsapurefunction"&gt;What's a pure function?&lt;/h4&gt;
+
+&lt;p&gt;A pure function is a function that does not modify any part of your program other than its parameters. &lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function createThing(name) {  
+    var thing = {};
+    thing.name = name;
+    return thing;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This function makes use of its parameter, but does not touch anything outside the function itself.&lt;/p&gt;
+
+&lt;p&gt;Contrast this with an impure version of this function:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myThings = [];  
+...
+function createThing(name) {  
+    var thing = {};
+    thing.name = name;
+    myThings.push(thing);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Even though this is valid code, the function is changing something beyond its responsibility. This is called a &lt;em&gt;side-effect&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h4 id="sowhat"&gt;So what?&lt;/h4&gt;
+
+&lt;p&gt;Even if you have no desire to become a functional programmer, writing as many of your functions as possible in a pure way only has benefits for you and others that may read/use your code.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pure functions make your code easier to understand.&lt;/strong&gt; If you write your functions in a pure way, then when another programmer or a much later you reads the code, they will be able to easily predict what will happen in the program just by reading the function names. If there are side effects within your functions, it may be difficult to debug, refactor or understand the order in which things are happening.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pure functions are easier to test.&lt;/strong&gt; Including references to objects outside your functions makes them difficult to test because those objects may not be accessible in a test scenario. This is where mocking comes in. However, depending on what you need to mock, this can be quite complicated. Make it easy on yourself to write those unit tests.&lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-pure-function/</link><guid isPermaLink="false">a860cc67-a6ef-4ca5-a4a9-092023ce5278</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 26 Apr 2016 16:52:30 GMT</pubDate></item><item><title>Extract Fetch calls with Redux Middleware</title><description>&lt;p&gt;The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too). &lt;br&gt;
 Since React is unopinionated on this point, you can do it however you like. &lt;/p&gt;
 
 &lt;p&gt;However, since I use Redux for any substantial application I develop with React, I wanted to find a good pattern to use to handle asynchronous behavior that takes advantage of the plumbing available.&lt;/p&gt;
