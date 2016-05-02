@@ -1,4 +1,21 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Tue, 26 Apr 2016 16:53:31 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Pure Function</title><description>&lt;p&gt;This is the first part of a series covering some topics from functional programming. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 02 May 2016 16:13:55 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>April Picks - FP, Asynchrony</title><description>&lt;h4 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/05/fpjs.jpeg" alt=""&gt;
+Lately, I have been trying to dedicate some time to get more into functional programming. Since I have a background in Java, I first started with Scala but ultimately found the resources I could find a bit too academic. &lt;/p&gt;
+
+&lt;p&gt;I thought this book by Dan Mantyla was easy to understand yet still explained quite a lot. It gently increases from map/filter/reduce to showing how Currying &amp;amp; compose work to Category Theory. The last chapter is dedicated to showing how to mix Javascript's two paradigms, object-oriented and functional, to write applications. &lt;/p&gt;
+
+&lt;p&gt;So I think this an ideal starting point for an FP beginner, especially coming from the Javascript perspective.&lt;/p&gt;
+
+&lt;p&gt;A good follow-up from this could be the &lt;a href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/"&gt;mostly adequate guide&lt;/a&gt; by Brian Lansdorf.&lt;/p&gt;
+
+&lt;h4 id="rethinkingasynchronousjavascript"&gt;Rethinking Asynchronous Javascript&lt;/h4&gt;
+
+&lt;p&gt;There is probably no more in-depth resource on this topic than &lt;a href="https://frontendmasters.com/courses/rethinking-async-js/"&gt;this course&lt;/a&gt; by Kyle Simpson for Front-End Masters.&lt;/p&gt;
+
+&lt;p&gt;Kyle demonstrates all of the available asynchrony models in Javascript, from Promises, to Generators, to Observables, to CSP. This would be an excellent guide if you're just getting into dealing with asynchrony in Javascript or you've been away and want to see what's changed.&lt;/p&gt;
+
+&lt;p&gt;I know for me, Generators are not something I've really thought a lot about, and Kyle showed how they can be used effectively for flow control.&lt;/p&gt;</description><link>http://localhost:2368/april-picks/</link><guid isPermaLink="false">e539110b-5add-4b9e-82ec-3a32e7d24f26</guid><category>picks</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 02 May 2016 15:44:30 GMT</pubDate></item><item><title>Functional Fundamentals: Pure Function</title><description>&lt;p&gt;This is the first part of a series covering some topics from functional programming. &lt;/p&gt;
 
 &lt;p&gt;What's functional programming? You can read entire books to answer that question, but I will just say that it is a programming paradigm in which a program is constructed with a series of simple, &lt;em&gt;pure&lt;/em&gt; functions.&lt;/p&gt;
 
@@ -149,7 +166,7 @@ let store = createStore(
         }
     }
 }
-&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/consolidate-fetch-with-redux-middleware/</link><guid isPermaLink="false">3a909a86-bad6-4185-98bc-7ad281fa4b6f</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 11 Apr 2016 23:06:02 GMT</pubDate></item><item><title>February Reading</title><description>&lt;p&gt;In February, I was focused on Ruby. While familiar with the basics of Ruby and Rails, I wanted to dive deeper and discover any details that might be useful in projects I currently have in mind. Let's get into it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/consolidate-fetch-with-redux-middleware/</link><guid isPermaLink="false">3a909a86-bad6-4185-98bc-7ad281fa4b6f</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 11 Apr 2016 23:06:02 GMT</pubDate></item><item><title>February Picks</title><description>&lt;p&gt;In February, I was focused on Ruby. While familiar with the basics of Ruby and Rails, I wanted to dive deeper and discover any details that might be useful in projects I currently have in mind. Let's get into it!&lt;/p&gt;
 
 &lt;h4 id="thewellgroundedrubyist"&gt;The Well-Grounded Rubyist&lt;/h4&gt;
 
@@ -167,7 +184,7 @@ I was quite surprised to discover that this book not only shows object-oriented 
 
 &lt;p&gt;Sandi Metz first introduces object-oriented principles and general coding best-practices, then takes simple examples through multiple evolutions of design and refactoring to broaden how you think of object-oriented design and expose flaws in common approaches.&lt;/p&gt;
 
-&lt;p&gt;The key takeaway for me was to think of design in terms of messages rather than objects. If you only think of concrete entities when coming up with objects, you will miss some important objects and introduce unnecessary coupling. When you discover this later on, refactoring is painful and expensive. I have experienced this first-hand.&lt;/p&gt;</description><link>http://localhost:2368/february-reading/</link><guid isPermaLink="false">8249b9d6-d034-472a-8d32-3137f1354bda</guid><category>ruby</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 03 Mar 2016 07:19:36 GMT</pubDate></item><item><title>Routing with Redux</title><description>&lt;p&gt;Last weekend I put together my first Redux &lt;a href="https://github.com/jakegardner/redux-bookcatalog"&gt;application&lt;/a&gt; by refactoring an old demo. Once you get familiar, the architecture seems like a very natural way to build applications.&lt;/p&gt;
+&lt;p&gt;The key takeaway for me was to think of design in terms of messages rather than objects. If you only think of concrete entities when coming up with objects, you will miss some important objects and introduce unnecessary coupling. When you discover this later on, refactoring is painful and expensive. I have experienced this first-hand.&lt;/p&gt;</description><link>http://localhost:2368/february-reading/</link><guid isPermaLink="false">8249b9d6-d034-472a-8d32-3137f1354bda</guid><category>ruby</category><category>picks</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 03 Mar 2016 07:19:36 GMT</pubDate></item><item><title>Routing with Redux</title><description>&lt;p&gt;Last weekend I put together my first Redux &lt;a href="https://github.com/jakegardner/redux-bookcatalog"&gt;application&lt;/a&gt; by refactoring an old demo. Once you get familiar, the architecture seems like a very natural way to build applications.&lt;/p&gt;
 
 &lt;p&gt;One area that took some time to figure out was that of routing. While you can use &lt;a href="https://github.com/rackt/react-router"&gt;react-router&lt;/a&gt;, you need to do some extra wiring to get your state flowing as you would expect with vanilla React. &lt;/p&gt;
 
