@@ -1,4 +1,63 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 02 May 2016 16:13:53 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>April Picks - FP, Asynchrony</title><description>&lt;h4 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h4&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 05 May 2016 16:29:38 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Higher Order Functions</title><description>&lt;p&gt;This is part two in my series on functional programming concepts. Last time, we learned about &lt;a href="http://localhost:2368/functional-fundamentals-pure-function/"&gt;pure functions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This time, we are going to learn about higher order functions. This is &lt;em&gt;the&lt;/em&gt; feature that makes functional programming possible.&lt;/p&gt;
+
+&lt;p&gt;You know what a function is. But, what does &lt;em&gt;higher order&lt;/em&gt; mean?&lt;/p&gt;
+
+&lt;h4 id="functioninafunction"&gt;Function In A Function&lt;/h4&gt;
+
+&lt;p&gt;A higher order function is one that takes a function as a parameter, and returns a new function as a result.&lt;/p&gt;
+
+&lt;p&gt;Here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function getPrice() {  
+    return 10;
+}
+
+function half(func) {  
+    return function() {
+        return func() / 2;
+    };
+}
+
+var halfPrice = half(getPrice);  
+halfPrice(); // 5  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="sowhat"&gt;So What?&lt;/h4&gt;
+
+&lt;p&gt;Higher order functions allow us to feed one function into another many times over, building up a chain of operations to which can be triggered with a single function call.&lt;/p&gt;
+
+&lt;p&gt;Take a moment to appreciate the power of this.&lt;/p&gt;
+
+&lt;p&gt;Now you are able to construct things like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function getPrice() {  
+    return 10;
+}
+
+function half(func) {  
+    return function() {
+        return func() / 2;
+    };
+}
+
+var halfPrice = half(getPrice);  
+halfPrice(); // 5
+
+function discount(func) {  
+    return function() {
+        return 0.80 * func();
+    };
+}
+
+var discountHalfPrice = discount(halfPrice);  
+discountHalfPrice(); // 4  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ofcourse this is a contrived example, but the idea is that you can perform a series a small operations using a single function call. Eventually, this could trigger your entire program.&lt;/p&gt;
+
+&lt;p&gt;Next, we will look at how we can extend this idea to combining multiple functions at the same time - with compose.&lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-first-class-function/</link><guid isPermaLink="false">2c20688a-5210-409e-a87f-aed98699105c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 05 May 2016 16:10:16 GMT</pubDate></item><item><title>April Picks - FP, Asynchrony</title><description>&lt;h4 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h4&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/05/fpjs.jpeg" alt=""&gt;
 Lately, I have been trying to dedicate some time to get more into functional programming. Since I have a background in Java, I first started with Scala but ultimately found the resources I could find a bit too academic. &lt;/p&gt;
@@ -166,7 +225,7 @@ let store = createStore(
         }
     }
 }
-&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/consolidate-fetch-with-redux-middleware/</link><guid isPermaLink="false">3a909a86-bad6-4185-98bc-7ad281fa4b6f</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 11 Apr 2016 23:06:02 GMT</pubDate></item><item><title>February Picks</title><description>&lt;p&gt;In February, I was focused on Ruby. While familiar with the basics of Ruby and Rails, I wanted to dive deeper and discover any details that might be useful in projects I currently have in mind. Let's get into it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/consolidate-fetch-with-redux-middleware/</link><guid isPermaLink="false">3a909a86-bad6-4185-98bc-7ad281fa4b6f</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 11 Apr 2016 23:06:02 GMT</pubDate></item><item><title>February Picks - Ruby, OOD</title><description>&lt;p&gt;In February, I was focused on Ruby. While familiar with the basics of Ruby and Rails, I wanted to dive deeper and discover any details that might be useful in projects I currently have in mind. Let's get into it!&lt;/p&gt;
 
 &lt;h4 id="thewellgroundedrubyist"&gt;The Well-Grounded Rubyist&lt;/h4&gt;
 

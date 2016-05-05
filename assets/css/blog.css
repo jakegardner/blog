@@ -121,13 +121,15 @@ h6 {
 
 p {
   font-size: 1.9rem;
+  font-weight: 300;
   color: #444; }
 
 ol {
   margin-left: 2em; }
 
 pre {
-  background-color: #E1F1FA; }
+  background-color: #FFF;
+  border: 0; }
 
 /* =============================================
 	index/post body
