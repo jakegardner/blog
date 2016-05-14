@@ -1,4 +1,31 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 05 May 2016 16:29:39 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Higher Order Functions</title><description>&lt;p&gt;This is part two in my series on functional programming concepts. Last time, we learned about &lt;a href="http://localhost:2368/functional-fundamentals-pure-function/"&gt;pure functions&lt;/a&gt;.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 14 May 2016 21:56:59 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Compose</title><description>&lt;p&gt;This is part three in a series on functional programming concepts. Here are parts &lt;a href="http://localhost:2368/functional-fundamentals-pure-function/"&gt;one&lt;/a&gt; and &lt;a href="http://localhost:2368/functional-fundamentals-higher-order-functions/"&gt;two&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Last time we looked at building up a chain of operations with higher-order functions. While this method works, it quickly becomes verbose. There is a better way!&lt;/p&gt;
+
+&lt;p&gt;Compose is an often used function in functional programming. It allows you to chain functions together that accept a single argument and return the type that the next function is expecting.&lt;/p&gt;
+
+&lt;p&gt;Going with our example from part two:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function discount(x) {  
+    return 0.8 * x;
+}
+
+function half(x) {  
+    return x / 2;
+}
+
+var discountHalfPrice = compose(discount, half);  
+discountHalfPrice(10); // 4  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What is compose doing under the hood? It accepts two functions as parameters and returns a function that accepts an argument. When this returned function is called, the argument is passed to the right function, the result of that then passed to the left function. With compose, it's key to remember that functions are processed right to left.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function compose(f, g) {  
+    return function(x) {
+         return f(g(x));   
+    };
+}
+&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/functional-fundamentals-compose/</link><guid isPermaLink="false">6b01ca47-298a-4ded-8093-2fe26dc3ec3d</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 14 May 2016 21:56:08 GMT</pubDate></item><item><title>Functional Fundamentals: Higher Order Functions</title><description>&lt;p&gt;This is part two in my series on functional programming concepts. Last time, we learned about &lt;a href="http://localhost:2368/functional-fundamentals-pure-function/"&gt;pure functions&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;This time, we are going to learn about higher order functions. This is &lt;em&gt;the&lt;/em&gt; feature that makes functional programming possible.&lt;/p&gt;
 
@@ -57,7 +84,7 @@ discountHalfPrice(); // 4
 
 &lt;p&gt;Ofcourse this is a contrived example, but the idea is that you can perform a series a small operations using a single function call. Eventually, this could trigger your entire program.&lt;/p&gt;
 
-&lt;p&gt;Next, we will look at how we can extend this idea to combining multiple functions at the same time - with compose.&lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-first-class-function/</link><guid isPermaLink="false">2c20688a-5210-409e-a87f-aed98699105c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 05 May 2016 16:10:16 GMT</pubDate></item><item><title>April Picks - FP, Asynchrony</title><description>&lt;h4 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h4&gt;
+&lt;p&gt;Next, we will look at how we can extend this idea to combining multiple functions at the same time - with compose.&lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-higher-order-functions/</link><guid isPermaLink="false">2c20688a-5210-409e-a87f-aed98699105c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 05 May 2016 16:10:16 GMT</pubDate></item><item><title>April Picks - FP, Asynchrony</title><description>&lt;h4 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h4&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/05/fpjs.jpeg" alt=""&gt;
 Lately, I have been trying to dedicate some time to get more into functional programming. Since I have a background in Java, I first started with Scala but ultimately found the resources I could find a bit too academic. &lt;/p&gt;
@@ -883,47 +910,4 @@ You have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&g
 &lt;li&gt;Run &lt;code&gt;git push origin gh-pages&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><category>ghost</category><category>blogging</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item><item><title>Thinkful FEWD Resources</title><description>&lt;p&gt;Last Fall I decided to update my front-end skills by taking &lt;a href="https://www.thinkful.com/"&gt;Thinkful's&lt;/a&gt; Front-End Web Development course. I have been using HTML &amp;amp; CSS since the late 90's, but have not had a chance to use the latest versions in my current position (although I use Javascript almost daily).  I wanted to update my skills in short-order and also try out the online-course-with-tutor format which has become so popular. I find that having a structured curriculum with deadlines helps me learn faster so, enter Thinkful!&lt;/p&gt;
-
-&lt;h3 id="thecourse"&gt;The Course&lt;/h3&gt;
-
-&lt;p&gt;Overall I was very satisfied with the course. The task-specific projects help build skills one on top of another, and the community is very responsive and encouraging for newbies.&lt;/p&gt;
-
-&lt;p&gt;One thing I noticed during the course was that only an introduction was given to some topics which are quite hefty on their own. In my case, I am always wondering, what more is there to know on this topic? Where can I find a deeper explanation? The tutors will fill in the blanks or point you to other resources if you ask, but I gathered my own additional resources to share!&lt;/p&gt;
-
-&lt;h3 id="additionalfewdresources"&gt;Additional FEWD Resources&lt;/h3&gt;
-
-&lt;h6 id="html"&gt;html&lt;/h6&gt;
-
-&lt;p&gt;&lt;a href="http://html5forwebdesigners.com/"&gt;HTML5 for Web Designers&lt;/a&gt;
-This title from A Book Apart gives a history of HTML, describes the features of HTML5, and discusses the all-important semantic use of markup. If you are wondering which is the correct tag to use for a particular element on your page, this is the book for you (read for free at link above).&lt;/p&gt;
-
-&lt;h6 id="uiresponsivedesign"&gt;ui/responsive design&lt;/h6&gt;
-
-&lt;p&gt;&lt;a href="http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758"&gt;Don't Make Me Think&lt;/a&gt;
-This is the classic guide on web usability design. The advice is sound even if a lot of the examples are dated.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/responsive-web-design"&gt;Responsive Web Design&lt;/a&gt; This Pluralsight course from Ben Callahan is excellent. Ethan Marcotte's &lt;a href="http://abookapart.com/products/responsive-web-design"&gt;book&lt;/a&gt; by the same name is the frequent starting point in this topic for most people, but I felt Ben went further and gave more practical advice (e.g. navigation and tables). He shares anecdotes from his company's experiences and a bit on their process.&lt;/p&gt;
-
-&lt;h6 id="css"&gt;css&lt;/h6&gt;
-
-&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/css3-in-depth"&gt;CSS3 In-Depth&lt;/a&gt;
-If you want to know about every property in the CSS3 spec with demos, Estelle Weyl's course has you covered. Especially with something as visual as CSS, reading the documentation doesn't always give you the answer you're looking for.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://sass-lang.com/guide"&gt;Sass&lt;/a&gt;
-If you are a programmer writing CSS (like me), you probably wonder "how can I make this more modular/maintainable/readable/etc?". Enter Sass. Getting started with variables, imports, and nesting is pretty straightforward.&lt;/p&gt;
-
-&lt;h6 id="javascript"&gt;javascript&lt;/h6&gt;
-
-&lt;p&gt;&lt;a href="http://eloquentjavascript.net/"&gt;Eloquent Javascript&lt;/a&gt;
-Probably the best introduction to Javascript. Covers all of the usual language features but also touches on modules, HTTP, and &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752"&gt;Javascript Patterns&lt;/a&gt;
-Usually when you see Patterns in a title you think of &lt;a href="http://en.wikipedia.org/wiki/Design_Patterns"&gt;Gang-of-Four Design Patterns&lt;/a&gt;. This book covers those as well, but perhaps more importantly discusses Javascript-specific best practices at the object and variable level and modular design for the browser. &lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.pluralsight.com/courses/build-process-workflows-tooling-gruntjs"&gt;Build Process, Workflows and Tooling With Grunt.js and Beyond&lt;/a&gt;
-Another stellar course on Pluralsight from Dave Mosher. If you found yourself curious to dive more into the ecosystem of Javascript, this course will show you the ropes. Dave builds up a &lt;a href="http://gruntjs.com/"&gt;Grunt&lt;/a&gt; workflow step-by-step, covering everything from minification to testing to scaffolding tools &lt;a href="http://yeoman.io/"&gt;Yeoman&lt;/a&gt; &amp;amp; &lt;a href="http://linemanjs.com/"&gt;Lineman&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id="wrapup"&gt;Wrap-up&lt;/h3&gt;
-
-&lt;p&gt;Front-end web development has become a massive set of technologies and skills to which you could (and people do!) dedicate your career. I felt these resources gave me a bit more depth and background to my foundation in this area as well as ignited an interest in UX and Design. Enjoy!&lt;/p&gt;</description><link>http://localhost:2368/thinkful-fewd-resources/</link><guid isPermaLink="false">0c484680-f711-4b66-9055-bce569943d0a</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 05 Jan 2015 04:24:32 GMT</pubDate></item></channel></rss>
+&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><category>ghost</category><category>blogging</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item></channel></rss>
