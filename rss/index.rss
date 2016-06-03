@@ -1,4 +1,33 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 14 May 2016 21:56:58 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Compose</title><description>&lt;p&gt;This is part three in a series on functional programming concepts. Here are parts &lt;a href="http://localhost:2368/functional-fundamentals-pure-function/"&gt;one&lt;/a&gt; and &lt;a href="http://localhost:2368/functional-fundamentals-higher-order-functions/"&gt;two&lt;/a&gt;.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Fri, 03 Jun 2016 11:38:03 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Currying &amp; Partial Application</title><description>&lt;p&gt;This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: &lt;a href="http://localhost:2368/functional-fundamentals-pure-function"&gt;part one&lt;/a&gt;, &lt;a href="http://localhost:2368/functional-fundamentals-higher-order-functions/"&gt;part two&lt;/a&gt;, &lt;a href="http://localhost:2368/functional-fundamentals-compose/"&gt;part three&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Functional programming is full of non-obvious terminology, e.g. currying, but this is an important one to know. Currying is similar to but different from partial application, so we will compare these two today.&lt;/p&gt;
+
+&lt;h4 id="currying"&gt;Currying&lt;/h4&gt;
+
+&lt;p&gt;Currying is converting a function that takes many arguments into a function that takes a single argument, and returns a function accepting yet another single argument. This facilitates creating a chain of function calls in place of a single call with many arguments.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function sum(a, b) {  
+    return a + b;
+}
+var addThese = sum.curry();  
+addThese(2); // function waiting for b  
+addThese(4); // 6  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="partialapplication"&gt;Partial Application&lt;/h4&gt;
+
+&lt;p&gt;Partial application is supplying some arguments to a function and receiving a function back that can accept additional arguments.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function sum(a, b) {  
+    return a + b;
+}
+var addThese = sum.partialApply(3);  
+addThese(); // 3  
+addThese(5, 7); // 15  
+addThese(9); // 24  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The key distinction between currying and partial application is that partially-applied functions always return a value, whereas curried functions return a function until the expected number of arguments have been received. &lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-currying-partial-application/</link><guid isPermaLink="false">c769c60f-aa10-46db-a979-92e4a7fcd51e</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 03 Jun 2016 11:36:55 GMT</pubDate></item><item><title>Functional Fundamentals: Compose</title><description>&lt;p&gt;This is part three in a series on functional programming concepts. Here are parts &lt;a href="http://localhost:2368/functional-fundamentals-pure-function/"&gt;one&lt;/a&gt; and &lt;a href="http://localhost:2368/functional-fundamentals-higher-order-functions/"&gt;two&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Last time we looked at building up a chain of operations with higher-order functions. While this method works, it quickly becomes verbose. There is a better way!&lt;/p&gt;
 
@@ -877,37 +906,4 @@ unirest.post("https://api.instagram.com/oauth/access_token")
       });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item><item><title>Publish a blog on GitHub Pages with Ghost and Buster</title><description>&lt;p&gt;It's no secret: I am using &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; as a blogging engine (see footer). This is a quick walk-through of how I publish this blog to GitHub Pages using Buster.&lt;/p&gt;
-
-&lt;p&gt;This article assumes: &lt;br&gt;
-You have &lt;a href="http://ghost.org/"&gt;Ghost&lt;/a&gt; setup locally. &lt;br&gt;
-You have a &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; account.&lt;/p&gt;
-
-&lt;h3 id="getbuster"&gt;Get Buster&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Install pip. &lt;br&gt;
-&lt;ul&gt;&lt;li&gt;Download the get-pip.py script from &lt;a href="https://pip.pypa.io/en/latest/installing.html#install-pip"&gt;https://pip.pypa.io/en/latest/installing.html#install-pip&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;python get-pip.py --no-index --find-links=/local/copies&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Install buster. &lt;br&gt;
-&lt;ul&gt;&lt;li&gt;Run &lt;code&gt;pip install buster&lt;/code&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id="generatestaticsite"&gt;Generate static site&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;If you have not used buster before, run &lt;code&gt;buster setup&lt;/code&gt;. It will ask you for the URL of your GitHub repository.  &lt;/li&gt;
-&lt;li&gt;Start your local ghost instance with &lt;code&gt;npm start&lt;/code&gt; in your ghost directory. This serves your ghost content at &lt;a href="http://127.0.0.1:2368/"&gt;http://127.0.0.1:2368&lt;/a&gt;.  &lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;buster generate --domain=http://127.0.0.1:2368 --dir=/path/to/store/static/content&lt;/code&gt;. The path you specify in the dir parameter will now contain a static copy of your ghost content.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id="pushtogithub"&gt;Push to GitHub&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Run &lt;code&gt;git init&lt;/code&gt; in your static content directory.  &lt;/li&gt;
-&lt;li&gt;Add a remote linking to a repository on your GitHub account &lt;code&gt;git remote add https://github.com/yourusername/repo.git&lt;/code&gt;.  &lt;/li&gt;
-&lt;li&gt;Create a gh-pages branch with &lt;code&gt;git checkout -b gh-pages&lt;/code&gt;. This is critical! If you do not push your changes to this version, GitHub will not serve your content.  &lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;git push origin gh-pages&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;That's all folks!&lt;/p&gt;</description><link>http://localhost:2368/publish-a-blog-on-github-with-ghost-and-buster/</link><guid isPermaLink="false">c854e40e-e0a2-4fb0-8902-d481220b9721</guid><category>ghost</category><category>blogging</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 29 Mar 2015 11:45:54 GMT</pubDate></item></channel></rss>
+&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item></channel></rss>
