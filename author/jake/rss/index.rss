@@ -1,4 +1,22 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Fri, 03 Jun 2016 11:38:04 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Functional Fundamentals: Currying &amp; Partial Application</title><description>&lt;p&gt;This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: &lt;a href="http://localhost:2368/functional-fundamentals-pure-function"&gt;part one&lt;/a&gt;, &lt;a href="http://localhost:2368/functional-fundamentals-higher-order-functions/"&gt;part two&lt;/a&gt;, &lt;a href="http://localhost:2368/functional-fundamentals-compose/"&gt;part three&lt;/a&gt;.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 09 Jun 2016 12:07:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>May Picks - Seven Databases, Seven Concurrency Models</title><description>&lt;p&gt;These books had been on my list for a while, I finally found an appropriate time to dive in. &lt;/p&gt;
+
+&lt;h4 id="sevendatabasesinsevenweeks"&gt;Seven Databases In Seven Weeks&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/06/sevendatabases.jpg" alt=""&gt;&lt;/p&gt;
+
+&lt;p&gt;I've had experience with three of the databases in this book, Postgres, Redis, and Mongo. The others featured in this book, Riak, CouchDB, HBase, Neo4j are not as popular in the wild but still good to have in your toolbelt.&lt;/p&gt;
+
+&lt;p&gt;I was most intrigued by Riak with its simple configuration of clusters and read/write consistency, and on a per-bucket basis. It also supports mapreduce. &lt;/p&gt;
+
+&lt;p&gt;HBase I have seen around the web, but did not know that it powers core services at Facebook, Twitter, eBay, and others. This is the database for Big Data problems.&lt;/p&gt;
+
+&lt;h4 id="sevenconcurrencymodelsinsevenweeks"&gt;Seven Concurrency Models In Seven Weeks&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/06/seven-concurrency-models-in-seven-weeks-when-threads-unravel.jpg" alt=""&gt;&lt;/p&gt;
+
+&lt;p&gt;A lot of the excitement around functional programming today is because it simplifies concurrency. This book explains how that's so, as well as the models of Go and Erlang. &lt;/p&gt;
+
+&lt;p&gt;This is an essential text for all engineers. From the humble beginnings of concurrency (threads/locks), to functional programming, to better approaches (CSP), and the currently largest-scale concurrency model (MapReduce). Java, Clojure, and Elixir are used in the examples.&lt;/p&gt;</description><link>http://localhost:2368/may-picks-seven-databases-seven-concurrency-models/</link><guid isPermaLink="false">48181774-6ae1-460f-a06e-2214fa18a9ca</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 09 Jun 2016 12:04:04 GMT</pubDate></item><item><title>Functional Fundamentals: Currying &amp; Partial Application</title><description>&lt;p&gt;This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: &lt;a href="http://localhost:2368/functional-fundamentals-pure-function"&gt;part one&lt;/a&gt;, &lt;a href="http://localhost:2368/functional-fundamentals-higher-order-functions/"&gt;part two&lt;/a&gt;, &lt;a href="http://localhost:2368/functional-fundamentals-compose/"&gt;part three&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Functional programming is full of non-obvious terminology, e.g. currying, but this is an important one to know. Currying is similar to but different from partial application, so we will compare these two today.&lt;/p&gt;
 
@@ -868,42 +886,4 @@ function getClaimsFromToken(token) {
 
 &lt;h3 id="wrapup"&gt;Wrap Up&lt;/h3&gt;
 
-&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item><item><title>Authenticate User with Instagram API</title><description>&lt;p&gt;Recently, I was working with the Instagram API for one of my side-projects. This is a short walkthrough of how to implement the &lt;a href="https://instagram.com/developer/authentication/"&gt;server-side flow&lt;/a&gt; of Instagram user authentication in Node.js. &lt;/p&gt;
-
-&lt;p&gt;In order for your application to make queries to the &lt;a href="https://instagram.com/developer"&gt;Instagram API&lt;/a&gt; on your user's behalf, they must authorize your application by logging in with their Instagram credentials. Your application will receive an authorization code in return, and you then need to authenticate this code with Instagram to receive an access token. The access token grants you access to query the REST API.&lt;/p&gt;
-
-&lt;p&gt;Instagram requires that the authentication query be sent as form data (&lt;a href="http://www.w3.org/TR/html5/forms.html#url-encoded-form-data"&gt;x-www-form-urlencoded&lt;/a&gt;) instead of JSON. The documentation shows how to make the query using curl -- since I was doing this in Node, I installed a module called &lt;a href="http://unirest.io/nodejs.html"&gt;unirest&lt;/a&gt;. Here's the code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var unirest = require('unirest');
-unirest.post("https://api.instagram.com/oauth/access_token")
-      .send("client_id=XXXXXXXXXXXXXXXXXXXXXX")
-      .send("client_secret=XXXXXXXXXXXXXXXXXX")
-      .send("grant_type=authorization_code")
-      .send("redirect_uri=http://url.me")
-      .send("code=XXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-      .end(function (response) {
-        console.log(response.body);
-      }); 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In response, you will receive a JSON object similar to the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    {
-        "access_token":"fb2e77d.47a0479900504cb3ab4a1f626d174d2d",
-        "user": {
-            "id": "1000000",
-            ...
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When you query one of the Instagram API endpoints, include the access_token as a query (URL) parameter.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;unirest.get("https://api.instagram.com/v1/users/self/feed")
-     .query("access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d")
-      .end(function(response) {
-        console.log(response);
-      });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will probably consume the response instead of log to the console, but you get the idea!&lt;/p&gt;</description><link>http://localhost:2368/authenticate-user-with-instagram-api/</link><guid isPermaLink="false">35c2dd0d-174e-431e-adbf-f18c4cfcc07c</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 05 Jun 2015 11:34:45 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item></channel></rss>
