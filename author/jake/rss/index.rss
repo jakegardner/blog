@@ -1,4 +1,169 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 09 Jun 2016 12:07:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>May Picks - Seven Databases, Seven Concurrency Models</title><description>&lt;p&gt;These books had been on my list for a while, I finally found an appropriate time to dive in. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 07 Jul 2016 00:57:24 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Redux: Thunk vs. Saga</title><description>&lt;p&gt;Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.&lt;/p&gt;
+
+&lt;h4 id="thunkyougotfunctionallinmyactions"&gt;Thunk: You Got Function All In My Actions&lt;/h4&gt;
+
+&lt;p&gt;Most people will ask, what's a thunk? And why do I need it?&lt;/p&gt;
+
+&lt;p&gt;The most straightforward explanation of a thunk I've seen is by Kyle Simpson (of You Don't Know JS fame) in his &lt;a href="https://frontendmasters.com/courses/rethinking-async-js/"&gt;Rethinking Asynchronous Javascript&lt;/a&gt; course for Front End Masters (highly recommended!).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A thunk is a function that already has everything it needs to execute.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;What does that have to do with redux thunk? I'm not sure either.&lt;/p&gt;
+
+&lt;p&gt;As you know, in Redux, actions are defined by JSON. Redux-thunk allows you to send a function instead. Rather than [only] prescribe a state change for the reducer to carry out, you can write some logic to execute immediately and dispatch other actions. &lt;/p&gt;
+
+&lt;p&gt;This is great for small use cases, however for more than a few functions, a better approach is &lt;a href="http://redux.js.org/docs/advanced/Middleware.html"&gt;middleware&lt;/a&gt; ... or sagas.&lt;/p&gt;
+
+&lt;h6 id="howdoiusethisthing"&gt;How do I use this thing?&lt;/h6&gt;
+
+&lt;p&gt;&lt;strong&gt;Add the redux-thunk middleware to the store.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { createStore, applyMiddleware, compose } from "redux";  
+import thunkMiddleware from "redux-thunk";  
+import rootReducer from "../reducers";
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(thunkMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  return store;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;configureStore.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This file just exports a function that returns the store to be added to the Provider element.&lt;/p&gt;
+
+&lt;p&gt;Using compose to create the createStoreWithMiddleware function is just a fancier way of writing  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const store = createStore(  
+    rootReducer,
+    applyMiddleware(thunkMiddleware)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Write an action that returns a function.&lt;/strong&gt; This function will take the dispatch method as a parameter. You can use this to call subsequent actions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import * as types from "../constants/ActionTypes";
+
+export function receiveBooks(data) {  
+  return {
+    type: types.RECEIVE_BOOKS,
+    books: data.books,
+    categories: data.categories,
+    genres: data.genres
+  };
+}
+
+export function fetchBooks() {  
+  return dispatch =&amp;gt; {
+    fetch("/books.json").then(response =&amp;gt; {
+        const data = response.json();
+        dispatch(receiveBooks(data));
+    })
+    .catch(error =&amp;gt; 
+        dispatch({ type: types.FETCH_FAILED, error })
+    );
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;book-actions.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In this action creator file, we have one standard action, receiveBooks() and one thunk(ed) action, fetchBooks(). fetchBooks() just defines an arrow function taking dispatch as a parameter. The receiveBooks action is dispatched on success.&lt;/p&gt;
+
+&lt;h4 id="sagaaheroictaleofdispatching"&gt;Saga: A Heroic Tale Of Dispatching&lt;/h4&gt;
+
+&lt;p&gt;"Again with the names, what's a saga?!" If you are or were a fan of fantasy or science fiction, you already know. For the others, a saga is just a series of connected stories.&lt;/p&gt;
+
+&lt;p&gt;For the case of &lt;a href="https://github.com/yelouafi/redux-saga"&gt;redux-saga&lt;/a&gt;, I'll let the README do the honor:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sagas are responsible for orchestrating complex/asynchronous operations.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sagas are created using Generator functions.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Since sagas take advantage of the yield keyword to halt execution within a function, they empower you to write the steps necessary to complete your action and let the Javascript engine manage the execution. &lt;/p&gt;
+
+&lt;p&gt;Executing functions in series can otherwise be tricky, your other option being a promise chain.&lt;/p&gt;
+
+&lt;h6 id="howdoiusethisthing"&gt;How do I use this thing?&lt;/h6&gt;
+
+&lt;p&gt;&lt;strong&gt;Add redux-saga middleware to the store.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { createStore, applyMiddleware, compose } from "redux";  
+import createSagaMiddleware from "redux-saga";  
+import rootReducer from "../reducers";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(sagaMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  return store;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;configureStore.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Define your saga.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { takeLatest } from "redux-saga"  
+import { call, put } from "redux-saga/effects"
+
+function* fetchBooks(path) {  
+   try {
+      const data = yield call(fetch, path);
+      yield put({type: "RECEIVE_BOOKS", data });
+   } catch (e) {
+      yield put({type: "FETCH_FAILED", message: e.message});
+   }
+}
+
+function* fetchSaga() {  
+  yield* takeLatest("FETCH_BOOKS", fetchBooks);
+}
+
+export default fetchSaga;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;sagas/index.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;fetchSaga() listens for all FETCH_BOOKS actions and calls fetchBooks() once received. takeLatest() just means that if there are multiple actions fired, the most recent will be run and previous ones will be cancelled.&lt;/p&gt;
+
+&lt;p&gt;What's the benefit of using a saga here?&lt;/p&gt;
+
+&lt;p&gt;Since fetchBooks() as a saga is a Generator function, the call to the fetch api with the yield keyword will block until the promise is resolved. Also, since it is blocking, we can make use of try/catch for error handling.&lt;/p&gt;
+
+&lt;p&gt;Another benefit is testing. The call and put methods return javascript objects, so in unit tests you can simply test each value yielded by your saga function with equality comparison. Testing thunks often requires complex mocking of the fetch api or other functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Import and run saga.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { createStore, applyMiddleware, compose } from "redux";  
+import createSagaMiddleware from "redux-saga";  
+import rootReducer from "../reducers";  
+import fetchSaga from "../sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(sagaMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  sagaMiddleware.run(fetchSaga);
+  return store;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;configureStore.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we already added the saga middleware to the store, the only thing that remains is to import and run the saga we defined.&lt;/p&gt;</description><link>http://localhost:2368/redux-thunk-vs-saga/</link><guid isPermaLink="false">f527e9a6-e071-40e5-81a3-1bacc8433f28</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 07 Jul 2016 00:49:43 GMT</pubDate></item><item><title>May Picks - Seven Databases, Seven Concurrency Models</title><description>&lt;p&gt;These books had been on my list for a while, I finally found an appropriate time to dive in. &lt;/p&gt;
 
 &lt;h4 id="sevendatabasesinsevenweeks"&gt;Seven Databases In Seven Weeks&lt;/h4&gt;
 
@@ -749,141 +914,4 @@ To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. We
 
 &lt;p&gt;I find this is relevant to web developers in the sense of finding people (developers) you admire, deconstructing how they became successful and doing your best to emulate. It is hard not to draw inspiration from each of the interviewees stories' to set ambitious goals for oneself and relentlessly pursue them. &lt;/p&gt;
 
-&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item><item><title>Implementing Token-Based Authentication using Angular + Node.js</title><description>&lt;p&gt;You are building an authenticated Angular application with a REST backend. You need to restrict access to your server. What do you do?&lt;/p&gt;
-
-&lt;p&gt;Token-based authentication is a very common solution to this problem. Many prominent public API's such as Twitter and Instagram utilize token-based authentication.&lt;/p&gt;
-
-&lt;p&gt;But first, you may ask...&lt;/p&gt;
-
-&lt;h3 id="whataretokens"&gt;What are tokens?&lt;/h3&gt;
-
-&lt;p&gt;A token is a server-generated string that is uniquely associated with a user and identifies them as authenticated. The string can encode certain user-specific informated such as username and profile.&lt;/p&gt;
-
-&lt;p&gt;When a user makes a request to your server, they can provide their token as proof that the server has verified their access.&lt;/p&gt;
-
-&lt;h3 id="whyaretheypreferred"&gt;Why are they preferred?&lt;/h3&gt;
-
-&lt;p&gt;Previously, session-based authentication was the most popular. It is still used in some scenarios, but is more complicated to configure, scale, and secure. Information about logged-in users must be kept in memory, oftentimes in a database such as &lt;a href="http://redis.io/"&gt;Redis&lt;/a&gt;. When a request is received, the user's information must be queried in the session database. &lt;/p&gt;
-
-&lt;p&gt;There are problems with this approach. If the server crashes, this information is lost. The user must re-authenticate and the server must re-construct the session profile. Also, since session information must be stored for every user, with a high volume of users you can quickly run into memory issues.&lt;/p&gt;
-
-&lt;p&gt;Whereas session-based authentication is &lt;em&gt;stateful&lt;/em&gt;, token-based authentication follows a &lt;em&gt;stateless&lt;/em&gt; paradigm. This just means that the server does not keep any information about users in memory. When a request is received, the token is validated. If it passes, the request is completed and a result returned. If not, the server can return an error. No in-memory database is required.&lt;/p&gt;
-
-&lt;p&gt;Authentication is a topic with many, many considerations. If you are looking to understand more of why and how tokens work, check out &lt;a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication"&gt;this&lt;/a&gt; article over on &lt;a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication"&gt;scotch.io&lt;/a&gt;. &lt;/p&gt;
-
-&lt;p&gt;Now, let's get into the how-to.&lt;/p&gt;
-
-&lt;h3 id="serversidesetupnodejs"&gt;Server-side setup (Node.js)&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href="https://github.com/auth0/node-jsonwebtoken"&gt;Node-jsonwebtoken&lt;/a&gt; is the de-facto module for token functionality in a node application. &lt;/p&gt;
-
-&lt;p&gt;To grab that, you just need to:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;npm install --save jsonwebtoken
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In your node server file, add:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var jwt = require('jsonwebtoken');
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You also need to set a json web token 'secret'. This string is used to make the tokens that your server generates unique, so preferably make it complex!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var jwtSecret = 'jsonWebTokensAreAGreatIdea!';
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now all that's left is to create the token!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var token = jwt.sign('username', jwtSecret, {
-    expiresInMinutes: 60
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In place of the 'username' string, you could use an object instead. The second parameter is the secret you configured earlier. The last one is an options object (of which &lt;a href="https://www.npmjs.com/package/jsonwebtoken#jwt-sign-payload-secretorprivatekey-options"&gt;there are many available&lt;/a&gt;); here we just set the expiration time of the token in minutes.&lt;/p&gt;
-
-&lt;p&gt;All of the preceding code together in an Express route:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var app = require('express')();
-var jwt = require('jsonwebtoken');
-var jwtSecret = 'jsonWebTokensAreAGreatIdea!'; 
-
-app.get('/auth', function (req, res) {
-  var username = req.query.username;
-  var token = jwt.sign(username, jwtSecret, {
-    expiresInMinutes: 60
-  });
-
-  res.send(token);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now when  a request is received at &lt;a href="http://yourserver/auth?username=jakeg"&gt;http://yourserver/auth?username=jakeg&lt;/a&gt;, a token will be signed and returned to the client.&lt;/p&gt;
-
-&lt;h3 id="clientsidesetupangular"&gt;Client-side setup (Angular)&lt;/h3&gt;
-
-&lt;p&gt;On the Angular side, you first need to setup the request to retrieve the token. Here, I will just use $http.get():&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$http.get('http://yourserver/auth', { 
-    params: { username: 'username' } 
-  }).success( function(data, status, headers, config) {
-    // save the token for later queries
-    localStorage.token = data.token;
-  });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The first parameter to $http.get is the API endpoint that will return the token. The second passes the username within a 'params' object. We save the resulting token in localStorage to persist on the client, but you could pass the token anywhere else in your application deemed appropriate.&lt;/p&gt;
-
-&lt;p&gt;If you want to retrieve the information encoded in the token, you need a couple extra functions to parse and decode:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function urlBase64Decode(str) {
-  var output = str.replace('-', '+').replace('_', '/');
-  switch (output.length % 4) {
-    case 0:
-      break;
-    case 2:
-      output += '==';
-      break;
-    case 3:
-      output += '=';
-      break;
-    default:
-      throw 'Illegal base64url string!';
-  }
-  return window.atob(output);
-}
-
-function getClaimsFromToken(token) {
-  var response = {};
-
-  if (typeof token !== "undefined") {
-    var encoded = token.split(".")[1];
-    response = JSON.parse(urlBase64Decode(encoded));
-  }
-  return response;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The first function decodes the token string using base64. The second takes the chunk containing encoded data and parses it into a JSON object.&lt;/p&gt;
-
-&lt;p&gt;To include the token on remote requests (required!), just add it as a parameter. With Angular, you have two options:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://docs.angularjs.org/api/ng/service/$http"&gt;$http.get()&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$http.get('http://myapi.com/auth', 
-  { params: { username: 'username' } } );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href="https://docs.angularjs.org/api/ngResource/service/$resource"&gt;$resource service&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;myResource.bind( { token: localStorage.getItem("token") } );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;You can also add it as a HTTP Header parameter. However, this will send your token on every HTTP request your application makes. &lt;em&gt;Only&lt;/em&gt; do this if you will only make remote requests to &lt;em&gt;your&lt;/em&gt; API. Sending your token elsewhere can interfere with communication and is also giving away keys to your service!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;That's it! Now when you make remote requests, the token your application retrieved earlier will be sent along to authenticate your request.&lt;/p&gt;
-
-&lt;h3 id="wrapup"&gt;Wrap Up&lt;/h3&gt;
-
-&lt;p&gt;Implementing token-based authentication is a good solution toward keeping your application and services secure. And fortunately, the Node and Angular ecosystem makes this fairly simple to setup!&lt;/p&gt;</description><link>http://localhost:2368/implement-token-based-authentication-using-angular-node-js/</link><guid isPermaLink="false">71bd1a9b-ae33-4625-9938-5083eae600d9</guid><category>node</category><category>angular</category><category>token-based auth</category><dc:creator>Jake Gardner</dc:creator><pubDate>Fri, 24 Jul 2015 11:53:14 GMT</pubDate></item></channel></rss>
+&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item></channel></rss>

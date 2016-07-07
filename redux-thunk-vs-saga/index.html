@@ -1,0 +1,330 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Redux: Thunk vs. Saga</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=bfe8947d42">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=bfe8947d42">
+    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=bfe8947d42">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
+    
+    <link rel="canonical" href="index.html">
+    
+    <meta property="og:site_name" content="Jake Gardner">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Redux: Thunk vs. Saga">
+    <meta property="og:description" content="Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas. Thunk: You Got Function All In My Actions Most people will ask, what's a thunk? And why do I need it?...">
+    <meta property="og:url" content="http://localhost:2368/redux-thunk-vs-saga/">
+    <meta property="article:published_time" content="2016-07-07T00:49:43.149Z">
+    <meta property="article:modified_time" content="2016-07-07T00:56:11.816Z">
+    <meta property="article:tag" content="redux">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Redux: Thunk vs. Saga">
+    <meta name="twitter:description" content="Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas. Thunk: You Got Function All In My Actions Most people will ask, what's a thunk? And why do I need it?...">
+    <meta name="twitter:url" content="http://localhost:2368/redux-thunk-vs-saga/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Jake Gardner",
+    "author": {
+        "@type": "Person",
+        "name": "Jake Gardner",
+        "url": "http://localhost:2368/author/jake",
+        "sameAs": null
+    },
+    "headline": "Redux: Thunk vs. Saga",
+    "url": "http://localhost:2368/redux-thunk-vs-saga/",
+    "datePublished": "2016-07-07T00:49:43.149Z",
+    "dateModified": "2016-07-07T00:56:11.816Z",
+    "keywords": "redux",
+    "description": "Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas. Thunk: You Got Function All In My Actions Most people will ask, what&#x27;s a thunk? And why do I need it?..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="../rss/index.html">
+</head>
+<body class="post-template tag-redux">
+    <nav class="navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
+                    <span class="navbar-brand">
+                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
+                    </span>
+                    <ul class="navbar-social">
+                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
+                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+
+<main class="post-content" role="main">
+
+    <article class="post tag-redux">
+
+        <header class="post-header">
+            <h1 class="post-title">Redux: Thunk vs. Saga</h1>
+            <section class="post-meta">
+                 on <a href="../tag/redux/">redux</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.</p>
+
+<h4 id="thunkyougotfunctionallinmyactions">Thunk: You Got Function All In My Actions</h4>
+
+<p>Most people will ask, what's a thunk? And why do I need it?</p>
+
+<p>The most straightforward explanation of a thunk I've seen is by Kyle Simpson (of You Don't Know JS fame) in his <a href="https://frontendmasters.com/courses/rethinking-async-js/">Rethinking Asynchronous Javascript</a> course for Front End Masters (highly recommended!).</p>
+
+<p><em>A thunk is a function that already has everything it needs to execute.</em></p>
+
+<p>What does that have to do with redux thunk? I'm not sure either.</p>
+
+<p>As you know, in Redux, actions are defined by JSON. Redux-thunk allows you to send a function instead. Rather than [only] prescribe a state change for the reducer to carry out, you can write some logic to execute immediately and dispatch other actions. </p>
+
+<p>This is great for small use cases, however for more than a few functions, a better approach is <a href="http://redux.js.org/docs/advanced/Middleware.html">middleware</a> ... or sagas.</p>
+
+<h6 id="howdoiusethisthing">How do I use this thing?</h6>
+
+<p><strong>Add the redux-thunk middleware to the store.</strong></p>
+
+<pre><code>import { createStore, applyMiddleware, compose } from "redux";  
+import thunkMiddleware from "redux-thunk";  
+import rootReducer from "../reducers";
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(thunkMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  return store;
+}
+</code></pre>
+
+<p><em>configureStore.js</em></p>
+
+<p>This file just exports a function that returns the store to be added to the Provider element.</p>
+
+<p>Using compose to create the createStoreWithMiddleware function is just a fancier way of writing  </p>
+
+<pre><code>const store = createStore(  
+    rootReducer,
+    applyMiddleware(thunkMiddleware)
+);
+</code></pre>
+
+<p><strong>Write an action that returns a function.</strong> This function will take the dispatch method as a parameter. You can use this to call subsequent actions.</p>
+
+<pre><code>import * as types from "../constants/ActionTypes";
+
+export function receiveBooks(data) {  
+  return {
+    type: types.RECEIVE_BOOKS,
+    books: data.books,
+    categories: data.categories,
+    genres: data.genres
+  };
+}
+
+export function fetchBooks() {  
+  return dispatch =&gt; {
+    fetch("/books.json").then(response =&gt; {
+        const data = response.json();
+        dispatch(receiveBooks(data));
+    })
+    .catch(error =&gt; 
+        dispatch({ type: types.FETCH_FAILED, error })
+    );
+  };
+}
+</code></pre>
+
+<p><em>book-actions.js</em></p>
+
+<p>In this action creator file, we have one standard action, receiveBooks() and one thunk(ed) action, fetchBooks(). fetchBooks() just defines an arrow function taking dispatch as a parameter. The receiveBooks action is dispatched on success.</p>
+
+<h4 id="sagaaheroictaleofdispatching">Saga: A Heroic Tale Of Dispatching</h4>
+
+<p>"Again with the names, what's a saga?!" If you are or were a fan of fantasy or science fiction, you already know. For the others, a saga is just a series of connected stories.</p>
+
+<p>For the case of <a href="https://github.com/yelouafi/redux-saga">redux-saga</a>, I'll let the README do the honor:</p>
+
+<p><strong>Sagas are responsible for orchestrating complex/asynchronous operations.</strong></p>
+
+<p><strong>Sagas are created using Generator functions.</strong></p>
+
+<p>Since sagas take advantage of the yield keyword to halt execution within a function, they empower you to write the steps necessary to complete your action and let the Javascript engine manage the execution. </p>
+
+<p>Executing functions in series can otherwise be tricky, your other option being a promise chain.</p>
+
+<h6 id="howdoiusethisthing">How do I use this thing?</h6>
+
+<p><strong>Add redux-saga middleware to the store.</strong></p>
+
+<pre><code>import { createStore, applyMiddleware, compose } from "redux";  
+import createSagaMiddleware from "redux-saga";  
+import rootReducer from "../reducers";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(sagaMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  return store;
+}
+</code></pre>
+
+<p><em>configureStore.js</em></p>
+
+<p><strong>Define your saga.</strong></p>
+
+<pre><code>import { takeLatest } from "redux-saga"  
+import { call, put } from "redux-saga/effects"
+
+function* fetchBooks(path) {  
+   try {
+      const data = yield call(fetch, path);
+      yield put({type: "RECEIVE_BOOKS", data });
+   } catch (e) {
+      yield put({type: "FETCH_FAILED", message: e.message});
+   }
+}
+
+function* fetchSaga() {  
+  yield* takeLatest("FETCH_BOOKS", fetchBooks);
+}
+
+export default fetchSaga;  
+</code></pre>
+
+<p><em>sagas/index.js</em></p>
+
+<p>fetchSaga() listens for all FETCH_BOOKS actions and calls fetchBooks() once received. takeLatest() just means that if there are multiple actions fired, the most recent will be run and previous ones will be cancelled.</p>
+
+<p>What's the benefit of using a saga here?</p>
+
+<p>Since fetchBooks() as a saga is a Generator function, the call to the fetch api with the yield keyword will block until the promise is resolved. Also, since it is blocking, we can make use of try/catch for error handling.</p>
+
+<p>Another benefit is testing. The call and put methods return javascript objects, so in unit tests you can simply test each value yielded by your saga function with equality comparison. Testing thunks often requires complex mocking of the fetch api or other functions.</p>
+
+<p><strong>Import and run saga.</strong></p>
+
+<pre><code>import { createStore, applyMiddleware, compose } from "redux";  
+import createSagaMiddleware from "redux-saga";  
+import rootReducer from "../reducers";  
+import fetchSaga from "../sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(sagaMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  sagaMiddleware.run(fetchSaga);
+  return store;
+}
+</code></pre>
+
+<p><em>configureStore.js</em></p>
+
+<p>Since we already added the saga middleware to the store, the only thing that remains is to import and run the saga we defined.</p>
+        </section>
+
+        <time class="post-date" datetime="2016-07-07">07 July 2016</time>
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="http://localhost:2368/author/jake/">Jake Gardner</a></h4>
+
+                    <p>Read <a href="http://localhost:2368/author/jake/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Redux%3A%20Thunk%20vs.%20Saga&amp;url=http://localhost:2368/redux-thunk-vs-saga/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/redux-thunk-vs-saga/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/redux-thunk-vs-saga/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "http://localhost:2368/redux-thunk-vs-saga/";
+                    this.page.identifier = "/redux-thunk-vs-saga/";
+                    this.page.title = "Redux: Thunk vs. Saga";
+                };
+                (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//blogjakegardnerme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <script src="../public/jquery.js?v=bfe8947d42"></script>
+
+    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=bfe8947d42"></script>
+    // <script type="text/javascript" src="/assets/js/index.js?v=bfe8947d42"></script> -->
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70122057-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>

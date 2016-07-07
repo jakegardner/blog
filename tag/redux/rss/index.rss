@@ -1,4 +1,169 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>redux - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 09 Jun 2016 12:07:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/redux/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Extract Fetch calls with Redux Middleware</title><description>&lt;p&gt;The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too). &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>redux - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 07 Jul 2016 00:57:24 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/redux/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Redux: Thunk vs. Saga</title><description>&lt;p&gt;Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.&lt;/p&gt;
+
+&lt;h4 id="thunkyougotfunctionallinmyactions"&gt;Thunk: You Got Function All In My Actions&lt;/h4&gt;
+
+&lt;p&gt;Most people will ask, what's a thunk? And why do I need it?&lt;/p&gt;
+
+&lt;p&gt;The most straightforward explanation of a thunk I've seen is by Kyle Simpson (of You Don't Know JS fame) in his &lt;a href="https://frontendmasters.com/courses/rethinking-async-js/"&gt;Rethinking Asynchronous Javascript&lt;/a&gt; course for Front End Masters (highly recommended!).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A thunk is a function that already has everything it needs to execute.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;What does that have to do with redux thunk? I'm not sure either.&lt;/p&gt;
+
+&lt;p&gt;As you know, in Redux, actions are defined by JSON. Redux-thunk allows you to send a function instead. Rather than [only] prescribe a state change for the reducer to carry out, you can write some logic to execute immediately and dispatch other actions. &lt;/p&gt;
+
+&lt;p&gt;This is great for small use cases, however for more than a few functions, a better approach is &lt;a href="http://redux.js.org/docs/advanced/Middleware.html"&gt;middleware&lt;/a&gt; ... or sagas.&lt;/p&gt;
+
+&lt;h6 id="howdoiusethisthing"&gt;How do I use this thing?&lt;/h6&gt;
+
+&lt;p&gt;&lt;strong&gt;Add the redux-thunk middleware to the store.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { createStore, applyMiddleware, compose } from "redux";  
+import thunkMiddleware from "redux-thunk";  
+import rootReducer from "../reducers";
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(thunkMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  return store;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;configureStore.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This file just exports a function that returns the store to be added to the Provider element.&lt;/p&gt;
+
+&lt;p&gt;Using compose to create the createStoreWithMiddleware function is just a fancier way of writing  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const store = createStore(  
+    rootReducer,
+    applyMiddleware(thunkMiddleware)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Write an action that returns a function.&lt;/strong&gt; This function will take the dispatch method as a parameter. You can use this to call subsequent actions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import * as types from "../constants/ActionTypes";
+
+export function receiveBooks(data) {  
+  return {
+    type: types.RECEIVE_BOOKS,
+    books: data.books,
+    categories: data.categories,
+    genres: data.genres
+  };
+}
+
+export function fetchBooks() {  
+  return dispatch =&amp;gt; {
+    fetch("/books.json").then(response =&amp;gt; {
+        const data = response.json();
+        dispatch(receiveBooks(data));
+    })
+    .catch(error =&amp;gt; 
+        dispatch({ type: types.FETCH_FAILED, error })
+    );
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;book-actions.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In this action creator file, we have one standard action, receiveBooks() and one thunk(ed) action, fetchBooks(). fetchBooks() just defines an arrow function taking dispatch as a parameter. The receiveBooks action is dispatched on success.&lt;/p&gt;
+
+&lt;h4 id="sagaaheroictaleofdispatching"&gt;Saga: A Heroic Tale Of Dispatching&lt;/h4&gt;
+
+&lt;p&gt;"Again with the names, what's a saga?!" If you are or were a fan of fantasy or science fiction, you already know. For the others, a saga is just a series of connected stories.&lt;/p&gt;
+
+&lt;p&gt;For the case of &lt;a href="https://github.com/yelouafi/redux-saga"&gt;redux-saga&lt;/a&gt;, I'll let the README do the honor:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sagas are responsible for orchestrating complex/asynchronous operations.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sagas are created using Generator functions.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Since sagas take advantage of the yield keyword to halt execution within a function, they empower you to write the steps necessary to complete your action and let the Javascript engine manage the execution. &lt;/p&gt;
+
+&lt;p&gt;Executing functions in series can otherwise be tricky, your other option being a promise chain.&lt;/p&gt;
+
+&lt;h6 id="howdoiusethisthing"&gt;How do I use this thing?&lt;/h6&gt;
+
+&lt;p&gt;&lt;strong&gt;Add redux-saga middleware to the store.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { createStore, applyMiddleware, compose } from "redux";  
+import createSagaMiddleware from "redux-saga";  
+import rootReducer from "../reducers";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(sagaMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  return store;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;configureStore.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Define your saga.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { takeLatest } from "redux-saga"  
+import { call, put } from "redux-saga/effects"
+
+function* fetchBooks(path) {  
+   try {
+      const data = yield call(fetch, path);
+      yield put({type: "RECEIVE_BOOKS", data });
+   } catch (e) {
+      yield put({type: "FETCH_FAILED", message: e.message});
+   }
+}
+
+function* fetchSaga() {  
+  yield* takeLatest("FETCH_BOOKS", fetchBooks);
+}
+
+export default fetchSaga;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;sagas/index.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;fetchSaga() listens for all FETCH_BOOKS actions and calls fetchBooks() once received. takeLatest() just means that if there are multiple actions fired, the most recent will be run and previous ones will be cancelled.&lt;/p&gt;
+
+&lt;p&gt;What's the benefit of using a saga here?&lt;/p&gt;
+
+&lt;p&gt;Since fetchBooks() as a saga is a Generator function, the call to the fetch api with the yield keyword will block until the promise is resolved. Also, since it is blocking, we can make use of try/catch for error handling.&lt;/p&gt;
+
+&lt;p&gt;Another benefit is testing. The call and put methods return javascript objects, so in unit tests you can simply test each value yielded by your saga function with equality comparison. Testing thunks often requires complex mocking of the fetch api or other functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Import and run saga.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import { createStore, applyMiddleware, compose } from "redux";  
+import createSagaMiddleware from "redux-saga";  
+import rootReducer from "../reducers";  
+import fetchSaga from "../sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const createStoreWithMiddleware = compose(  
+  applyMiddleware(sagaMiddleware)
+)(createStore);
+
+export default function configureStore(initialState) {  
+  const store = createStoreWithMiddleware(rootReducer);
+  sagaMiddleware.run(fetchSaga);
+  return store;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;configureStore.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we already added the saga middleware to the store, the only thing that remains is to import and run the saga we defined.&lt;/p&gt;</description><link>http://localhost:2368/redux-thunk-vs-saga/</link><guid isPermaLink="false">f527e9a6-e071-40e5-81a3-1bacc8433f28</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 07 Jul 2016 00:49:43 GMT</pubDate></item><item><title>Extract Fetch calls with Redux Middleware</title><description>&lt;p&gt;The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too). &lt;br&gt;
 Since React is unopinionated on this point, you can do it however you like. &lt;/p&gt;
 
 &lt;p&gt;However, since I use Redux for any substantial application I develop with React, I wanted to find a good pattern to use to handle asynchronous behavior that takes advantage of the plumbing available.&lt;/p&gt;
