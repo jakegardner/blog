@@ -1,6 +1,20 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 07 Jul 2016 00:57:24 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Redux: Thunk vs. Saga</title><description>&lt;p&gt;Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 11 Jul 2016 03:30:51 GMT</lastBuildDate><atom:link href="http://localhost:2368/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>June Picks - Redux, Soft Skills</title><description>&lt;p&gt;A bit late getting to picks this month... I've been in four different time zones in the past two weeks. Finally getting back to my usual routine!&lt;/p&gt;
 
-&lt;h4 id="thunkyougotfunctionallinmyactions"&gt;Thunk: You Got Function All In My Actions&lt;/h4&gt;
+&lt;h3 id="buildingreactapplicationswithidiomaticredux"&gt;Building React Applications with Idiomatic Redux&lt;/h3&gt;
+
+&lt;p&gt;The newest &lt;a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux"&gt;series of videos&lt;/a&gt; from &lt;a href="https://twitter.com/dan_abramov"&gt;Dan Abramov&lt;/a&gt; could easily be called Redux: The Missing Manual. He covers many topics you will encounter in building Redux applications such as loading asynchronous data, routing, logging, and persistence. I like that not only are the solutions he provides very concise, but that he continually refactors while progressing through the videos.&lt;/p&gt;
+
+&lt;p&gt;Redux has matured quite a bit in the past year, and this series shows elegant solutions to common application concerns.&lt;/p&gt;
+
+&lt;h3 id="softskillsjohnsonmez"&gt;Soft Skills - John Sonmez&lt;/h3&gt;
+
+&lt;p&gt;This is a book that should be gifted to all new developers. In university or bootcamps, they teach you to code, they do not teach you the business of being a developer or how to manage relationships and yourself throughout your career. &lt;/p&gt;
+
+&lt;p&gt;I'm glad that John has laid this out in a simple, accessible way. Some of the lessons here I had to learn the hard way myself. &lt;/p&gt;
+
+&lt;p&gt;John also gives his account of going from employee to entrepreneur and his career-long experience in real estate investment. It's important for everyone to plan for the future, but developers being especially well-paid in the US, it's even more critical that they learn to manage their finances.&lt;/p&gt;</description><link>http://localhost:2368/june-picks/</link><guid isPermaLink="false">0038e3e0-7659-4049-9aad-a181b778520c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Mon, 11 Jul 2016 03:17:56 GMT</pubDate></item><item><title>Redux: Thunk vs. Saga</title><description>&lt;p&gt;Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.&lt;/p&gt;
+
+&lt;h3 id="thunkyougotfunctionallinmyactions"&gt;Thunk: You Got Function All In My Actions&lt;/h3&gt;
 
 &lt;p&gt;Most people will ask, what's a thunk? And why do I need it?&lt;/p&gt;
 
@@ -74,7 +88,7 @@ export function fetchBooks() {
 
 &lt;p&gt;In this action creator file, we have one standard action, receiveBooks() and one thunk(ed) action, fetchBooks(). fetchBooks() just defines an arrow function taking dispatch as a parameter. The receiveBooks action is dispatched on success.&lt;/p&gt;
 
-&lt;h4 id="sagaaheroictaleofdispatching"&gt;Saga: A Heroic Tale Of Dispatching&lt;/h4&gt;
+&lt;h3 id="sagaaheroictaleofdispatching"&gt;Saga: A Heroic Tale Of Dispatching&lt;/h3&gt;
 
 &lt;p&gt;"Again with the names, what's a saga?!" If you are or were a fan of fantasy or science fiction, you already know. For the others, a saga is just a series of connected stories.&lt;/p&gt;
 
@@ -165,7 +179,7 @@ export default function configureStore(initialState) {
 
 &lt;p&gt;Since we already added the saga middleware to the store, the only thing that remains is to import and run the saga we defined.&lt;/p&gt;</description><link>http://localhost:2368/redux-thunk-vs-saga/</link><guid isPermaLink="false">f527e9a6-e071-40e5-81a3-1bacc8433f28</guid><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 07 Jul 2016 00:49:43 GMT</pubDate></item><item><title>May Picks - Seven Databases, Seven Concurrency Models</title><description>&lt;p&gt;These books had been on my list for a while, I finally found an appropriate time to dive in. &lt;/p&gt;
 
-&lt;h4 id="sevendatabasesinsevenweeks"&gt;Seven Databases In Seven Weeks&lt;/h4&gt;
+&lt;h3 id="sevendatabasesinsevenweeks"&gt;Seven Databases In Seven Weeks&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/06/sevendatabases.jpg" alt=""&gt;&lt;/p&gt;
 
@@ -175,7 +189,7 @@ export default function configureStore(initialState) {
 
 &lt;p&gt;HBase I have seen around the web, but did not know that it powers core services at Facebook, Twitter, eBay, and others. This is the database for Big Data problems.&lt;/p&gt;
 
-&lt;h4 id="sevenconcurrencymodelsinsevenweeks"&gt;Seven Concurrency Models In Seven Weeks&lt;/h4&gt;
+&lt;h3 id="sevenconcurrencymodelsinsevenweeks"&gt;Seven Concurrency Models In Seven Weeks&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/06/seven-concurrency-models-in-seven-weeks-when-threads-unravel.jpg" alt=""&gt;&lt;/p&gt;
 
@@ -185,7 +199,7 @@ export default function configureStore(initialState) {
 
 &lt;p&gt;Functional programming is full of non-obvious terminology, e.g. currying, but this is an important one to know. Currying is similar to but different from partial application, so we will compare these two today.&lt;/p&gt;
 
-&lt;h4 id="currying"&gt;Currying&lt;/h4&gt;
+&lt;h3 id="currying"&gt;Currying&lt;/h3&gt;
 
 &lt;p&gt;Currying is converting a function that takes many arguments into a function that takes a single argument, and returns a function accepting yet another single argument. This facilitates creating a chain of function calls in place of a single call with many arguments.&lt;/p&gt;
 
@@ -197,7 +211,7 @@ addThese(2); // function waiting for b
 addThese(4); // 6  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="partialapplication"&gt;Partial Application&lt;/h4&gt;
+&lt;h3 id="partialapplication"&gt;Partial Application&lt;/h3&gt;
 
 &lt;p&gt;Partial application is supplying some arguments to a function and receiving a function back that can accept additional arguments.&lt;/p&gt;
 
@@ -296,7 +310,7 @@ discountHalfPrice(); // 4
 
 &lt;p&gt;Ofcourse this is a contrived example, but the idea is that you can perform a series a small operations using a single function call. Eventually, this could trigger your entire program.&lt;/p&gt;
 
-&lt;p&gt;Next, we will look at how we can extend this idea to combining multiple functions at the same time - with compose.&lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-higher-order-functions/</link><guid isPermaLink="false">2c20688a-5210-409e-a87f-aed98699105c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 05 May 2016 16:10:16 GMT</pubDate></item><item><title>April Picks - FP, Asynchrony</title><description>&lt;h4 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h4&gt;
+&lt;p&gt;Next, we will look at how we can extend this idea to combining multiple functions at the same time - with compose.&lt;/p&gt;</description><link>http://localhost:2368/functional-fundamentals-higher-order-functions/</link><guid isPermaLink="false">2c20688a-5210-409e-a87f-aed98699105c</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 05 May 2016 16:10:16 GMT</pubDate></item><item><title>April Picks - FP, Asynchrony</title><description>&lt;h3 id="functionalprogramminginjavascript"&gt;Functional Programming in Javascript&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2016/05/fpjs.jpeg" alt=""&gt;
 Lately, I have been trying to dedicate some time to get more into functional programming. Since I have a background in Java, I first started with Scala but ultimately found the resources I could find a bit too academic. &lt;/p&gt;
@@ -307,7 +321,7 @@ Lately, I have been trying to dedicate some time to get more into functional pro
 
 &lt;p&gt;A good follow-up from this could be the &lt;a href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/"&gt;mostly adequate guide&lt;/a&gt; by Brian Lansdorf.&lt;/p&gt;
 
-&lt;h4 id="rethinkingasynchronousjavascript"&gt;Rethinking Asynchronous Javascript&lt;/h4&gt;
+&lt;h3 id="rethinkingasynchronousjavascript"&gt;Rethinking Asynchronous Javascript&lt;/h3&gt;
 
 &lt;p&gt;There is probably no more in-depth resource on this topic than &lt;a href="https://frontendmasters.com/courses/rethinking-async-js/"&gt;this course&lt;/a&gt; by Kyle Simpson for Front-End Masters.&lt;/p&gt;
 
@@ -880,38 +894,4 @@ To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. We
             }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Knowing how easy this is to use, hope you will make use of external configuration files in your Node.js apps!&lt;/p&gt;</description><link>http://localhost:2368/configuration-files-for-your-node-js-apps/</link><guid isPermaLink="false">5a2060fe-ca31-46b7-ae7a-9fb852327856</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 01 Nov 2015 13:19:33 GMT</pubDate></item><item><title>Podcasts for Web Developers</title><description>&lt;p&gt;There are many resources to learn about web development and keep abreast of changes -- books, blogs, conferences, video tutorials. I make use of all of these, however podcasts are great in that you can listen while you're on the go. Take advantage of that time commuting/walking/standing in line to learn something.&lt;/p&gt;
-
-&lt;p&gt;These are some of my favorites. They cover a range of development related topics, from specific languages to developer worklife and career management.&lt;/p&gt;
-
-&lt;h4 id="giantrobotssmashingintoothergiantrobots"&gt;Giant Robots [Smashing Into Other Giant Robots]&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href="http://localhost:2368/"&gt;Giant Robots&lt;/a&gt; is a podcast produced by &lt;a href="http://thoughtbot.com/"&gt;Thoughtbot&lt;/a&gt;. If you don't know Thoughtbot -- go check them out! They have released many open-source tools, have an informative &lt;a href="https://robots.thoughtbot.com/"&gt;blog&lt;/a&gt;, as well as a &lt;a href="https://upcase.com/"&gt;learning community&lt;/a&gt; to help developers upgrade their skills.&lt;/p&gt;
-
-&lt;p&gt;Giant Robots was originally more Ruby/Rails focused, but lately has been more about developer process, interviews with noteworthy developers etc. They also keep episodes less than 40 minutes so that you can be sure to finish listening in one commute.&lt;/p&gt;
-
-&lt;p&gt;Giant Robots also produce another more technical podcast called &lt;a href="http://bikeshed.fm/"&gt;The Bike Shed&lt;/a&gt;. Worth a look if you're hungry for more content.&lt;/p&gt;
-
-&lt;h4 id="javascriptjabber"&gt;Javascript Jabber&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href="https://devchat.tv/js-jabber"&gt;Javascript Jabber&lt;/a&gt; is a round-table discussion on the latest developments in the Javascript world. Joe Eames (&lt;a href="http://www.ng-conf.org/"&gt;ngconf&lt;/a&gt; founder) is a weekly co-host.&lt;/p&gt;
-
-&lt;p&gt;This podcast tends to get deeply techical and sometimes runs a bit long, but I find it invaluable to learn about libraries or features I haven't had a chance to try myself.&lt;/p&gt;
-
-&lt;h4 id="developertea"&gt;Developer Tea&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href="https://developertea.com/"&gt;Developer Tea&lt;/a&gt; may be my favorite of this bunch, simply for the reason that the host &lt;a href="http://localhost:2368/"&gt;&lt;/a&gt; takes on issues that are not discussed in typical development podcasts. Topics include time management, career progression, choosing what to learn, how to handle interviews, and many more.&lt;/p&gt;
-
-&lt;p&gt;Most episodes are fifteen minutes or less so you have no excuse not to fit this into your day somewhere!&lt;/p&gt;
-
-&lt;h4 id="shoptalkshow"&gt;Shop Talk Show&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href="http://shoptalkshow.com/"&gt;Shop Talk Show&lt;/a&gt; is probably better suited for pure front-enders or web designers, but nonetheless is unparalleled in content on design, useability, web standards etc. It is made only more awesome by the sense of humor of hosts Chris Coyier (&lt;a href="https://css-tricks.com/"&gt;CSS Tricks&lt;/a&gt;) and Dave Rupert.&lt;/p&gt;
-
-&lt;h4 id="the4hourworkweek"&gt;The 4-Hour Workweek&lt;/h4&gt;
-
-&lt;p&gt;Ok, this is not on web development! But I had to mention the &lt;a href="http://fourhourworkweek.com/podcast/"&gt;podcast&lt;/a&gt; of writer Tim Ferriss. In each episode, Tim interviews world-class performers in a broad array of fields. Athletes, entrepreneurs, investors, producers, you name it.&lt;/p&gt;
-
-&lt;p&gt;I find this is relevant to web developers in the sense of finding people (developers) you admire, deconstructing how they became successful and doing your best to emulate. It is hard not to draw inspiration from each of the interviewees stories' to set ambitious goals for oneself and relentlessly pursue them. &lt;/p&gt;
-
-&lt;p&gt;If all web developers adopted this philosophy, our field would be all the better for it.&lt;/p&gt;</description><link>http://localhost:2368/podcasts-for-web-developers/</link><guid isPermaLink="false">9e9d361a-a572-407c-a6f0-431f830666ce</guid><category>resources</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 25 Oct 2015 13:40:58 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Knowing how easy this is to use, hope you will make use of external configuration files in your Node.js apps!&lt;/p&gt;</description><link>http://localhost:2368/configuration-files-for-your-node-js-apps/</link><guid isPermaLink="false">5a2060fe-ca31-46b7-ae7a-9fb852327856</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 01 Nov 2015 13:19:33 GMT</pubDate></item></channel></rss>

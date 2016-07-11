@@ -1,6 +1,6 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>redux - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Thu, 07 Jul 2016 00:57:24 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/redux/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Redux: Thunk vs. Saga</title><description>&lt;p&gt;Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>redux - Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 11 Jul 2016 03:30:51 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/redux/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Redux: Thunk vs. Saga</title><description>&lt;p&gt;Two of the most common ways of dealing with side effects in Redux applications today are thunks and sagas.&lt;/p&gt;
 
-&lt;h4 id="thunkyougotfunctionallinmyactions"&gt;Thunk: You Got Function All In My Actions&lt;/h4&gt;
+&lt;h3 id="thunkyougotfunctionallinmyactions"&gt;Thunk: You Got Function All In My Actions&lt;/h3&gt;
 
 &lt;p&gt;Most people will ask, what's a thunk? And why do I need it?&lt;/p&gt;
 
@@ -74,7 +74,7 @@ export function fetchBooks() {
 
 &lt;p&gt;In this action creator file, we have one standard action, receiveBooks() and one thunk(ed) action, fetchBooks(). fetchBooks() just defines an arrow function taking dispatch as a parameter. The receiveBooks action is dispatched on success.&lt;/p&gt;
 
-&lt;h4 id="sagaaheroictaleofdispatching"&gt;Saga: A Heroic Tale Of Dispatching&lt;/h4&gt;
+&lt;h3 id="sagaaheroictaleofdispatching"&gt;Saga: A Heroic Tale Of Dispatching&lt;/h3&gt;
 
 &lt;p&gt;"Again with the names, what's a saga?!" If you are or were a fan of fantasy or science fiction, you already know. For the others, a saga is just a series of connected stories.&lt;/p&gt;
 
