@@ -1,4 +1,103 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Mon, 11 Jul 2016 03:30:50 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>June Picks - Redux, Soft Skills</title><description>&lt;p&gt;A bit late getting to picks this month... I've been in four different time zones in the past two weeks. Finally getting back to my usual routine!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 07 Jan 2017 06:27:23 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>December Picks - Release It!, Continuous Delivery</title><description>&lt;p&gt;With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books.&lt;/p&gt;
+
+&lt;h4 id="releaseitmichaeltnygard"&gt;Release It! - Michael T. Nygard&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/01/releaseit-1.jpg" alt=""&gt;&lt;/p&gt;
+
+&lt;p&gt;Release It! is about planning, testing, and releasing production software. And why a significant number of projects fail at the release stage.&lt;/p&gt;
+
+&lt;p&gt;I see the two main topics in this book as design and testing. How you approach these ultimately decide the success of your project.&lt;/p&gt;
+
+&lt;h6 id="design"&gt;Design&lt;/h6&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Design and architecture decisions are also financial decisions.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Design determines implementation and maintenance costs as well as your exposure to risk. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Bugs will happen. They cannot be eliminated, so they must be survived instead.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Through design we reduce bugs as much as possible, but also accept that some will still happen and plan accordingly to reduce the impact on the system.&lt;/p&gt;
+
+&lt;h6 id="testing"&gt;Testing&lt;/h6&gt;
+
+&lt;p&gt;Unit tests (and TDD) have been hot-topics in recent years, but there are other types of testing you must do to have a successful production release: longevity and capacity tests, and running all tests in the production (or identical) environment. &lt;/p&gt;
+
+&lt;p&gt;Some bugs only appear after a system has been running for a very long time. As developers are constantly starting fresh when coding, these types of bugs are missed.&lt;/p&gt;
+
+&lt;p&gt;Capacity testing should encompass not just a high number of requests, but the most expensive operation in the system for a sustained period of time. You should have an idea of what typical usage patterns will be like, but also plan for the unexpected (DOS-like) scenarios.&lt;/p&gt;
+
+&lt;h6 id="patterns"&gt;Patterns&lt;/h6&gt;
+
+&lt;p&gt;Other than ideas on these, a number of anti-patterns and patterns are presented to help you make you project stable. &lt;br&gt;
+Two key patterns that I put to immediate use are the circuit breaker and the pathological test harness. &lt;/p&gt;
+
+&lt;p&gt;A circuit breaker is a switch you put in your api call module to prevent repeated failed calls. The maxim behind this is that if a call fails, another immediately after will likely also fail. Once a defined cool off period has passed the breaker can be reset. This can reduce pressure on your backend service as well as avoid making unnecessary calls client-side.&lt;/p&gt;
+
+&lt;p&gt;The “pathological” test harness is a module you develop to give canned (unexpected) responses to api calls to test how your program behaves. Too often developers only test happy-path responses. What about an api which always responds after 10 seconds (or never?), or returns invalid (or garbage) data? A backend may succumb to excessive load, will your client crash as a result?&lt;/p&gt;
+
+&lt;p&gt;Some of the advice is Java-focused (there are a number of patterns around threading, managing connection pools etc), but still a lot of value for any platform.&lt;/p&gt;
+
+&lt;h4 id="continuousdeliveryjezhumbledavidfarley"&gt;Continuous Delivery - Jez Humble, David Farley&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/01/CD.jpg" alt=""&gt;
+Continuous Delivery is an alternative to the waterfall approach of releasing software (developing for a LONG time, followed by a test phase, followed by a big-moment release - praying included) where instead you ensure that you always have a releasable product. The facilitator for this, and the focus of much of the book is the delivery pipeline.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How long would it take your organization to deploy a change that involves just one single line of code? Do you do this on a repeatable, reliable basis?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id="whycontinousdelivery"&gt;Why Continous Delivery?&lt;/h6&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The main advantage of the deployment pipeline lies in the rapid feedback you get on the effect of every change on the fully integrated application—something that is impossible in the source promotion model.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;First off, why should you aim for continuous delivery? Simply, only if you are frequently (daily/hourly) integrating code and building the release product can you know the quality of your project. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In software, when something is painful, the way to reduce the pain is to do it more frequently, not less.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A second important point is that delaying implementing the production release process until the delivery target date means that it will be done with zero prior experience. Doing this process hundreds, thousands of times beforehand means that it will be a trivial non-event when it really does matter.&lt;/p&gt;
+
+&lt;p&gt;Lastly, the waterfall approach to development makes each phase a black box - development, testing, operations teams are left out of each others decisions and internal processes. Having a continuous delivery pipeline requires cooperation of all teams or roles from the beginning and make the entire process transparent to stakeholders and management as well.&lt;/p&gt;
+
+&lt;h6 id="thepipeline"&gt;The Pipeline&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Commit tests&lt;/strong&gt;. Unit tests and coverage metric checks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automated acceptance tests&lt;/strong&gt;. Business-value features that must work.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The objective of acceptance tests is to prove that our application does what the customer meant it to, not that it works the way its programmers think it should.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Environment/Capacity tests&lt;/strong&gt;. Check availability of network services and verify performance under load.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Manual testing&lt;/strong&gt;. For verification of user experience, and acceptance tests performed by stakeholders. Since not every organization will want automated release through to  production, this stage acts as a gate that key decision makers can use to certify builds. The promotion to this stage and release beyond it should be push-button though.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automated release&lt;/strong&gt;. Repeatable, auditable scripted deploys. Using scripts ensures consistency and elimination of human-errors in performing IDE builds.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It should be possible for a new team member to sit down at a new workstation, check out the project’s revision control repository, and run a single command to build and deploy the application to any accessible environment, including the local development workstation. It should also be possible to see which build of your various applications is deployed into each of your environments, and which versions in version control these builds came from.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Similar to Release It, a lot of specific advice is targeted at the Java ecosystem, but one can easily take each step in the pipeline and adapt it to your platform and environment.&lt;/p&gt;
+
+&lt;p&gt;Developing the pipeline is no small task and is likely the most important one for your project. The earlier you start, the better. It’s easier to set the foundation in each step when there are few (or no) features than when you have actual users. The authors provide this five step process to get you there:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Model your value stream and create a walking skeleton.  &lt;/li&gt;
+&lt;li&gt;Automate the build and deployment process.  &lt;/li&gt;
+&lt;li&gt;Automate unit tests and code analysis.  &lt;/li&gt;
+&lt;li&gt;Automate acceptance tests.  &lt;/li&gt;
+&lt;li&gt;Automate releases.&lt;/li&gt;
+&lt;/ol&gt;</description><link>http://localhost:2368/december-picks-release-it-continuous-delivery/</link><guid isPermaLink="false">08fef945-7557-46e4-9c8c-177cf55876ba</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 07 Jan 2017 06:17:16 GMT</pubDate></item><item><title>June Picks - Redux, Soft Skills</title><description>&lt;p&gt;A bit late getting to picks this month... I've been in four different time zones in the past two weeks. Finally getting back to my usual routine!&lt;/p&gt;
 
 &lt;h3 id="buildingreactapplicationswithidiomaticredux"&gt;Building React Applications with Idiomatic Redux&lt;/h3&gt;
 
@@ -854,44 +953,4 @@ To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. We
 
 &lt;p&gt;It's also about cultivating a intuition, knowing when it makes sense to deviate from a process or how to choose which technology to use.&lt;/p&gt;
 
-&lt;p&gt;Finally, it's about taking real pride in your work so that you are constantly looking for ways you can improve.&lt;/p&gt;</description><link>http://localhost:2368/be-a-software-craftsman/</link><guid isPermaLink="false">9bf0addd-0189-4c53-9495-8fd102f95882</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Wed, 11 Nov 2015 13:50:56 GMT</pubDate></item><item><title>Configuration files for your Node.js apps</title><description>&lt;p&gt;For any Node.js application that interacts with external resources (APIs, databases, etc), you will likely need some environment-specific configuration. Now, hopefully you are not hard-coding these values!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;            // BAD! 
-            mongodb.hostname = "databaseserver";
-            mongodb.port = "27017";
-            mongodb.database = "mydatabase";
-            ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Storing these values in an external file makes it easy to change environments without having to modify the code. Fortunately, &lt;a href="https://nodejs.org/api/modules.html#modules_modules"&gt;require&lt;/a&gt; makes it easy to load values from .js or .json files.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;            // Better!
-            var config = require('./dbconfig.js');
-
-            mongodb.hostname = config.hostname;
-            mongodb.port = config.port;
-            mongodb.database = config.database;
-            ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Require will parse either .js or .json files and return an object you can use in your code. &lt;/p&gt;
-
-&lt;p&gt;Why choose .js or .json? I prefer to use .js for configuration while only use .json  for data (for example, &lt;a href="https://github.com/junit-team/junit/wiki/Test-fixtures"&gt;test fixtures&lt;/a&gt;). However, both formats achieve the same result.&lt;/p&gt;
-
-&lt;h6 id="jsformat"&gt;.js format&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;            exports.hostname = "myserver";
-            exports.port = "27017";
-            exports.database = "mydatabase";
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id="jsonformat"&gt;.json format&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;            {
-              "hostname": "myserver",
-              "port": "27017",
-              "database": "mydatabase"
-            }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Knowing how easy this is to use, hope you will make use of external configuration files in your Node.js apps!&lt;/p&gt;</description><link>http://localhost:2368/configuration-files-for-your-node-js-apps/</link><guid isPermaLink="false">5a2060fe-ca31-46b7-ae7a-9fb852327856</guid><category>node</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 01 Nov 2015 13:19:33 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Finally, it's about taking real pride in your work so that you are constantly looking for ways you can improve.&lt;/p&gt;</description><link>http://localhost:2368/be-a-software-craftsman/</link><guid isPermaLink="false">9bf0addd-0189-4c53-9495-8fd102f95882</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Wed, 11 Nov 2015 13:50:56 GMT</pubDate></item></channel></rss>

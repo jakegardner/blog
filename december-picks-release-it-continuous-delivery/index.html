@@ -1,0 +1,262 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>December Picks - Release It!, Continuous Delivery</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=36b4fefd29">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=36b4fefd29">
+    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=36b4fefd29">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
+
+    <link rel="canonical" href="index.html">
+    
+    <meta property="og:site_name" content="Jake Gardner">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="December Picks - Release It!, Continuous Delivery">
+    <meta property="og:description" content="With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books. Release It! - Michael...">
+    <meta property="og:url" content="http://localhost:2368/december-picks-release-it-continuous-delivery/">
+    <meta property="article:published_time" content="2017-01-07T06:17:16.273Z">
+    <meta property="article:modified_time" content="2017-01-07T06:17:16.271Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="December Picks - Release It!, Continuous Delivery">
+    <meta name="twitter:description" content="With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books. Release It! - Michael...">
+    <meta name="twitter:url" content="http://localhost:2368/december-picks-release-it-continuous-delivery/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Jake Gardner",
+    "author": {
+        "@type": "Person",
+        "name": "Jake Gardner",
+        "url": "http://localhost:2368/author/jake",
+        "sameAs": null
+    },
+    "headline": "December Picks - Release It!, Continuous Delivery",
+    "url": "http://localhost:2368/december-picks-release-it-continuous-delivery/",
+    "datePublished": "2017-01-07T06:17:16.273Z",
+    "dateModified": "2017-01-07T06:17:16.271Z",
+    "description": "With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books. Release It! - Michael..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="../rss/index.html">
+</head>
+<body class="post-template">
+    <nav class="navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
+                    <span class="navbar-brand">
+                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
+                    </span>
+                    <ul class="navbar-social">
+                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
+                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+
+<main class="post-content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">December Picks - Release It!, Continuous Delivery</h1>
+            <section class="post-meta">
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books.</p>
+
+<h4 id="releaseitmichaeltnygard">Release It! - Michael T. Nygard</h4>
+
+<p><img src="../content/images/2017/01/releaseit-1.jpg" alt=""></p>
+
+<p>Release It! is about planning, testing, and releasing production software. And why a significant number of projects fail at the release stage.</p>
+
+<p>I see the two main topics in this book as design and testing. How you approach these ultimately decide the success of your project.</p>
+
+<h6 id="design">Design</h6>
+
+<blockquote>
+  <p>Design and architecture decisions are also financial decisions.</p>
+</blockquote>
+
+<p>Design determines implementation and maintenance costs as well as your exposure to risk. </p>
+
+<blockquote>
+  <p>Bugs will happen. They cannot be eliminated, so they must be survived instead.</p>
+</blockquote>
+
+<p>Through design we reduce bugs as much as possible, but also accept that some will still happen and plan accordingly to reduce the impact on the system.</p>
+
+<h6 id="testing">Testing</h6>
+
+<p>Unit tests (and TDD) have been hot-topics in recent years, but there are other types of testing you must do to have a successful production release: longevity and capacity tests, and running all tests in the production (or identical) environment. </p>
+
+<p>Some bugs only appear after a system has been running for a very long time. As developers are constantly starting fresh when coding, these types of bugs are missed.</p>
+
+<p>Capacity testing should encompass not just a high number of requests, but the most expensive operation in the system for a sustained period of time. You should have an idea of what typical usage patterns will be like, but also plan for the unexpected (DOS-like) scenarios.</p>
+
+<h6 id="patterns">Patterns</h6>
+
+<p>Other than ideas on these, a number of anti-patterns and patterns are presented to help you make you project stable. <br>
+Two key patterns that I put to immediate use are the circuit breaker and the pathological test harness. </p>
+
+<p>A circuit breaker is a switch you put in your api call module to prevent repeated failed calls. The maxim behind this is that if a call fails, another immediately after will likely also fail. Once a defined cool off period has passed the breaker can be reset. This can reduce pressure on your backend service as well as avoid making unnecessary calls client-side.</p>
+
+<p>The “pathological” test harness is a module you develop to give canned (unexpected) responses to api calls to test how your program behaves. Too often developers only test happy-path responses. What about an api which always responds after 10 seconds (or never?), or returns invalid (or garbage) data? A backend may succumb to excessive load, will your client crash as a result?</p>
+
+<p>Some of the advice is Java-focused (there are a number of patterns around threading, managing connection pools etc), but still a lot of value for any platform.</p>
+
+<h4 id="continuousdeliveryjezhumbledavidfarley">Continuous Delivery - Jez Humble, David Farley</h4>
+
+<p><img src="../content/images/2017/01/CD.jpg" alt="">
+Continuous Delivery is an alternative to the waterfall approach of releasing software (developing for a LONG time, followed by a test phase, followed by a big-moment release - praying included) where instead you ensure that you always have a releasable product. The facilitator for this, and the focus of much of the book is the delivery pipeline.</p>
+
+<blockquote>
+  <p>How long would it take your organization to deploy a change that involves just one single line of code? Do you do this on a repeatable, reliable basis?</p>
+</blockquote>
+
+<h6 id="whycontinousdelivery">Why Continous Delivery?</h6>
+
+<blockquote>
+  <p>The main advantage of the deployment pipeline lies in the rapid feedback you get on the effect of every change on the fully integrated application—something that is impossible in the source promotion model.</p>
+</blockquote>
+
+<p>First off, why should you aim for continuous delivery? Simply, only if you are frequently (daily/hourly) integrating code and building the release product can you know the quality of your project. </p>
+
+<blockquote>
+  <p>In software, when something is painful, the way to reduce the pain is to do it more frequently, not less.</p>
+</blockquote>
+
+<p>A second important point is that delaying implementing the production release process until the delivery target date means that it will be done with zero prior experience. Doing this process hundreds, thousands of times beforehand means that it will be a trivial non-event when it really does matter.</p>
+
+<p>Lastly, the waterfall approach to development makes each phase a black box - development, testing, operations teams are left out of each others decisions and internal processes. Having a continuous delivery pipeline requires cooperation of all teams or roles from the beginning and make the entire process transparent to stakeholders and management as well.</p>
+
+<h6 id="thepipeline">The Pipeline</h6>
+
+<ul>
+<li><strong>Commit tests</strong>. Unit tests and coverage metric checks</li>
+<li><strong>Automated acceptance tests</strong>. Business-value features that must work.</li>
+</ul>
+
+<blockquote>
+  <p>The objective of acceptance tests is to prove that our application does what the customer meant it to, not that it works the way its programmers think it should.</p>
+</blockquote>
+
+<ul>
+<li><strong>Environment/Capacity tests</strong>. Check availability of network services and verify performance under load.</li>
+<li><strong>Manual testing</strong>. For verification of user experience, and acceptance tests performed by stakeholders. Since not every organization will want automated release through to  production, this stage acts as a gate that key decision makers can use to certify builds. The promotion to this stage and release beyond it should be push-button though.</li>
+<li><strong>Automated release</strong>. Repeatable, auditable scripted deploys. Using scripts ensures consistency and elimination of human-errors in performing IDE builds.</li>
+</ul>
+
+<blockquote>
+  <p>It should be possible for a new team member to sit down at a new workstation, check out the project’s revision control repository, and run a single command to build and deploy the application to any accessible environment, including the local development workstation. It should also be possible to see which build of your various applications is deployed into each of your environments, and which versions in version control these builds came from.</p>
+</blockquote>
+
+<p>Similar to Release It, a lot of specific advice is targeted at the Java ecosystem, but one can easily take each step in the pipeline and adapt it to your platform and environment.</p>
+
+<p>Developing the pipeline is no small task and is likely the most important one for your project. The earlier you start, the better. It’s easier to set the foundation in each step when there are few (or no) features than when you have actual users. The authors provide this five step process to get you there:</p>
+
+<ol>
+<li>Model your value stream and create a walking skeleton.  </li>
+<li>Automate the build and deployment process.  </li>
+<li>Automate unit tests and code analysis.  </li>
+<li>Automate acceptance tests.  </li>
+<li>Automate releases.</li>
+</ol>
+        </section>
+
+        <time class="post-date" datetime="2017-01-06">06 January 2017</time>
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="http://localhost:2368/author/jake/">Jake Gardner</a></h4>
+
+                    <p>Read <a href="http://localhost:2368/author/jake/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=December%20Picks%20-%20Release%20It!%2C%20Continuous%20Delivery&amp;url=http://localhost:2368/december-picks-release-it-continuous-delivery/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/december-picks-release-it-continuous-delivery/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/december-picks-release-it-continuous-delivery/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "http://localhost:2368/december-picks-release-it-continuous-delivery/";
+                    this.page.identifier = "/december-picks-release-it-continuous-delivery/";
+                    this.page.title = "December Picks - Release It!, Continuous Delivery";
+                };
+                (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//blogjakegardnerme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <script src="../public/jquery.js?v=36b4fefd29"></script>
+
+    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=36b4fefd29"></script>
+    // <script type="text/javascript" src="/assets/js/index.js?v=36b4fefd29"></script> -->
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70122057-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
