@@ -1,0 +1,253 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>My Life With The Machine Learning Kult</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=0a7757e43e">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=0a7757e43e">
+    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=0a7757e43e">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
+
+    <link rel="canonical" href="index.html">
+    
+    <meta property="og:site_name" content="Jake Gardner">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="My Life With The Machine Learning Kult">
+    <meta property="og:description" content="I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility...">
+    <meta property="og:url" content="http://localhost:2368/my-life-with-the-machine-learning-kult/">
+    <meta property="article:published_time" content="2017-04-01T09:49:22.054Z">
+    <meta property="article:modified_time" content="2017-04-01T09:50:13.121Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="My Life With The Machine Learning Kult">
+    <meta name="twitter:description" content="I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility...">
+    <meta name="twitter:url" content="http://localhost:2368/my-life-with-the-machine-learning-kult/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Jake Gardner",
+    "author": {
+        "@type": "Person",
+        "name": "Jake Gardner",
+        "url": "http://localhost:2368/author/jake",
+        "sameAs": null
+    },
+    "headline": "My Life With The Machine Learning Kult",
+    "url": "http://localhost:2368/my-life-with-the-machine-learning-kult/",
+    "datePublished": "2017-04-01T09:49:22.054Z",
+    "dateModified": "2017-04-01T09:50:13.121Z",
+    "description": "I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="../rss/index.html">
+</head>
+<body class="post-template">
+    <nav class="navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
+                    <span class="navbar-brand">
+                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
+                    </span>
+                    <ul class="navbar-social">
+                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
+                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+
+<main class="post-content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">My Life With The Machine Learning Kult</h1>
+            <section class="post-meta">
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility that in the near future we could be able to model human cognition is pretty exciting.</p>
+
+<p>Here I want to give a recap of what I learned and provide a little bit of guidance for those who want to get started with machine learning but don't know where to begin. It can seem daunting at first, but once you get past all of the unfamiliar terminology and learn about the great libraries around, harnessing this tool is quite doable.</p>
+
+<h3 id="thealgorithms">The Algorithms</h3>
+
+<h6 id="supervisedlearningtellthemachinewhatswhat">Supervised Learning (Tell The Machine What's What)</h6>
+
+<p>Supervised learning entails processing a labeled dataset in order to build a model. What do I mean by labeled? For example, an apple [label] is red [attribute 1] and weighs 150g [attribute 2]. What do I mean by model? The model is the collection of knowledge that the algorithm uses to make decisions.</p>
+
+<p>When testing the algorithm on new data, if a match on the features is made, the algorithm can confirm that the sample (a data item) should be assigned a known label. Conversely, if a sample does not match the features (attributes) of a known label, it will not be matched. For example, if a sample is encountered that is orange and weighs 50g, it is probably not an apple. This entire process is called Classification.</p>
+
+<p>The common supervised algorithms are Logistic Regression, Support Vector Machines, and Decision Trees. </p>
+
+<h6 id="unsupervisedlearningletthemachinefigureitout">Unsupervised Learning (Let The Machine Figure It Out)</h6>
+
+<p>On the other hand, unsupervised learning is where you have unlabeled data and rely on the algorithm to distinguish the different classes based on inspecting the attributes of each sample in the dataset and noting similarities.</p>
+
+<p>This is accomplished with the straightforward K-means Clustering algorithm, aka "nearest neighbor" algorithm. This algorithm works by comparing a sample with it's neighbors, and grouping it with the neighbor whose feature value is nearest to its own. This process repeats until no regroupings can be made and you are left with clusters of features. There are your classes.</p>
+
+<h3 id="thetools">The Tools</h3>
+
+<h6 id="scikitlearn">scikit-learn</h6>
+
+<p>The most popular library is the Python module scikit-learn. There are others, but this is the perfect place to start and will give you a lot of runway.</p>
+
+<h6 id="matlab">Matlab</h6>
+
+<p>Part and parcel of the machine learning toolkit, Matlab allows you to make plots of your datasets and visualize the results of your learning models.</p>
+
+<h3 id="theprocess">The Process</h3>
+
+<h6 id="preparethedata">Prepare The Data</h6>
+
+<p>Having a good dataset is critical. You need to remove any samples that are missing feature values, or exclude those features. Also, eliminate any features that are not necessary for distinguishing meaningful classifications in your data. Fewer features to analyze means less processing is required.</p>
+
+<h6 id="choosealgorithm">Choose Algorithm</h6>
+
+<p>You have some decisions to make based on your data. If your data is structured and you have well-defined classes, you use a supervised algorithm. If your data is unstructured you choose an unsupervised approach.</p>
+
+<p>And then there's the questions of performance and accuracy. Some algorithms are inherently less performant on large datasets. Tuning algorithm parameters can also give you some gains in performance and accuracy.</p>
+
+<h6 id="traintesttunerepeat">Train, Test, Tune, Repeat</h6>
+
+<p>Whatever algorithm you choose, the process is pretty much the same.</p>
+
+<ol>
+<li>Divide dataset into training and test datasets.  </li>
+<li>Train your model on your training dataset.  </li>
+<li>Check your accuracy on test dataset.  </li>
+<li>Tune algorithm parameters.  </li>
+<li>Re-train your model until you reach the accuracy you require.</li>
+</ol>
+
+<h3 id="learningpath">Learning Path</h3>
+
+<h6 id="beforeyoubegin">Before You Begin</h6>
+
+<p>A lot of machine learning courses list pre-requisites of statistics and linear algebra courses. I found that this was not really necessary. If you want to understand the formulas behind certain algorithms, you had better have calculus still fresh in mind (I skimmed over these definitions).</p>
+
+<p>However, it will make it easier before you begin if you at least know:</p>
+
+<ol>
+<li>What's a vector?  </li>
+<li>What's a matrix?  </li>
+<li>What do linear/quadratic/logarithmic graphs look like? </li>
+</ol>
+
+<p><a href="https://www.khanacademy.org/">Khan Academy</a> is a good place to brush up on these.</p>
+
+<h6 id="whatidid">What I Did</h6>
+
+<p>I looked at a few different courses, but ultimately decided on Google's Udacity course Introduction to Machine Learning. I felt this was a good pace, and provided a broad enough introduction without getting too far into the weeds.</p>
+
+<p>I paired the Udacity course with the excellent book, <a href="https://www.amazon.com/Python-Machine-Learning-Sebastian-Raschka-ebook/dp/B00YSILNL0">Python Machine Learning</a> by Sebastian Raschka. Sebastian's book starts from the earliest building block of machine learning (the Perceptron), and continues all the way to building a neural network. There is more depth here than the Udacity course and the math behind the algorithms is explained if you are interested.</p>
+
+<p>Once I felt comfortable with the concepts thus far, I worked through some tutorials on Kaggle. Kaggle is a community for machine learning, providing exercises and hosting competitions. I found their tutorials on deep learning easy to follow.</p>
+
+<h6 id="alternatives">Alternatives</h6>
+
+<p>The Stanford course is quite popular, but to me it seemed very algorithm-focused and covered a lot in a short amount of time. If you have the time (and money), this can be a good option.</p>
+
+<p>Udacity also hosts the machine learning courses corresponding to Georgia Tech's OMSCS program. These courses are more drawn out than the Intro course, spanning three different sessions for the same breadth.</p>
+
+<h3 id="retrospective">Retrospective</h3>
+
+<p>What struck me most was how little code was required to make some conclusion about a dataset. The truth is that all of the hard work is encapsulated in the algorithms provided by libraries. Developing a machine learning solution is more a matter of ensuring you have good data and selecting an appropriate algorithm to use.</p>
+
+<p>Ofcourse, if you want to innovate in this area or seek performance gains for a machine learning system, you need intimate knowledge of the algorithms and significant background in calculus and statistics.</p>
+
+<p>I'm more interested in the less math-y aspects of computer science but it will interesting to follow the continuing research in deep learning and the potential unleashed by advancements therein.</p>
+        </section>
+
+        <time class="post-date" datetime="2017-04-01">01 April 2017</time>
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="http://localhost:2368/author/jake/">Jake Gardner</a></h4>
+
+                    <p>Read <a href="http://localhost:2368/author/jake/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=My%20Life%20With%20The%20Machine%20Learning%20Kult&amp;url=http://localhost:2368/my-life-with-the-machine-learning-kult/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/my-life-with-the-machine-learning-kult/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/my-life-with-the-machine-learning-kult/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "http://localhost:2368/my-life-with-the-machine-learning-kult/";
+                    this.page.identifier = "/my-life-with-the-machine-learning-kult/";
+                    this.page.title = "My Life With The Machine Learning Kult";
+                };
+                (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//blogjakegardnerme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <script src="../public/jquery.js?v=0a7757e43e"></script>
+
+    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=0a7757e43e"></script>
+    // <script type="text/javascript" src="/assets/js/index.js?v=0a7757e43e"></script> -->
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70122057-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>

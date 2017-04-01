@@ -1,4 +1,94 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 07 Jan 2017 06:27:23 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>December Picks - Release It!, Continuous Delivery</title><description>&lt;p&gt;With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner</title><description>Explorations in development.</description><link>http://localhost:2368/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 01 Apr 2017 09:51:25 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>My Life With The Machine Learning Kult</title><description>&lt;p&gt;I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility that in the near future we could be able to model human cognition is pretty exciting.&lt;/p&gt;
+
+&lt;p&gt;Here I want to give a recap of what I learned and provide a little bit of guidance for those who want to get started with machine learning but don't know where to begin. It can seem daunting at first, but once you get past all of the unfamiliar terminology and learn about the great libraries around, harnessing this tool is quite doable.&lt;/p&gt;
+
+&lt;h3 id="thealgorithms"&gt;The Algorithms&lt;/h3&gt;
+
+&lt;h6 id="supervisedlearningtellthemachinewhatswhat"&gt;Supervised Learning (Tell The Machine What's What)&lt;/h6&gt;
+
+&lt;p&gt;Supervised learning entails processing a labeled dataset in order to build a model. What do I mean by labeled? For example, an apple [label] is red [attribute 1] and weighs 150g [attribute 2]. What do I mean by model? The model is the collection of knowledge that the algorithm uses to make decisions.&lt;/p&gt;
+
+&lt;p&gt;When testing the algorithm on new data, if a match on the features is made, the algorithm can confirm that the sample (a data item) should be assigned a known label. Conversely, if a sample does not match the features (attributes) of a known label, it will not be matched. For example, if a sample is encountered that is orange and weighs 50g, it is probably not an apple. This entire process is called Classification.&lt;/p&gt;
+
+&lt;p&gt;The common supervised algorithms are Logistic Regression, Support Vector Machines, and Decision Trees. &lt;/p&gt;
+
+&lt;h6 id="unsupervisedlearningletthemachinefigureitout"&gt;Unsupervised Learning (Let The Machine Figure It Out)&lt;/h6&gt;
+
+&lt;p&gt;On the other hand, unsupervised learning is where you have unlabeled data and rely on the algorithm to distinguish the different classes based on inspecting the attributes of each sample in the dataset and noting similarities.&lt;/p&gt;
+
+&lt;p&gt;This is accomplished with the straightforward K-means Clustering algorithm, aka "nearest neighbor" algorithm. This algorithm works by comparing a sample with it's neighbors, and grouping it with the neighbor whose feature value is nearest to its own. This process repeats until no regroupings can be made and you are left with clusters of features. There are your classes.&lt;/p&gt;
+
+&lt;h3 id="thetools"&gt;The Tools&lt;/h3&gt;
+
+&lt;h6 id="scikitlearn"&gt;scikit-learn&lt;/h6&gt;
+
+&lt;p&gt;The most popular library is the Python module scikit-learn. There are others, but this is the perfect place to start and will give you a lot of runway.&lt;/p&gt;
+
+&lt;h6 id="matlab"&gt;Matlab&lt;/h6&gt;
+
+&lt;p&gt;Part and parcel of the machine learning toolkit, Matlab allows you to make plots of your datasets and visualize the results of your learning models.&lt;/p&gt;
+
+&lt;h3 id="theprocess"&gt;The Process&lt;/h3&gt;
+
+&lt;h6 id="preparethedata"&gt;Prepare The Data&lt;/h6&gt;
+
+&lt;p&gt;Having a good dataset is critical. You need to remove any samples that are missing feature values, or exclude those features. Also, eliminate any features that are not necessary for distinguishing meaningful classifications in your data. Fewer features to analyze means less processing is required.&lt;/p&gt;
+
+&lt;h6 id="choosealgorithm"&gt;Choose Algorithm&lt;/h6&gt;
+
+&lt;p&gt;You have some decisions to make based on your data. If your data is structured and you have well-defined classes, you use a supervised algorithm. If your data is unstructured you choose an unsupervised approach.&lt;/p&gt;
+
+&lt;p&gt;And then there's the questions of performance and accuracy. Some algorithms are inherently less performant on large datasets. Tuning algorithm parameters can also give you some gains in performance and accuracy.&lt;/p&gt;
+
+&lt;h6 id="traintesttunerepeat"&gt;Train, Test, Tune, Repeat&lt;/h6&gt;
+
+&lt;p&gt;Whatever algorithm you choose, the process is pretty much the same.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Divide dataset into training and test datasets.  &lt;/li&gt;
+&lt;li&gt;Train your model on your training dataset.  &lt;/li&gt;
+&lt;li&gt;Check your accuracy on test dataset.  &lt;/li&gt;
+&lt;li&gt;Tune algorithm parameters.  &lt;/li&gt;
+&lt;li&gt;Re-train your model until you reach the accuracy you require.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="learningpath"&gt;Learning Path&lt;/h3&gt;
+
+&lt;h6 id="beforeyoubegin"&gt;Before You Begin&lt;/h6&gt;
+
+&lt;p&gt;A lot of machine learning courses list pre-requisites of statistics and linear algebra courses. I found that this was not really necessary. If you want to understand the formulas behind certain algorithms, you had better have calculus still fresh in mind (I skimmed over these definitions).&lt;/p&gt;
+
+&lt;p&gt;However, it will make it easier before you begin if you at least know:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;What's a vector?  &lt;/li&gt;
+&lt;li&gt;What's a matrix?  &lt;/li&gt;
+&lt;li&gt;What do linear/quadratic/logarithmic graphs look like? &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href="https://www.khanacademy.org/"&gt;Khan Academy&lt;/a&gt; is a good place to brush up on these.&lt;/p&gt;
+
+&lt;h6 id="whatidid"&gt;What I Did&lt;/h6&gt;
+
+&lt;p&gt;I looked at a few different courses, but ultimately decided on Google's Udacity course Introduction to Machine Learning. I felt this was a good pace, and provided a broad enough introduction without getting too far into the weeds.&lt;/p&gt;
+
+&lt;p&gt;I paired the Udacity course with the excellent book, &lt;a href="https://www.amazon.com/Python-Machine-Learning-Sebastian-Raschka-ebook/dp/B00YSILNL0"&gt;Python Machine Learning&lt;/a&gt; by Sebastian Raschka. Sebastian's book starts from the earliest building block of machine learning (the Perceptron), and continues all the way to building a neural network. There is more depth here than the Udacity course and the math behind the algorithms is explained if you are interested.&lt;/p&gt;
+
+&lt;p&gt;Once I felt comfortable with the concepts thus far, I worked through some tutorials on Kaggle. Kaggle is a community for machine learning, providing exercises and hosting competitions. I found their tutorials on deep learning easy to follow.&lt;/p&gt;
+
+&lt;h6 id="alternatives"&gt;Alternatives&lt;/h6&gt;
+
+&lt;p&gt;The Stanford course is quite popular, but to me it seemed very algorithm-focused and covered a lot in a short amount of time. If you have the time (and money), this can be a good option.&lt;/p&gt;
+
+&lt;p&gt;Udacity also hosts the machine learning courses corresponding to Georgia Tech's OMSCS program. These courses are more drawn out than the Intro course, spanning three different sessions for the same breadth.&lt;/p&gt;
+
+&lt;h3 id="retrospective"&gt;Retrospective&lt;/h3&gt;
+
+&lt;p&gt;What struck me most was how little code was required to make some conclusion about a dataset. The truth is that all of the hard work is encapsulated in the algorithms provided by libraries. Developing a machine learning solution is more a matter of ensuring you have good data and selecting an appropriate algorithm to use.&lt;/p&gt;
+
+&lt;p&gt;Ofcourse, if you want to innovate in this area or seek performance gains for a machine learning system, you need intimate knowledge of the algorithms and significant background in calculus and statistics.&lt;/p&gt;
+
+&lt;p&gt;I'm more interested in the less math-y aspects of computer science but it will interesting to follow the continuing research in deep learning and the potential unleashed by advancements therein.&lt;/p&gt;</description><link>http://localhost:2368/my-life-with-the-machine-learning-kult/</link><guid isPermaLink="false">84104df4-e1f0-4469-bfdf-8ddc8c258bae</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 01 Apr 2017 09:49:22 GMT</pubDate></item><item><title>December Picks - Release It!, Continuous Delivery</title><description>&lt;p&gt;With an important release coming up at work, my mind has been on stability, testing, and continuous delivery. So in my usual fashion I sought out the highest regarded wisdom and pored through these two books.&lt;/p&gt;
 
 &lt;h4 id="releaseitmichaeltnygard"&gt;Release It! - Michael T. Nygard&lt;/h4&gt;
 
@@ -893,64 +983,4 @@ To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. We
 
 &lt;h4 id="pushtoheroku"&gt;Push to Heroku&lt;/h4&gt;
 
-&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://localhost:2368/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item><item><title>Be A Software Craftsman</title><description>&lt;p&gt;I recently read &lt;a href="http://www.mcbreen.ab.ca/SoftwareCraftsmanship/"&gt;Software Craftsmanship&lt;/a&gt; by Pete McBreen. If you haven't read this book, run out and get a copy fast!&lt;/p&gt;
-
-&lt;p&gt;Pete suggests that software development should adopt an apprenticeship model. Simply teaching people language constructs in a classroom does not alone make them developers. Furthermore, people learn best by working with others more experienced than themselves. Pairing software "apprentices" with software "craftsmen" will result in a higher standard skill level in developers.&lt;/p&gt;
-
-&lt;p&gt;On your software developer journey, once you get past learning syntax and frameworks and patterns, you think more broadly about how you can improve. The road to craftsmanship is how you can do that.&lt;/p&gt;
-
-&lt;h4 id="howtobeasoftwarecraftsman"&gt;How to be a Software Craftsman&lt;/h4&gt;
-
-&lt;h6 id="gettoknowyourtools"&gt;Get to know your tools&lt;/h6&gt;
-
-&lt;p&gt;You can't expect to deliver high-quality solutions quickly if you are spending a lot of time figuring out how to use the tools. &lt;/p&gt;
-
-&lt;p&gt;Invest the time in a set of tools you enjoy using, but that also have a large community so you can be sure that they will be around.&lt;/p&gt;
-
-&lt;p&gt;Corollary to this is...&lt;/p&gt;
-
-&lt;h6 id="dontfollowthehype"&gt;Don't follow the hype&lt;/h6&gt;
-
-&lt;p&gt;Especially since the rebirth of Javascript, we have all been inundated with new frameworks, build tools, text editors, and every kind of widget inbetween.&lt;/p&gt;
-
-&lt;p&gt;You must exercise good judgment about what to learn. If you are constantly jumping on the latest bandwagon, you will never achieve mastery of your toolset (see above).&lt;/p&gt;
-
-&lt;h6 id="findamentor"&gt;Find a mentor&lt;/h6&gt;
-
-&lt;p&gt;Perhaps the most important element in your path towards mastery is finding those more experienced than yourself and working with them.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Practice without feedback just reinforces errors&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Just as with any handcraft, art, or music, learning through imitation is a powerful force.&lt;/p&gt;
-
-&lt;h6 id="knowthewholepicture"&gt;Know the whole picture&lt;/h6&gt;
-
-&lt;p&gt;The industry seems to encourage role-specialization. While you should not attempt to master every &lt;em&gt;tool&lt;/em&gt; or &lt;em&gt;language&lt;/em&gt;, being as familiar with the end-to-end process of software development can only benefit you.&lt;/p&gt;
-
-&lt;p&gt;You're a Front-ender? You absolutely should know how API's are written, and what has to take place for data to reach the client from the server. &lt;/p&gt;
-
-&lt;p&gt;You're a Back-ender? You need to understand how the design is hindered or empowered by what you deliver from the server. &lt;/p&gt;
-
-&lt;p&gt;All web and mobile developers need to be keen on UX/Design as well. Our world is ever-more-focused on well-designed products, and without user-centric thinking our development efforts are fruitless.&lt;/p&gt;
-
-&lt;h6 id="neverstoplearning"&gt;Never stop learning&lt;/h6&gt;
-
-&lt;p&gt;While the general flux in our industry creates a lot of noise as far as what to learn, it's important to keep an eye on the general trajectory. &lt;/p&gt;
-
-&lt;p&gt;Fixed-width website designs gave way to fluid, responsive ones.&lt;/p&gt;
-
-&lt;p&gt;Fully server-generated web pages gave way to mostly client-based ones.&lt;/p&gt;
-
-&lt;p&gt;And recently more and more developers are moving from object-oriented languages to functional ones.&lt;/p&gt;
-
-&lt;p&gt;Make learning a habit.&lt;/p&gt;
-
-&lt;h6 id="wrapup"&gt;Wrap Up&lt;/h6&gt;
-
-&lt;p&gt;Being a software craftsman is about striving for expertise and seeking a breadth and depth of experience so that you can deliver the highest-quality solutions.&lt;/p&gt;
-
-&lt;p&gt;It's also about cultivating a intuition, knowing when it makes sense to deviate from a process or how to choose which technology to use.&lt;/p&gt;
-
-&lt;p&gt;Finally, it's about taking real pride in your work so that you are constantly looking for ways you can improve.&lt;/p&gt;</description><link>http://localhost:2368/be-a-software-craftsman/</link><guid isPermaLink="false">9bf0addd-0189-4c53-9495-8fd102f95882</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Wed, 11 Nov 2015 13:50:56 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://localhost:2368/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item></channel></rss>
