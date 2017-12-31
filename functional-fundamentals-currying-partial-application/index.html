@@ -11,27 +11,27 @@
 
     <link rel="shortcut icon" href="../favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=0a7757e43e">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=74deaaaa6c">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=0a7757e43e">
-    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=0a7757e43e">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=74deaaaa6c">
+    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=74deaaaa6c">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
 
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/">
     
     <meta property="og:site_name" content="Jake Gardner">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Functional Fundamentals: Currying &amp; Partial Application">
     <meta property="og:description" content="This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: part one, part two, part three. Functional programming is full of non-obvious terminology, e.g. currying, but this is an...">
-    <meta property="og:url" content="http://localhost:2368/functional-fundamentals-currying-partial-application/">
+    <meta property="og:url" content="http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/">
     <meta property="article:published_time" content="2016-06-03T11:36:55.974Z">
     <meta property="article:modified_time" content="2016-07-11T03:28:03.798Z">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Functional Fundamentals: Currying &amp; Partial Application">
     <meta name="twitter:description" content="This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: part one, part two, part three. Functional programming is full of non-obvious terminology, e.g. currying, but this is an...">
-    <meta name="twitter:url" content="http://localhost:2368/functional-fundamentals-currying-partial-application/">
+    <meta name="twitter:url" content="http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/">
     
     <script type="application/ld+json">
 {
@@ -41,11 +41,11 @@
     "author": {
         "@type": "Person",
         "name": "Jake Gardner",
-        "url": "http://localhost:2368/author/jake",
+        "url": "http://blog.jakegardner.me/author/jake",
         "sameAs": null
     },
     "headline": "Functional Fundamentals: Currying &amp; Partial Application",
-    "url": "http://localhost:2368/functional-fundamentals-currying-partial-application/",
+    "url": "http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/",
     "datePublished": "2016-06-03T11:36:55.974Z",
     "dateModified": "2016-07-11T03:28:03.798Z",
     "description": "This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: part one, part two, part three. Functional programming is full of non-obvious terminology, e.g. currying, but this is an..."
@@ -53,7 +53,7 @@
     </script>
 
     <meta name="generator" content="Ghost 0.5">
-    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="../rss/index.html">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://blog.jakegardner.me/rss/">
 </head>
 <body class="post-template">
     <nav class="navbar" role="navigation">
@@ -87,7 +87,7 @@
         </header>
 
         <section class="post-content">
-            <p>This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: <a href="../functional-fundamentals-pure-function.6">part one</a>, <a href="../functional-fundamentals-higher-order-functions/">part two</a>, <a href="../functional-fundamentals-compose/">part three</a>.</p>
+            <p>This is part four in my series on functional programming fundamentals in Javascript. You can find the previous articles here: <a href="../functional-fundamentals-pure-function.7">part one</a>, <a href="../functional-fundamentals-higher-order-functions/">part two</a>, <a href="../functional-fundamentals-compose/">part three</a>.</p>
 
 <p>Functional programming is full of non-obvious terminology, e.g. currying, but this is an important one to know. Currying is similar to but different from partial application, so we will compare these two today.</p>
 
@@ -125,9 +125,9 @@ addThese(9); // 24
 
 
             <section class="author">
-                <h4><a href="http://localhost:2368/author/jake/">Jake Gardner</a></h4>
+                <h4><a href="http://blog.jakegardner.me/">Jake Gardner</a></h4>
 
-                    <p>Read <a href="http://localhost:2368/author/jake/">more posts</a> by this author.</p>
+                    <p>Read <a href="http://blog.jakegardner.me/">more posts</a> by this author.</p>
                 <div class="author-meta">
                     
                     
@@ -137,13 +137,13 @@ addThese(9); // 24
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=Functional%20Fundamentals%3A%20Currying%20%26%20Partial%20Application&amp;url=http://localhost:2368/functional-fundamentals-currying-partial-application/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <a class="icon-twitter" href="https://twitter.com/share?text=Functional%20Fundamentals%3A%20Currying%20%26%20Partial%20Application&amp;url=http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/functional-fundamentals-currying-partial-application/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/functional-fundamentals-currying-partial-application/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
             </section>
@@ -151,7 +151,7 @@ addThese(9); // 24
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
-                    this.page.url = "http://localhost:2368/functional-fundamentals-currying-partial-application/";
+                    this.page.url = "http://blog.jakegardner.me/functional-fundamentals-currying-partial-application/";
                     this.page.identifier = "/functional-fundamentals-currying-partial-application/";
                     this.page.title = "Functional Fundamentals: Currying &amp; Partial Application";
                 };
@@ -171,10 +171,10 @@ addThese(9); // 24
 
 
 
-    <script src="../public/jquery.js?v=0a7757e43e"></script>
+    <script src="../public/jquery.js?v=74deaaaa6c"></script>
 
-    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=0a7757e43e"></script>
-    // <script type="text/javascript" src="/assets/js/index.js?v=0a7757e43e"></script> -->
+    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=74deaaaa6c"></script>
+    // <script type="text/javascript" src="/assets/js/index.js?v=74deaaaa6c"></script> -->
 
 
     <script>
