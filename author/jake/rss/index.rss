@@ -1,4 +1,72 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 31 Dec 2017 04:03:35 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>My Life With The Machine Learning Kult</title><description>&lt;p&gt;I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility that in the near future we could be able to model human cognition is pretty exciting.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 10 Jun 2018 05:49:05 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Book Reviews: Peopleware, The Mythical Man-Month</title><description>&lt;p&gt;This set of reviews is on two classic tomes that have been on my to-read list for some time.&lt;/p&gt;
+
+&lt;h3 id="peoplewareproductiveprojectsandteams"&gt;Peopleware: Productive Projects and Teams&lt;/h3&gt;
+
+&lt;p&gt;This book is written from the perspective of advising a manager of software developers, but certainly should be read by ANYONE working in software development. The basic premise is that a typical office environment, traditional management styles, and culture of overtime in our industry decrease developer productivity. It contains many insights which a single person could only piece together after an entire career of working on development teams. Take advantage of other's experience!&lt;/p&gt;
+
+&lt;p&gt;Following are some of my highlights:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The structure of a team is a network, not a hierarchy. For all the deference paid to the concept of leadership (a cult word in our industry), it just doesn’t have much place here.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Open plan workspace? Think again.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;"The bald fact is that many companies provide developers with a workplace that is so crowded, noisy, and interruptive as to fill their days with frustration."&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;"An hour in flow really accomplishes something, but 10 six-minute work periods sandwiched between 11 interruptions won’t accomplish anything."&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most non-developers do not realize that software development is actually a creative discipline that requires deep focus.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;"Nobody can really work much more than forty hours, at least not continually and with the level of intensity required for creative intellectual work."&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;"If you are charged with getting a task done, what proportion of your time ought to be dedicated to actually doing the task? Not 100 percent. There ought to be some provision for brainstorming, investigating new methods, figuring out how to avoid doing some of the subtasks, reading, training, and just goofing off."&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Good developers thrive on autonomy and trust.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The mark of the best manager is an ability to single out the few key spirits who have the proper mix of perspective and maturity and then turn them loose.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;People who feel untrusted have little inclination to bond together into a cooperative team.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="themythicalmanmonthessaysonsoftwareengineering"&gt;The Mythical Man-Month: Essays on Software Engineering&lt;/h3&gt;
+
+&lt;p&gt;This book is also related to team productivity and success but focuses more on project failure caused by scheduling mishaps. It gives a sort-of lessons-learned from the experience of managing the development of the OS/360 operating system. I think it is especially important for project managers in the software industry to read to understand how traditional methods do not work when it comes to development.&lt;/p&gt;
+
+&lt;p&gt;Following are some of my highlights:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hardly any projects succeed in less than 3/4 of the calculated optimum schedule, regardless of the number of people applied!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One point that really resonated with me is the idea of "conceptual integrity", having experienced the chaos that ensues when many people are allowed to introduce different ideas into one codebase and everyone is too timid to refactor something they didn't write.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;"I will contend that conceptual integrity is the most important consideration in system design. It is better to have a system omit certain anomalous features and improvements, but to reflect one set of design ideas, than to have one that contains many good but independent and uncoordinated ideas."&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;"Conceptual integrity in turn dictates that the design must proceed from one mind, or from a very small number of agreeing resonant minds."&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Scheduling is often done assuming all developers are strictly coding and for long hours.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;"...teams were only realizing 50 percent of the working week as actual programming and debugging time. Machine downtime, higher-priority short unrelated jobs, meetings, paperwork, company business, sickness, personal time, etc. accounted for the rest. In short, the estimates made an unrealistic assumption about the number of technical work hours per man-year."&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Adding people does not help the schedule in the short-term. "Communication effort" increases, and the inevitable communication breakdown that occurs as people increase causes introduction of competing or redundant ideas into the system (bugs).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;"Since software construction is inherently a systems effort—an exercise in complex interrelationships—communication effort is great, and it quickly dominates the decrease in individual task time brought about by partitioning. Adding more men then lengthens, not shortens, the schedule."&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;"When a task cannot be partitioned because of sequential constraints, the application of more effort has no effect on the schedule."&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And early praise for iterative development (this book was first published in 1975).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;"I would go a step further and assert that it is really impossible for clients, even those working with software engineers, to specify completely, precisely, and correctly the exact requirements of a modern software product before having built and tried some versions of the product they are specifying."&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;"Much of present-day software acquisition procedures rests upon the assumption that one can specify a satisfactory system in advance, get bids for its construction, have it built, and install it. I think this assumption is fundamentally wrong, and that many software acquisition problems spring from that fallacy."&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><link>http://blog.jakegardner.me/book-review-peopleware-mythical-man-month/</link><guid isPermaLink="false">27a2cf0d-369a-4040-8360-75e2cb8f6605</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 10 Jun 2018 05:42:54 GMT</pubDate></item><item><title>My Life With The Machine Learning Kult</title><description>&lt;p&gt;I spent several weeks at the end of 2016 learning about and experimenting with machine learning. It has been a hot topic in recent years and is behind many of the innovations we are benefitting from today. Plus, the possibility that in the near future we could be able to model human cognition is pretty exciting.&lt;/p&gt;
 
 &lt;p&gt;Here I want to give a recap of what I learned and provide a little bit of guidance for those who want to get started with machine learning but don't know where to begin. It can seem daunting at first, but once you get past all of the unfamiliar terminology and learn about the great libraries around, harnessing this tool is quite doable.&lt;/p&gt;
 
@@ -939,48 +1007,4 @@ it("should output something", function(done) {
 
 &lt;p&gt;If you write any kind of CLI, this is a simple way to verify output.&lt;/p&gt;
 
-&lt;p&gt;Honestly, this kind of test could be done in any scripting language, but using Node and Mocha allowed me to integrate with the rest of the testing suite.&lt;/p&gt;</description><link>http://blog.jakegardner.me/testing-cli-tools/</link><guid isPermaLink="false">c1447f66-a81e-4c93-b108-e6489972050b</guid><category>node</category><category>testing</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 15 Dec 2015 13:17:10 GMT</pubDate></item><item><title>Publish your Angular app to Heroku</title><description>&lt;p&gt;&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; is great for hosting your development projects (particularly in-progress). In fact, I recommend publishing your project sooner rather than later so that you don't have any surprises in deployment later on. &lt;/p&gt;
-
-&lt;p&gt;Getting Heroku to serve your Angular application is pretty simple but does require a little bit of configuration. Moreover, these same steps could work for any front-end project, not just Angular.&lt;/p&gt;
-
-&lt;p&gt;This article assumes: &lt;br&gt;
-You have a Heroku account &lt;br&gt;
-You have the &lt;a href="https://toolbelt.heroku.com/"&gt;Heroku Toolbelt&lt;/a&gt; installed on your machine&lt;/p&gt;
-
-&lt;h4 id="addexpress"&gt;Add Express&lt;/h4&gt;
-
-&lt;p&gt;Firstly, you'll want to &lt;code&gt;npm install --save express gzippo&lt;/code&gt; in your project directory.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://www.npmjs.com/package/express"&gt;Express&lt;/a&gt; is a node-based web server which Heroku will use to serve your application files.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://www.npmjs.com/package/gzippo"&gt;Gzippo&lt;/a&gt; allows you to compress (gzip) the files before they are sent on the wire to reduce the size, improving performance.&lt;/p&gt;
-
-&lt;h4 id="createanexpressserverfile"&gt;Create an Express server file&lt;/h4&gt;
-
-&lt;p&gt;Create a file named &lt;code&gt;web.js&lt;/code&gt; in your project root. In this file, add the following lines:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var gzippo = require('gzippo');
-var express = require('express');
-var morgan = require('morgan');
-var app = express();
-
-app.use(morgan('dev'));
-app.use(gzippo.staticGzip("" + __dirname + "/dist"));
-
-app.route('/*').get( function(req, res) {
-    return res.sendFile(__dirname + "/dist/index.html");
-});
-
-app.listen(process.env.PORT || 5000);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This file includes necessary dependencies, and configures Express to respond to all requests with the file at the path in the res.sendFile method. You will need to update this path according to where your final application bundle resides.&lt;/p&gt;
-
-&lt;h4 id="addprocfileandupdatepackagejson"&gt;Add Procfile and Update package.json&lt;/h4&gt;
-
-&lt;p&gt;Heroku relies on a file called &lt;code&gt;Procfile&lt;/code&gt; to know how to start your application. Note that &lt;a href="https://devcenter.heroku.com/articles/procfile"&gt;Procfile&lt;/a&gt; has no file extension. &lt;br&gt;
-To this file, you just need to add &lt;code&gt;web: node web.js&lt;/code&gt;. Web lets Heroku know that you want to serve HTTP content, and the remainder is command to invoke node with the Express file you created in the previous step.&lt;/p&gt;
-
-&lt;h4 id="pushtoheroku"&gt;Push to Heroku&lt;/h4&gt;
-
-&lt;p&gt;Before you push to Heroku, it's always a good idea to run &lt;code&gt;heroku local&lt;/code&gt; to &lt;a href="https://devcenter.heroku.com/articles/heroku-local"&gt;make sure&lt;/a&gt; your configuration is correct. If everything looks good then you can &lt;code&gt;git push heroku master&lt;/code&gt;. If that completes successfully you are good to go!&lt;/p&gt;</description><link>http://blog.jakegardner.me/publish-your-angular-app-to-heroku/</link><guid isPermaLink="false">15e168b2-d1c8-40ad-95ce-56b41f50e936</guid><category>node</category><category>angular</category><category>heroku</category><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 05 Dec 2015 05:45:41 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Honestly, this kind of test could be done in any scripting language, but using Node and Mocha allowed me to integrate with the rest of the testing suite.&lt;/p&gt;</description><link>http://blog.jakegardner.me/testing-cli-tools/</link><guid isPermaLink="false">c1447f66-a81e-4c93-b108-e6489972050b</guid><category>node</category><category>testing</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 15 Dec 2015 13:17:10 GMT</pubDate></item></channel></rss>
