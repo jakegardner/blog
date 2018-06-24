@@ -1,4 +1,273 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 10 Jun 2018 05:49:05 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Book Reviews: Peopleware, The Mythical Man-Month</title><description>&lt;p&gt;This set of reviews is on two classic tomes that have been on my to-read list for some time.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 24 Jun 2018 06:40:41 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>React Native: Invoking React component callback from Native</title><description>&lt;p&gt;One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment (Android).&lt;/p&gt;
+
+&lt;p&gt;The piece of this which I found was not so well documented was how to invoke a callback defined on the React component from within the native code. So after spending the time to piece it together, I bring you this short walkthrough.&lt;/p&gt;
+
+&lt;h3 id="ios"&gt;iOS&lt;/h3&gt;
+
+&lt;p&gt;First, you will need to create a class inheriting from &lt;code&gt;RCTViewManager&lt;/code&gt; which will make React Native aware of and able to load your component.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentManager.h
+#import &amp;lt;React/RCTViewManager.h&amp;gt;
+
+@interface MyComponentManager : RCTViewManager
+
+@end
+
+// MyComponentManager.m
+#import "MyComponentManager.h"
+@implementation MyComponentManager
+
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_VIEW_PROPERTY(myCallback, RCTBubblingEventBlock);
+
+@end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The most important things here are &lt;code&gt;RCT_EXPORT_MODULE()&lt;/code&gt; and &lt;code&gt;RCT_EXPORT_VIEW_PROPERTY()&lt;/code&gt;. The first registers your component with React Native. The second allows the passing of a method property called &lt;code&gt;myComponent&lt;/code&gt; over the bridge, which can then be invoked within your native component.&lt;/p&gt;
+
+&lt;p&gt;Next, create a class inheriting from &lt;code&gt;UIView&lt;/code&gt; to render the UI of your component.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;lt;UIKit/UIView.h&amp;gt;
+#import &amp;lt;React/RCTComponent.h&amp;gt;
+
+@interface MyComponent : UIView
+
+@property (nonatomic, copy) RCTBubblingEventBlock myCallback;
+
+@end
+
+@implementation MyComponent
+    ...
+- (void) onButtonPress {
+  self.myCallback(@{ data: 'data sent from native' });
+}
+    ...
+@end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;myCallback&lt;/code&gt; method is defined in your component interface as a property of type &lt;code&gt;RCTBubblingEventBlock&lt;/code&gt; matching that as defined in the manager interface. In your &lt;code&gt;MyComponent&lt;/code&gt; view class, you can invoke the method wherever appropriate, but the parameter you pass must be a dictionary i.e. &lt;code&gt;@{...}&lt;/code&gt;. This dictionary will be received on the Javascript side as a plain object. Here, I'm just calling the method within a button press handler.&lt;/p&gt;
+
+&lt;p&gt;Lastly, you need to instantiate your view component, &lt;code&gt;MyComponent&lt;/code&gt;, in the manager component, &lt;code&gt;MyComponentManager&lt;/code&gt;. When you load your component within React, React will create the &lt;code&gt;MyComponentManager&lt;/code&gt;, but without this step, it will not have any UI. You will have just loaded an empty native module.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentManager.m
+#import "MyComponentManager.h"
+#import "MyComponent.h" // include your view component header
+@implementation MyComponentManager
+
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_VIEW_PROPERTY(myCallback, RCTBubblingEventBlock);
+
+// add your view component as the "view" for your component manager
+- (UIView *)view
+{
+  return [[MyComponent alloc] init];
+}
+
+@end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lets have a look at the analog of these steps for Android before showing how you make the connection in Javascript below.&lt;/p&gt;
+
+&lt;h3 id="android"&gt;Android&lt;/h3&gt;
+
+&lt;p&gt;First, create a package class and register it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentPackage.java
+package me.jakegardner.mycomponent;
+
+import com.facebook.react.ReactPackage;  
+import com.facebook.react.bridge.JavaScriptModule;  
+import com.facebook.react.bridge.NativeModule;  
+import com.facebook.react.bridge.ReactApplicationContext;  
+import com.facebook.react.uimanager.ViewManager;
+
+import java.util.Arrays;  
+import java.util.Collections;  
+import java.util.List;
+
+public class MyComponentPackage implements ReactPackage {
+
+    @Override
+    public List&amp;lt;NativeModule&amp;gt; createNativeModules(ReactApplicationContext reactContext) {
+        return Arrays.&amp;lt;NativeModule&amp;gt;asList(
+
+        );
+    }
+
+    public List&amp;lt;Class&amp;lt;? extends JavaScriptModule&amp;gt;&amp;gt; createJSModules() {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List&amp;lt;ViewManager&amp;gt; createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.&amp;lt;ViewManager&amp;gt;singletonList(
+
+        );
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;// MainApplication.java
+import me.jakegardner.mycomponent.MyComponentPackage;  
+...
+protected List&amp;lt;ReactPackage&amp;gt; getPackages() {  
+    return Arrays.&amp;lt;ReactPackage&amp;gt;asList(
+        new MyComponentPackage() // register here
+    );
+  }
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, create a module class and add it to your &lt;code&gt;createNativeModules&lt;/code&gt; method in &lt;code&gt;MyComponentPackage.java&lt;/code&gt;.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentModule.java
+package me.jakegardner.mycomponent;
+
+import com.facebook.react.bridge.ReactApplicationContext;  
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+
+public class MyComponentModule extends ReactContextBaseJavaModule {
+
+    public MyComponentModule(ReactApplicationContext reactContext) {
+        super(reactContext);
+    }
+
+    @Override
+    public String getName() {
+        return "MyComponent";
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentPackage.java
+@Override
+    public List&amp;lt;NativeModule&amp;gt; createNativeModules(ReactApplicationContext reactContext) {
+        return Arrays.&amp;lt;NativeModule&amp;gt;asList(
+            new MyComponentModule(reactContext) // add here
+        );
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, create your view and view manager classes.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentView.java
+package me.jakegardner.mycomponent;
+
+public class MyComponentView extends FrameLayout {  
+    ...
+
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentManager.java
+package me.jakegardner.mycomponent;
+
+public class MyComponentManager extends SimpleViewManager&amp;lt;MyComponentView&amp;gt; {  
+    private static final String REACT_CLASS = "MyComponent";
+
+    @Override
+    public String getName() {
+        return REACT_CLASS;
+    }
+
+    @Override
+    public MyComponentView createViewInstance(ThemedReactContext context) {
+        return new MyComponentView(context);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add your view manager class to the &lt;code&gt;createViewManagers&lt;/code&gt; method in your package class.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentPackage.java
+...
+@Override
+    public List&amp;lt;ViewManager&amp;gt; createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.&amp;lt;ViewManager&amp;gt;singletonList(new MyComponentManager());
+}
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Defining the callback method which can be invoked in your native view is done, as with iOS, in the manager class.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+// add this method
+@Override
+    public @Nullable Map getExportedCustomDirectEventTypeConstants() {
+        return MapBuilder.of(
+            "myCallback",
+            MapBuilder.of("registrationName", "myCallback"),
+        );
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;getExportedCustomDirectEventTypeConstants&lt;/code&gt; registers the property names which will be passed over the bridge. If you need multiple callbacks, just add additional pairs of parameters to the first &lt;code&gt;MapBuilder.of&lt;/code&gt; call.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return MapBuilder.of(  
+    "myCallbackOne",
+    MapBuilder.of("registrationName", "myCallbackOne"),
+    "myCallbackTwo",
+    MapBuilder.of("registrationName", "myCallbackTwo"),
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, in your view class, you can invoke the callback method.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponentView.java
+...
+private void onButtonPress() {  
+    WritableMap map = Arguments.createMap();
+    map.putString("data", "data sent from native");
+    final ReactContext context = (ReactContext) getContext();
+    context.getJSModule(RCTEventEmitter.class).receiveEvent(
+        getId(),
+        "myCallback",
+        map
+    );
+}
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As with iOS, the parameter to the callback is a dictionary (or map). &lt;/p&gt;
+
+&lt;h3 id="reactnative"&gt;React Native&lt;/h3&gt;
+
+&lt;p&gt;Now, back in JS, create a new component.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// MyComponent.js
+import { requireNativeComponent, ViewPropTypes } from 'react-native';  
+import PropTypes from 'prop-types';
+
+const iface = {  
+  name: 'MyComponent',
+  propTypes: {
+    myCallback: PropTypes.func,
+    ...ViewPropTypes,
+  },
+};
+
+export default requireNativeComponent('MyComponent', iface);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we load the component by name from the native side. The name must match the name defined in &lt;code&gt;getName()&lt;/code&gt; in the module class in the case of Android, or the name of the manager class &lt;em&gt;minus&lt;/em&gt; the word &lt;code&gt;Manager&lt;/code&gt; for iOS.&lt;/p&gt;
+
+&lt;p&gt;Now, we can use this component in any JSX, passing our callback.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class MyComponentContainer extends React.Component {  
+    handleCallback(event) {
+        console.log(event.nativeEvent.data); // "data sent from native"
+    }
+
+    render() {
+        return &amp;lt;MyComponent myCallback={this.handleCallback} /&amp;gt;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One thing to note is that your callback will receive an event object. The data you sent from native will be assigned to the &lt;code&gt;nativeEvent&lt;/code&gt; property on that event object.&lt;/p&gt;</description><link>http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/</link><guid isPermaLink="false">f2724a41-7a68-41eb-b45d-ef81a96e1fee</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sun, 24 Jun 2018 06:37:27 GMT</pubDate></item><item><title>Book Reviews: Peopleware, The Mythical Man-Month</title><description>&lt;p&gt;This set of reviews is on two classic tomes that have been on my to-read list for some time.&lt;/p&gt;
 
 &lt;h3 id="peoplewareproductiveprojectsandteams"&gt;Peopleware: Productive Projects and Teams&lt;/h3&gt;
 
@@ -945,66 +1214,4 @@ export default (
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The reducer will be named after your reducer. Update your props declarations or mapStateToProps methods as appropriate to ensure that &lt;a href="http://rackt.org/redux/docs/basics/DataFlow.html"&gt;state flows&lt;/a&gt; to your components as you expect.&lt;/p&gt;</description><link>http://blog.jakegardner.me/routing-with-redux/</link><guid isPermaLink="false">0213fc9b-798c-4a10-a5e2-93ef5e7b4d8f</guid><category>react</category><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 12 Jan 2016 05:22:30 GMT</pubDate></item><item><title>Testing CLI Tools</title><description>&lt;p&gt;While I was developing the &lt;a href="https://www.npmjs.com/package/s3syncr"&gt;s3syncr&lt;/a&gt; command-line (CLI) utility, I discovered I needed a way to test the function of the program as a whole. There are separate tests for the parsing of input to the program, but I wanted to verify the interaction of all the components as well as the output. &lt;/p&gt;
-
-&lt;p&gt;Since console output is the only interface given to the user in a CLI tool, consistent output is critical.&lt;/p&gt;
-
-&lt;p&gt;So, I made use of Node to run the utility inside a Mocha test.&lt;/p&gt;
-
-&lt;h4 id="nodeexec"&gt;Node exec()&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;describe("No parameters", function() {
-    it("should output No operation", function(done) {
-        require('child_process').exec("node index.js",  
-            function(err, stdout, stderr) {
-              assert(err);
-              assert.strictEqual(stderr, "No operation\n");
-              done();  
-        });
-    });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This test uses the Node-native &lt;a href="https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback"&gt;child_process.exec&lt;/a&gt; method which runs a shell command and gives you access to what is written to console.log() and console.error() through the &lt;code&gt;stdout&lt;/code&gt; and &lt;code&gt;stderr&lt;/code&gt; parameters, respectively. You can also pass in an options object to specify current working directory, environment variables and so on.&lt;/p&gt;
-
-&lt;h4 id="assertingoutput"&gt;Asserting Output&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;assert.strictEqual(stderr, "No operation\n");
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now that console output is available, to execute tests you just need to assert on &lt;code&gt;stdout&lt;/code&gt; or &lt;code&gt;stderr&lt;/code&gt; string content. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;assert(err);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can also use the &lt;code&gt;err&lt;/code&gt; parameter to check for uncaught exceptions.&lt;/p&gt;
-
-&lt;h4 id="automatinginput"&gt;Automating Input&lt;/h4&gt;
-
-&lt;p&gt;Using exec() in the before and after &lt;a href="https://mochajs.org/#hooks"&gt;test hooks&lt;/a&gt; to handle varying test input gives you a path towards comprehensive automated testing!&lt;/p&gt;
-
-&lt;p&gt;For example, you can have some tests that create a file, run the test, and then remove the file afterwards.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;beforeEach(function(done) {
-    require('child_process').exec("echo 'test' &amp;gt; test.txt", 
-        function(err, stdout, stderr) {
-            done();
-    });
-});
-
-afterEach(function(done) {
-    require('child_process').exec("rm test.txt", 
-        function(err, stdout, stderr) {
-            done();
-    });
-});
-
-it("should output something", function(done) {
-    ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id="wrapup"&gt;Wrap Up&lt;/h4&gt;
-
-&lt;p&gt;If you write any kind of CLI, this is a simple way to verify output.&lt;/p&gt;
-
-&lt;p&gt;Honestly, this kind of test could be done in any scripting language, but using Node and Mocha allowed me to integrate with the rest of the testing suite.&lt;/p&gt;</description><link>http://blog.jakegardner.me/testing-cli-tools/</link><guid isPermaLink="false">c1447f66-a81e-4c93-b108-e6489972050b</guid><category>node</category><category>testing</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 15 Dec 2015 13:17:10 GMT</pubDate></item></channel></rss>
+&lt;p&gt;The reducer will be named after your reducer. Update your props declarations or mapStateToProps methods as appropriate to ensure that &lt;a href="http://rackt.org/redux/docs/basics/DataFlow.html"&gt;state flows&lt;/a&gt; to your components as you expect.&lt;/p&gt;</description><link>http://blog.jakegardner.me/routing-with-redux/</link><guid isPermaLink="false">0213fc9b-798c-4a10-a5e2-93ef5e7b4d8f</guid><category>react</category><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 12 Jan 2016 05:22:30 GMT</pubDate></item></channel></rss>

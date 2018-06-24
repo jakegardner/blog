@@ -1,0 +1,432 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>React Native: Invoking React component callback from Native</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=1c592058eb">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=1c592058eb">
+    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=1c592058eb">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
+
+    <link rel="canonical" href="http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/">
+    
+    <meta property="og:site_name" content="Jake Gardner">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="React Native: Invoking React component callback from Native">
+    <meta property="og:description" content="One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment...">
+    <meta property="og:url" content="http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/">
+    <meta property="article:published_time" content="2018-06-24T06:37:27.650Z">
+    <meta property="article:modified_time" content="2018-06-24T06:38:57.935Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="React Native: Invoking React component callback from Native">
+    <meta name="twitter:description" content="One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment...">
+    <meta name="twitter:url" content="http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Jake Gardner",
+    "author": {
+        "@type": "Person",
+        "name": "Jake Gardner",
+        "url": "http://blog.jakegardner.me/author/jake",
+        "sameAs": null
+    },
+    "headline": "React Native: Invoking React component callback from Native",
+    "url": "http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/",
+    "datePublished": "2018-06-24T06:37:27.650Z",
+    "dateModified": "2018-06-24T06:38:57.935Z",
+    "description": "One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://blog.jakegardner.me/rss/">
+</head>
+<body class="post-template">
+    <nav class="navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
+                    <span class="navbar-brand">
+                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
+                    </span>
+                    <ul class="navbar-social">
+                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
+                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+
+<main class="post-content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">React Native: Invoking React component callback from Native</h1>
+            <section class="post-meta">
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment (Android).</p>
+
+<p>The piece of this which I found was not so well documented was how to invoke a callback defined on the React component from within the native code. So after spending the time to piece it together, I bring you this short walkthrough.</p>
+
+<h3 id="ios">iOS</h3>
+
+<p>First, you will need to create a class inheriting from <code>RCTViewManager</code> which will make React Native aware of and able to load your component.</p>
+
+<pre><code>// MyComponentManager.h
+#import &lt;React/RCTViewManager.h&gt;
+
+@interface MyComponentManager : RCTViewManager
+
+@end
+
+// MyComponentManager.m
+#import "MyComponentManager.h"
+@implementation MyComponentManager
+
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_VIEW_PROPERTY(myCallback, RCTBubblingEventBlock);
+
+@end
+</code></pre>
+
+<p>The most important things here are <code>RCT_EXPORT_MODULE()</code> and <code>RCT_EXPORT_VIEW_PROPERTY()</code>. The first registers your component with React Native. The second allows the passing of a method property called <code>myComponent</code> over the bridge, which can then be invoked within your native component.</p>
+
+<p>Next, create a class inheriting from <code>UIView</code> to render the UI of your component.  </p>
+
+<pre><code>#import &lt;UIKit/UIView.h&gt;
+#import &lt;React/RCTComponent.h&gt;
+
+@interface MyComponent : UIView
+
+@property (nonatomic, copy) RCTBubblingEventBlock myCallback;
+
+@end
+
+@implementation MyComponent
+    ...
+- (void) onButtonPress {
+  self.myCallback(@{ data: 'data sent from native' });
+}
+    ...
+@end
+</code></pre>
+
+<p>The <code>myCallback</code> method is defined in your component interface as a property of type <code>RCTBubblingEventBlock</code> matching that as defined in the manager interface. In your <code>MyComponent</code> view class, you can invoke the method wherever appropriate, but the parameter you pass must be a dictionary i.e. <code>@{...}</code>. This dictionary will be received on the Javascript side as a plain object. Here, I'm just calling the method within a button press handler.</p>
+
+<p>Lastly, you need to instantiate your view component, <code>MyComponent</code>, in the manager component, <code>MyComponentManager</code>. When you load your component within React, React will create the <code>MyComponentManager</code>, but without this step, it will not have any UI. You will have just loaded an empty native module.</p>
+
+<pre><code>// MyComponentManager.m
+#import "MyComponentManager.h"
+#import "MyComponent.h" // include your view component header
+@implementation MyComponentManager
+
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_VIEW_PROPERTY(myCallback, RCTBubblingEventBlock);
+
+// add your view component as the "view" for your component manager
+- (UIView *)view
+{
+  return [[MyComponent alloc] init];
+}
+
+@end
+</code></pre>
+
+<p>Lets have a look at the analog of these steps for Android before showing how you make the connection in Javascript below.</p>
+
+<h3 id="android">Android</h3>
+
+<p>First, create a package class and register it.</p>
+
+<pre><code>// MyComponentPackage.java
+package me.jakegardner.mycomponent;
+
+import com.facebook.react.ReactPackage;  
+import com.facebook.react.bridge.JavaScriptModule;  
+import com.facebook.react.bridge.NativeModule;  
+import com.facebook.react.bridge.ReactApplicationContext;  
+import com.facebook.react.uimanager.ViewManager;
+
+import java.util.Arrays;  
+import java.util.Collections;  
+import java.util.List;
+
+public class MyComponentPackage implements ReactPackage {
+
+    @Override
+    public List&lt;NativeModule&gt; createNativeModules(ReactApplicationContext reactContext) {
+        return Arrays.&lt;NativeModule&gt;asList(
+
+        );
+    }
+
+    public List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.&lt;ViewManager&gt;singletonList(
+
+        );
+    }
+}
+</code></pre>
+
+<pre><code>// MainApplication.java
+import me.jakegardner.mycomponent.MyComponentPackage;  
+...
+protected List&lt;ReactPackage&gt; getPackages() {  
+    return Arrays.&lt;ReactPackage&gt;asList(
+        new MyComponentPackage() // register here
+    );
+  }
+...
+</code></pre>
+
+<p>Next, create a module class and add it to your <code>createNativeModules</code> method in <code>MyComponentPackage.java</code>.  </p>
+
+<pre><code>// MyComponentModule.java
+package me.jakegardner.mycomponent;
+
+import com.facebook.react.bridge.ReactApplicationContext;  
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+
+public class MyComponentModule extends ReactContextBaseJavaModule {
+
+    public MyComponentModule(ReactApplicationContext reactContext) {
+        super(reactContext);
+    }
+
+    @Override
+    public String getName() {
+        return "MyComponent";
+    }
+}
+</code></pre>
+
+<pre><code>// MyComponentPackage.java
+@Override
+    public List&lt;NativeModule&gt; createNativeModules(ReactApplicationContext reactContext) {
+        return Arrays.&lt;NativeModule&gt;asList(
+            new MyComponentModule(reactContext) // add here
+        );
+    }
+</code></pre>
+
+<p>Next, create your view and view manager classes.  </p>
+
+<pre><code>// MyComponentView.java
+package me.jakegardner.mycomponent;
+
+public class MyComponentView extends FrameLayout {  
+    ...
+
+    ...
+}
+</code></pre>
+
+<pre><code>// MyComponentManager.java
+package me.jakegardner.mycomponent;
+
+public class MyComponentManager extends SimpleViewManager&lt;MyComponentView&gt; {  
+    private static final String REACT_CLASS = "MyComponent";
+
+    @Override
+    public String getName() {
+        return REACT_CLASS;
+    }
+
+    @Override
+    public MyComponentView createViewInstance(ThemedReactContext context) {
+        return new MyComponentView(context);
+    }
+}
+</code></pre>
+
+<p>Add your view manager class to the <code>createViewManagers</code> method in your package class.  </p>
+
+<pre><code>// MyComponentPackage.java
+...
+@Override
+    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.&lt;ViewManager&gt;singletonList(new MyComponentManager());
+}
+...
+</code></pre>
+
+<p>Defining the callback method which can be invoked in your native view is done, as with iOS, in the manager class.  </p>
+
+<pre><code>...
+// add this method
+@Override
+    public @Nullable Map getExportedCustomDirectEventTypeConstants() {
+        return MapBuilder.of(
+            "myCallback",
+            MapBuilder.of("registrationName", "myCallback"),
+        );
+}
+</code></pre>
+
+<p>The <code>getExportedCustomDirectEventTypeConstants</code> registers the property names which will be passed over the bridge. If you need multiple callbacks, just add additional pairs of parameters to the first <code>MapBuilder.of</code> call.  </p>
+
+<pre><code>return MapBuilder.of(  
+    "myCallbackOne",
+    MapBuilder.of("registrationName", "myCallbackOne"),
+    "myCallbackTwo",
+    MapBuilder.of("registrationName", "myCallbackTwo"),
+);
+</code></pre>
+
+<p>Now, in your view class, you can invoke the callback method.  </p>
+
+<pre><code>// MyComponentView.java
+...
+private void onButtonPress() {  
+    WritableMap map = Arguments.createMap();
+    map.putString("data", "data sent from native");
+    final ReactContext context = (ReactContext) getContext();
+    context.getJSModule(RCTEventEmitter.class).receiveEvent(
+        getId(),
+        "myCallback",
+        map
+    );
+}
+...
+</code></pre>
+
+<p>As with iOS, the parameter to the callback is a dictionary (or map). </p>
+
+<h3 id="reactnative">React Native</h3>
+
+<p>Now, back in JS, create a new component.  </p>
+
+<pre><code>// MyComponent.js
+import { requireNativeComponent, ViewPropTypes } from 'react-native';  
+import PropTypes from 'prop-types';
+
+const iface = {  
+  name: 'MyComponent',
+  propTypes: {
+    myCallback: PropTypes.func,
+    ...ViewPropTypes,
+  },
+};
+
+export default requireNativeComponent('MyComponent', iface);  
+</code></pre>
+
+<p>Here we load the component by name from the native side. The name must match the name defined in <code>getName()</code> in the module class in the case of Android, or the name of the manager class <em>minus</em> the word <code>Manager</code> for iOS.</p>
+
+<p>Now, we can use this component in any JSX, passing our callback.  </p>
+
+<pre><code>class MyComponentContainer extends React.Component {  
+    handleCallback(event) {
+        console.log(event.nativeEvent.data); // "data sent from native"
+    }
+
+    render() {
+        return &lt;MyComponent myCallback={this.handleCallback} /&gt;;
+    }
+}
+</code></pre>
+
+<p>One thing to note is that your callback will receive an event object. The data you sent from native will be assigned to the <code>nativeEvent</code> property on that event object.</p>
+        </section>
+
+        <time class="post-date" datetime="2018-06-23">23 June 2018</time>
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="http://blog.jakegardner.me/">Jake Gardner</a></h4>
+
+                    <p>Read <a href="http://blog.jakegardner.me/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=React%20Native%3A%20Invoking%20React%20component%20callback%20from%20Native&amp;url=http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "http://blog.jakegardner.me/react-native-invoke-callback-prop-from-within-a-native-component/";
+                    this.page.identifier = "/react-native-invoke-callback-prop-from-within-a-native-component/";
+                    this.page.title = "React Native: Invoking React component callback from Native";
+                };
+                (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//blogjakegardnerme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <script src="../public/jquery.js?v=1c592058eb"></script>
+
+    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=1c592058eb"></script>
+    // <script type="text/javascript" src="/assets/js/index.js?v=1c592058eb"></script> -->
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70122057-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
