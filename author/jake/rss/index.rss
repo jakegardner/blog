@@ -1,4 +1,22 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Sun, 24 Jun 2018 06:40:41 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>React Native: Invoking React component callback from Native</title><description>&lt;p&gt;One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment (Android).&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jake Gardner - Jake Gardner</title><description>Explorations in development.</description><link>http://blog.jakegardner.me/</link><generator>Ghost 0.5</generator><lastBuildDate>Sat, 03 Nov 2018 12:04:42 GMT</lastBuildDate><atom:link href="http://blog.jakegardner.me/author/jake/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Fastlane Match: manually updating the git repo</title><description>&lt;p&gt;There have been a couple of times where I wanted to replace a signing certificate in use with one of our apps. &lt;br&gt;
+For example, a certificate is expiring soon, and I want to create a new one and seamlessly transfer to the new certificate without orphaning app installs still using the old certificate.&lt;/p&gt;
+
+&lt;p&gt;Your only option via &lt;code&gt;fastlane&lt;/code&gt; is to &lt;code&gt;fastlane nuke&lt;/code&gt; and start over. But this removes &lt;em&gt;everything&lt;/em&gt;, and invalidates the signing of your existing installed apps. [To be fair, this is only for enterprise deployments, i.e. non-app store.]&lt;/p&gt;
+
+&lt;p&gt;After creating a new certificate and provisioning profile pair in the Apple Developer Portal, you can then follow the steps below to get them in the match git repo so they will get picked up by &lt;code&gt;fastlane match&lt;/code&gt;, while the old certificate and profile are still valid on the Developer Portal.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run &lt;code&gt;irb&lt;/code&gt; in the terminal, followed by these commands:  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;require 'match'&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git_url = '&amp;lt;github url&amp;gt;'&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;workspace = Match::GitHelper.clone(git_url, false)&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Open the workspace directory reported by the previous command in Finder.  &lt;/li&gt;
+&lt;li&gt;In the &lt;code&gt;certs&lt;/code&gt; folder, replace the &lt;code&gt;.cer&lt;/code&gt; and &lt;code&gt;.p12&lt;/code&gt; files with the new versions.  &lt;/li&gt;
+&lt;li&gt;In the &lt;code&gt;profiles&lt;/code&gt; folder, replace the provisioning profile.  &lt;/li&gt;
+&lt;li&gt;Back in the &lt;code&gt;irb&lt;/code&gt; console, run &lt;code&gt;Match::GitHelper.commit_changes(workspace, "manual profile update", git_url)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That's it.&lt;/p&gt;</description><link>http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/</link><guid isPermaLink="false">741a0e88-cd5e-4ba7-a4d1-00985779b02d</guid><dc:creator>Jake Gardner</dc:creator><pubDate>Sat, 03 Nov 2018 12:03:18 GMT</pubDate></item><item><title>React Native: Invoking React component callback from Native</title><description>&lt;p&gt;One day, you may need to create a native UI component and expose it to React Native as a standard JSX component. I encountered this recently, needing to integrate some third-party functionality via a provided native View Controller (iOS) / Fragment (Android).&lt;/p&gt;
 
 &lt;p&gt;The piece of this which I found was not so well documented was how to invoke a callback defined on the React component from within the native code. So after spending the time to piece it together, I bring you this short walkthrough.&lt;/p&gt;
 
@@ -1022,196 +1040,4 @@ I was quite surprised to discover that this book not only shows object-oriented 
 
 &lt;p&gt;Sandi Metz first introduces object-oriented principles and general coding best-practices, then takes simple examples through multiple evolutions of design and refactoring to broaden how you think of object-oriented design and expose flaws in common approaches.&lt;/p&gt;
 
-&lt;p&gt;The key takeaway for me was to think of design in terms of messages rather than objects. If you only think of concrete entities when coming up with objects, you will miss some important objects and introduce unnecessary coupling. When you discover this later on, refactoring is painful and expensive. I have experienced this first-hand.&lt;/p&gt;</description><link>http://blog.jakegardner.me/february-reading/</link><guid isPermaLink="false">8249b9d6-d034-472a-8d32-3137f1354bda</guid><category>ruby</category><category>picks</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 03 Mar 2016 07:19:36 GMT</pubDate></item><item><title>Routing with Redux</title><description>&lt;p&gt;Last weekend I put together my first Redux &lt;a href="https://github.com/jakegardner/redux-bookcatalog"&gt;application&lt;/a&gt; by refactoring an old demo. Once you get familiar, the architecture seems like a very natural way to build applications.&lt;/p&gt;
-
-&lt;p&gt;One area that took some time to figure out was that of routing. While you can use &lt;a href="https://github.com/rackt/react-router"&gt;react-router&lt;/a&gt;, you need to do some extra wiring to get your state flowing as you would expect with vanilla React. &lt;/p&gt;
-
-&lt;p&gt;There are two projects to provide a seamless integration with Redux architecture, &lt;a href="https://github.com/acdlite/redux-router"&gt;redux-router&lt;/a&gt; and &lt;a href="https://github.com/rackt/redux-simple-router"&gt;redux-simple-router&lt;/a&gt;. Redux-router, at time of writing, is considered experimental, so I went with the redux-simple-router. It integrates seamlessly with react-router and redux.&lt;/p&gt;
-
-&lt;p&gt;I flet that some details were missing from documentation of integrating these projects, so I'm writing this simple how-to in the hopes that it helps someone else in the same situation in the future :)&lt;/p&gt;
-
-&lt;h4 id="background"&gt;Background&lt;/h4&gt;
-
-&lt;p&gt;Here I will provide some information on the components you need to get this working, namely react-router and redux-simple-router.&lt;/p&gt;
-
-&lt;h6 id="reactrouter"&gt;React-router&lt;/h6&gt;
-
-&lt;p&gt;The key rendered component of &lt;a href="https://github.com/rackt/react-router"&gt;react-router&lt;/a&gt; is the Router:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;Router /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Inside your Router element, you will put one or more Route elements: &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;Router&amp;gt;
-    &amp;lt;Route path="/" component={App} /&amp;gt;
-&amp;lt;/Router&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Each Route element can also have child routes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;Router&amp;gt;
-    &amp;lt;Route path="/" component={App}&amp;gt;
-            &amp;lt;Route path="home" component={Home} /&amp;gt;
-    &amp;lt;/Route&amp;gt;
-&amp;lt;/Router&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you might expect, each Route element defines the expected route and the component should be rendered when hitting that route.&lt;/p&gt;
-
-&lt;p&gt;Where do the routes get rendered?&lt;/p&gt;
-
-&lt;p&gt;In the render method of a component with child routes (e.g. App in the above example), you will add something like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
-    {this.props.children}
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;{this.props.children}&lt;/code&gt; identifies where in the render method child routes should be rendered. So for the /home route, the Home component would replace the contents of this div. &lt;/p&gt;
-
-&lt;h6 id="reduxsimplerouter"&gt;Redux-simple-router&lt;/h6&gt;
-
-&lt;p&gt;Redux-simple-router simply (ha!) stores your router state in your Redux store. So, whereever you have connected a React component to your store, you can access routing parameters, path etc as a property of state i.e. &lt;code&gt;state.router&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is enabled by this statement:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;syncReduxAndRouter(history, store, (state) =&amp;gt; state.router);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This should be included where you create your store. Don't worry; there is an example coming.&lt;/p&gt;
-
-&lt;h4 id="letsmakethishappen"&gt;Let's make this happen&lt;/h4&gt;
-
-&lt;p&gt;Now that we have some fundamental understanding, let's apply it.&lt;/p&gt;
-
-&lt;h6 id="installreactrouterreduxsimplerouter"&gt;Install react-router, redux-simple-router&lt;/h6&gt;
-
-&lt;p&gt;If you haven't already, run these:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;npm install --save react-router
-npm install --save redux-simple-router
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id="setupreduxsimplerouter"&gt;Setup redux-simple-router&lt;/h6&gt;
-
-&lt;p&gt;The following should be in your application entry point file (I call mine index.js).&lt;/p&gt;
-
-&lt;p&gt;This is where the store is created, and the syncReduxAndRouter function is called.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import React, { Component, PropTypes } from "react";
-import { render } from "react-dom";
-import { createHistory, useBasename } from "history";
-import { syncReduxAndRouter } from "redux-simple-router";
-import routes from "./routes";
-import Root from "./containers/Root";
-import configureStore from "./store/configureStore";
-
-const history = useBasename(createHistory)({
-  basename: JSON.stringify(process.env.BASENAME || "/")
-});
-const store = configureStore();
-
-syncReduxAndRouter(history, store, (state) =&amp;gt; state.router);
-
-render(
-  &amp;lt;Root history={history} routes={routes} store={store} /&amp;gt;,
-  document.getElementById("root")
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After syncing redux and the router, the routes and store are passed as props to the Root container (component).&lt;/p&gt;
-
-&lt;p&gt;The store parameter is the &lt;a href="http://rackt.org/redux/docs/api/Store.html"&gt;Redux store&lt;/a&gt; returned by createStore(). The history parameter is created by createHistory(). The routes parameter are the routes defined as &lt;a href="https://facebook.github.io/jsx/"&gt;JSX&lt;/a&gt; in another file (see below). These can also be specified inline.&lt;/p&gt;
-
-&lt;h6 id="addrouterelement"&gt;Add Router element&lt;/h6&gt;
-
-&lt;p&gt;In the Root component file, and inside of your &lt;a href="http://blog.jakegardner.me/"&gt;Provider&lt;/a&gt; element, add the Router element:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;Provider store={this.props.store}&amp;gt;
-    &amp;lt;Router history={this.props.history}&amp;gt;
-      {this.props.routes}
-    &amp;lt;/Router&amp;gt;
-&amp;lt;/Provider&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The props in this snippet are the same that we defined and passed in the previous code sample.&lt;/p&gt;
-
-&lt;p&gt;So the full Root component source should look like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  import React, { Component, PropTypes } from "react";
-  import { Provider } from "react-redux";
-  import { Router } from "react-router";
-
-  class Root extends Component {
-    render() {
-      return (
-        &amp;lt;Provider store={this.props.store}&amp;gt;
-          &amp;lt;Router history={this.props.history}&amp;gt;
-            {this.props.routes}
-          &amp;lt;/Router&amp;gt;
-        &amp;lt;/Provider&amp;gt;
-      );
-    }
-  }
-  Root.propTypes = {
-    history: PropTypes.object.isRequired,
-    routes: PropTypes.element.isRequired,
-    store: PropTypes.object.isRequired
-  };
-
-export default Root;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id="configureroutes"&gt;Configure routes&lt;/h6&gt;
-
-&lt;p&gt;Now to define the routes. Add a top-level route and any needed sub-routes: &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;Route path="/" component={App}&amp;gt;
-    &amp;lt;IndexRoute component={Home} /&amp;gt;
-    &amp;lt;Route path="/book/:bookId" component={Detail} /&amp;gt;
-&amp;lt;/Route&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The parent &lt;a href="https://github.com/rackt/react-router/blob/latest/docs/guides/basics/RouteConfiguration.md"&gt;Route&lt;/a&gt; element with the root path encloses any other routes in your application.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href="https://github.com/rackt/react-router/blob/latest/docs/guides/basics/IndexRoutes.md"&gt;IndexRoute&lt;/a&gt; is a special element that allows you to specify which component should receive the request with no additional route information, i.e. the root path. Even though this element specifies the destination, I found that the path and component properties in the parent Route element were required.&lt;/p&gt;
-
-&lt;p&gt;Finally, the child Route element specifies a sub-route of the root with a route parameter indicated by the leading colon. This parameter will be available as &lt;code&gt;state.router.params.bookId&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The full routes source file should look like: &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import React, { Component, PropTypes } from "react";
-import { Route, IndexRoute } from "react-router";
-import App from "../components/App";
-import Home from "../components/Home";
-import Detail from "../components/Detail";
-
-export default (
-      &amp;lt;Route path="/" component={App}&amp;gt;
-        &amp;lt;IndexRoute component={Home} /&amp;gt;
-        &amp;lt;Route path="/book/:bookId" component={Detail} /&amp;gt;
-      &amp;lt;/Route&amp;gt;
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save this as &lt;code&gt;/routes/index.js&lt;/code&gt; or wherever is appropriate, but make sure to update the include path in the Root component file.&lt;/p&gt;
-
-&lt;h6 id="modifystateparameterincomponents"&gt;Modify state parameter in components&lt;/h6&gt;
-
-&lt;p&gt;The final step is to check any components that receive state. Before the routing configuration, your state object may have had the properties you defined at the root of the object. Afterwards, I found that the state object now includes a child object for the router and one for the reducer. Whatever state is returned by the &lt;a href="http://rackt.org/redux/docs/basics/Reducers.html"&gt;reducer&lt;/a&gt; is a child of this child reducer object, like so:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;state = {
-    router: {
-        changeId: 1,
-        path: "/book/12",
-        replace: false,
-        state: ...
-    },
-    reducer: {
-        *state here*
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The reducer will be named after your reducer. Update your props declarations or mapStateToProps methods as appropriate to ensure that &lt;a href="http://rackt.org/redux/docs/basics/DataFlow.html"&gt;state flows&lt;/a&gt; to your components as you expect.&lt;/p&gt;</description><link>http://blog.jakegardner.me/routing-with-redux/</link><guid isPermaLink="false">0213fc9b-798c-4a10-a5e2-93ef5e7b4d8f</guid><category>react</category><category>redux</category><dc:creator>Jake Gardner</dc:creator><pubDate>Tue, 12 Jan 2016 05:22:30 GMT</pubDate></item></channel></rss>
+&lt;p&gt;The key takeaway for me was to think of design in terms of messages rather than objects. If you only think of concrete entities when coming up with objects, you will miss some important objects and introduce unnecessary coupling. When you discover this later on, refactoring is painful and expensive. I have experienced this first-hand.&lt;/p&gt;</description><link>http://blog.jakegardner.me/february-reading/</link><guid isPermaLink="false">8249b9d6-d034-472a-8d32-3137f1354bda</guid><category>ruby</category><category>picks</category><dc:creator>Jake Gardner</dc:creator><pubDate>Thu, 03 Mar 2016 07:19:36 GMT</pubDate></item></channel></rss>

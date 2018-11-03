@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>June Picks - Redux, Soft Skills</title>
+    <title>Fastlane Match: manually updating the git repo</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -18,20 +18,20 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=a12a5c0d2a">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
 
-    <link rel="canonical" href="http://blog.jakegardner.me/june-picks/">
+    <link rel="canonical" href="http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/">
     
     <meta property="og:site_name" content="Jake Gardner">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="June Picks - Redux, Soft Skills">
-    <meta property="og:description" content="A bit late getting to picks this month... I've been in four different time zones in the past two weeks. Finally getting back to my usual routine! Building React Applications with Idiomatic Redux The newest series of videos from Dan...">
-    <meta property="og:url" content="http://blog.jakegardner.me/june-picks/">
-    <meta property="article:published_time" content="2016-07-11T03:17:56.161Z">
-    <meta property="article:modified_time" content="2016-07-11T03:29:57.153Z">
+    <meta property="og:title" content="Fastlane Match: manually updating the git repo">
+    <meta property="og:description" content="There have been a couple of times where I wanted to replace a signing certificate in use with one of our apps.  For example, a certificate is expiring soon, and I want to create a new one and seamlessly transfer...">
+    <meta property="og:url" content="http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/">
+    <meta property="article:published_time" content="2018-11-03T12:03:18.179Z">
+    <meta property="article:modified_time" content="2018-11-03T12:03:18.178Z">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="June Picks - Redux, Soft Skills">
-    <meta name="twitter:description" content="A bit late getting to picks this month... I've been in four different time zones in the past two weeks. Finally getting back to my usual routine! Building React Applications with Idiomatic Redux The newest series of videos from Dan...">
-    <meta name="twitter:url" content="http://blog.jakegardner.me/june-picks/">
+    <meta name="twitter:title" content="Fastlane Match: manually updating the git repo">
+    <meta name="twitter:description" content="There have been a couple of times where I wanted to replace a signing certificate in use with one of our apps.  For example, a certificate is expiring soon, and I want to create a new one and seamlessly transfer...">
+    <meta name="twitter:url" content="http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/">
     
     <script type="application/ld+json">
 {
@@ -44,11 +44,11 @@
         "url": "http://blog.jakegardner.me/author/jake",
         "sameAs": null
     },
-    "headline": "June Picks - Redux, Soft Skills",
-    "url": "http://blog.jakegardner.me/june-picks/",
-    "datePublished": "2016-07-11T03:17:56.161Z",
-    "dateModified": "2016-07-11T03:29:57.153Z",
-    "description": "A bit late getting to picks this month... I&#x27;ve been in four different time zones in the past two weeks. Finally getting back to my usual routine! Building React Applications with Idiomatic Redux The newest series of videos from Dan..."
+    "headline": "Fastlane Match: manually updating the git repo",
+    "url": "http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/",
+    "datePublished": "2018-11-03T12:03:18.179Z",
+    "dateModified": "2018-11-03T12:03:18.178Z",
+    "description": "There have been a couple of times where I wanted to replace a signing certificate in use with one of our apps.  For example, a certificate is expiring soon, and I want to create a new one and seamlessly transfer..."
 }
     </script>
 
@@ -80,31 +80,35 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">June Picks - Redux, Soft Skills</h1>
+            <h1 class="post-title">Fastlane Match: manually updating the git repo</h1>
             <section class="post-meta">
                 
             </section>
         </header>
 
         <section class="post-content">
-            <p>A bit late getting to picks this month... I've been in four different time zones in the past two weeks. Finally getting back to my usual routine!</p>
+            <p>There have been a couple of times where I wanted to replace a signing certificate in use with one of our apps. <br>
+For example, a certificate is expiring soon, and I want to create a new one and seamlessly transfer to the new certificate without orphaning app installs still using the old certificate.</p>
 
-<h3 id="buildingreactapplicationswithidiomaticredux">Building React Applications with Idiomatic Redux</h3>
+<p>Your only option via <code>fastlane</code> is to <code>fastlane nuke</code> and start over. But this removes <em>everything</em>, and invalidates the signing of your existing installed apps. [To be fair, this is only for enterprise deployments, i.e. non-app store.]</p>
 
-<p>The newest <a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux">series of videos</a> from <a href="https://twitter.com/dan_abramov">Dan Abramov</a> could easily be called Redux: The Missing Manual. He covers many topics you will encounter in building Redux applications such as loading asynchronous data, routing, logging, and persistence. I like that not only are the solutions he provides very concise, but that he continually refactors while progressing through the videos.</p>
+<p>After creating a new certificate and provisioning profile pair in the Apple Developer Portal, you can then follow the steps below to get them in the match git repo so they will get picked up by <code>fastlane match</code>, while the old certificate and profile are still valid on the Developer Portal.</p>
 
-<p>Redux has matured quite a bit in the past year, and this series shows elegant solutions to common application concerns.</p>
+<ol>
+<li>Run <code>irb</code> in the terminal, followed by these commands:  </li>
+<li><code>require 'match'</code>  </li>
+<li><code>git_url = '&lt;github url&gt;'</code>  </li>
+<li><code>workspace = Match::GitHelper.clone(git_url, false)</code>  </li>
+<li>Open the workspace directory reported by the previous command in Finder.  </li>
+<li>In the <code>certs</code> folder, replace the <code>.cer</code> and <code>.p12</code> files with the new versions.  </li>
+<li>In the <code>profiles</code> folder, replace the provisioning profile.  </li>
+<li>Back in the <code>irb</code> console, run <code>Match::GitHelper.commit_changes(workspace, "manual profile update", git_url)</code></li>
+</ol>
 
-<h3 id="softskillsjohnsonmez">Soft Skills - John Sonmez</h3>
-
-<p>This is a book that should be gifted to all new developers. In university or bootcamps, they teach you to code, they do not teach you the business of being a developer or how to manage relationships and yourself throughout your career. </p>
-
-<p>I'm glad that John has laid this out in a simple, accessible way. Some of the lessons here I had to learn the hard way myself. </p>
-
-<p>John also gives his account of going from employee to entrepreneur and his career-long experience in real estate investment. It's important for everyone to plan for the future, but developers being especially well-paid in the US, it's even more critical that they learn to manage their finances.</p>
+<p>That's it.</p>
         </section>
 
-        <time class="post-date" datetime="2016-07-11">11 July 2016</time>
+        <time class="post-date" datetime="2018-11-03">03 November 2018</time>
         <footer class="post-footer">
 
 
@@ -122,13 +126,13 @@
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=June%20Picks%20-%20Redux%2C%20Soft%20Skills&amp;url=http://blog.jakegardner.me/june-picks/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <a class="icon-twitter" href="https://twitter.com/share?text=Fastlane%20Match%3A%20manually%20updating%20the%20git%20repo&amp;url=http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/june-picks/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/june-picks/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
             </section>
@@ -136,9 +140,9 @@
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
-                    this.page.url = "http://blog.jakegardner.me/june-picks/";
-                    this.page.identifier = "/june-picks/";
-                    this.page.title = "June Picks - Redux, Soft Skills";
+                    this.page.url = "http://blog.jakegardner.me/fastlane-match-manually-updating-the-git-repo/";
+                    this.page.identifier = "/fastlane-match-manually-updating-the-git-repo/";
+                    this.page.title = "Fastlane Match: manually updating the git repo";
                 };
                 (function() {
                 var d = document, s = d.createElement('script');
