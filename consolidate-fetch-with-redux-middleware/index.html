@@ -1,274 +1,267 @@
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Extract Fetch calls with Redux Middleware</title>
-    <meta name="description" content="">
-
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=880c588e56">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=df5ec915c8">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=df5ec915c8">
-    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=df5ec915c8">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
-
-    <link rel="canonical" href="http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="http://localhost:2368/consolidate-fetch-with-redux-middleware/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="http://localhost:2368/consolidate-fetch-with-redux-middleware/amp/">
     
     <meta property="og:site_name" content="Jake Gardner">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Extract Fetch calls with Redux Middleware">
-    <meta property="og:description" content='The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too).  Since React is unopinionated on this point, you can do it however you like.  However, since I use Redux...'>
-    <meta property="og:url" content="http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/">
-    <meta property="article:published_time" content="2016-04-11T23:06:02.194Z">
-    <meta property="article:modified_time" content="2016-04-11T23:06:02.192Z">
+    <meta property="og:description" content="The first thing a lot of people coming to the React side-of-things ask is, &amp;quot;what about async actions?&amp;quot; (I did too).  Since React is unopinionated on this point, you can do it however you like.  However, since I use Redux for any substantial application I develop with React,">
+    <meta property="og:url" content="http://localhost:2368/consolidate-fetch-with-redux-middleware/">
+    <meta property="article:published_time" content="2016-04-11T23:06:02.000Z">
+    <meta property="article:modified_time" content="2016-04-11T23:06:02.000Z">
     <meta property="article:tag" content="redux">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Extract Fetch calls with Redux Middleware">
-    <meta name="twitter:description" content='The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too).  Since React is unopinionated on this point, you can do it however you like.  However, since I use Redux...'>
-    <meta name="twitter:url" content="http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/">
+    <meta name="twitter:description" content="The first thing a lot of people coming to the React side-of-things ask is, &amp;quot;what about async actions?&amp;quot; (I did too).  Since React is unopinionated on this point, you can do it however you like.  However, since I use Redux for any substantial application I develop with React,">
+    <meta name="twitter:url" content="http://localhost:2368/consolidate-fetch-with-redux-middleware/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jake Gardner">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="redux">
+    <meta name="twitter:site" content="@jakegardnr">
     
     <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Article",
-    "publisher": "Jake Gardner",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jake Gardner",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
     "author": {
         "@type": "Person",
         "name": "Jake Gardner",
-        "url": "http://blog.jakegardner.me/author/jake",
-        "sameAs": null
+        "url": "http://localhost:2368/author/jake-2/",
+        "sameAs": []
     },
     "headline": "Extract Fetch calls with Redux Middleware",
-    "url": "http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/",
-    "datePublished": "2016-04-11T23:06:02.194Z",
-    "dateModified": "2016-04-11T23:06:02.192Z",
+    "url": "http://localhost:2368/consolidate-fetch-with-redux-middleware/",
+    "datePublished": "2016-04-11T23:06:02.000Z",
+    "dateModified": "2016-04-11T23:06:02.000Z",
     "keywords": "redux",
-    "description": "The first thing a lot of people coming to the React side-of-things ask is, &quot;what about async actions?&quot; (I did too).  Since React is unopinionated on this point, you can do it however you like.  However, since I use Redux..."
+    "description": "The first thing a lot of people coming to the React side-of-things ask is, &quot;what\nabout async actions?&quot; (I did too).\nSince React is unopinionated on this point, you can do it however you like.\n\nHowever, since I use Redux for any substantial application I develop with React,\nI wanted to find a good pattern to use to handle asynchronous behavior that\ntakes advantage of the plumbing available.\n\nI specifically use Web API Fetch\n[https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API]  in this art",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.5">
-    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://blog.jakegardner.me/rss/">
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://localhost:2368/rss/">
+
 </head>
 <body class="post-template tag-redux">
-    <nav class="navbar" role="navigation">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
-                    <span class="navbar-brand">
-                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
-                    </span>
-                    <ul class="navbar-social">
-                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
-                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
-                    </ul>
+
+    <div class="site-wrapper">
+
+        <header class="site-head">
+            <div class="site-head-container">
+                <a class="nav-burger" href="index.html#">
+                    <div class="hamburger hamburger--collapse" aria-label="Menu" role="button" aria-controls="navigation">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+                <nav id="swup" class="site-head-left">
+                    <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="http://blog.jakegardner.me">Blog</a></li>
+</ul>
+
+                </nav>
+                <div class="site-head-center">
+                    <a class="site-head-logo" href="http://localhost:2368">Jake Gardner</a>
+                </div>
+                <div class="site-head-right">
+                    <div class="social-links">
+                        <a href="https://twitter.com/jakegardnr" title="Twitter" target="_blank" rel="noopener">Twitter</a>
+                        <a href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener">RSS</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    
-
-
-<main class="post-content" role="main">
-
-    <article class="post tag-redux">
-
-        <header class="post-header">
-            <h1 class="post-title">Extract Fetch calls with Redux Middleware</h1>
-            <section class="post-meta">
-                 on <a href="../tag/redux/">redux</a>
-            </section>
         </header>
 
-        <section class="post-content">
-            <p>The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too). <br>
-Since React is unopinionated on this point, you can do it however you like. </p>
+        <main id="site-main" class="site-main">
+            <div id="swup" class="transition-fade">
 
+            
+<article class="post-content post tag-redux no-image no-image">
+
+    <header class="post-content-header">
+        <h1 class="post-content-title">Extract Fetch calls with Redux Middleware</h1>
+    </header>
+
+
+
+    <div class="post-content-body">
+        <!--kg-card-begin: markdown--><p>The first thing a lot of people coming to the React side-of-things ask is, "what about async actions?" (I did too).<br>
+Since React is unopinionated on this point, you can do it however you like.</p>
 <p>However, since I use Redux for any substantial application I develop with React, I wanted to find a good pattern to use to handle asynchronous behavior that takes advantage of the plumbing available.</p>
-
 <p><em>I specifically use <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Web API Fetch</a> in this article, but any HTTP request library could be substituted.</em></p>
-
 <h4 id="asyncactioncreators">Async Action Creators</h4>
-
 <p>A pattern offered in the Redux documentation is to have some action creators perform these asynchronous actions for you. I initially used this pattern.</p>
-
 <p><em>A pre-requisite here is to include the <a href="https://github.com/gaearon/redux-thunk">redux-thunk</a> middleware. All this does is allow you to dispatch a function in addition to plain objects. See <a href="https://github.com/gaearon/redux-thunk">this</a> for more details.</em></p>
-
 <p>Your asynchronous action creator will be something like:</p>
-
-<pre><code>export function fetchData(itemId) {  
-    return dispatch =&gt; {
-        fetch(`${API}/items/${itemId}`, {
-            method: "GET",
-            headers: new Headers({
-                "Authorization": `Bearer ${TOKEN}`
-            })
-        })
-        .then( response =&gt; response.json() )
-        .then( json =&gt; dispatch(fetchDataSuccess(json)) )
-        .catch( error =&gt; dispatch(fetchDataFailure(error)) );
-    }
+<pre><code>export function fetchData(itemId) {
+	return dispatch =&gt; {
+		fetch(`${API}/items/${itemId}`, {
+			method: "GET",
+			headers: new Headers({
+				"Authorization": `Bearer ${TOKEN}`
+			})
+		})
+		.then( response =&gt; response.json() )
+		.then( json =&gt; dispatch(fetchDataSuccess(json)) )
+		.catch( error =&gt; dispatch(fetchDataFailure(error)) );
+	}
 }
 </code></pre>
-
 <p>So in contrast to standard synchronous action creators which return a plain object, you return a function which takes dispatch as a parameter. Inside this function you perform your asynchronous behavior and potentially dispatch another function on completion.</p>
-
 <p>With any substantial application, the number of these kinds of actions can grow wildly. Furthermore, they can be quite verbose depending on what parameters we need to pass to Fetch. Being diligent programmers that we are, we recognize this is an opportunity to eliminate redundancy by extracting these Fetch calls elsewhere.</p>
-
 <p>You could easily create a module an just require it in every action file, but that approach also has some degree of repetition. Fortunately, Redux's middleware mechanism is designed for just this type of situation.</p>
-
 <h4 id="fetchmiddleware">Fetch Middleware</h4>
-
 <p>Let's create a middleware that performs the Fetch if a Fetch parameter object exists in the action. We can define the properties of this object however we like. I have just included the most common Fetch parameters as well as success and failure handlers.</p>
+<pre><code>const fetchMiddleware = store =&gt; next =&gt; action =&gt; {
+	if (!action || !action.fetchConfig) {
+		return next(action)
+	}
 
-<pre><code>const fetchMiddleware = store =&gt; next =&gt; action =&gt; {  
-    if (!action || !action.fetchConfig) {
-        return next(action)
-    }
+	let dispatch = store.dispatch
+	let config = action.fetchConfig
+	dispatch(config.init)
 
-    let dispatch = store.dispatch
-    let config = action.fetchConfig
-    dispatch(config.init)
+	const path = config.path || "/"
+	const method = config.method || "GET"
+	const headers = config.headers
+	const body = config.body
+	const successHandler = config.success
+	const failureHandler = config.failure
 
-    const path = config.path || "/"
-    const method = config.method || "GET"
-    const headers = config.headers
-    const body = config.body
-    const successHandler = config.success
-    const failureHandler = config.failure
-
-    fetch(path, {
-        method: method,
-        headers: headers,
-        body: JSON.stringify(body)
-    })
-    .then( response =&gt; response.json() )
-    .then( json =&gt; successHandler(json) )
-    .catch( error =&gt; failureHandler(error) )
+	fetch(path, {
+		method: method,
+		headers: headers,
+		body: JSON.stringify(body)
+	})
+	.then( response =&gt; response.json() )
+	.then( json =&gt; successHandler(json) )
+	.catch( error =&gt; failureHandler(error) )
 
 }
 
-export default fetchMiddleware  
+export default fetchMiddleware
 </code></pre>
-
 <p>A middleware is defined as a function that takes the store as a parameter, returns a function which takes the next middleware as parameter, which in turn returns a function that takes an action to run. (mind bent yet?)</p>
-
 <p>For a detailed walkthrough of how middleware works and a number of other use cases, see the excellent write-up  <a href="http://redux.js.org/docs/advanced/Middleware.html">here</a>.</p>
-
 <p>So we just check for the existence of fetchConfig on the action and proceed if so. If not, then we hand off to the next middleware.</p>
-
 <p>Our function just takes apart the config object and sets any defaults as necessary. Then, execute the Fetch call and any handlers for Promise resolution.</p>
-
 <p>If your success/failure handler is another action, you can just change the then/catch block to:</p>
-
-<pre><code>    .then( json =&gt; {
-        dispatch(successHandler(json))
-    })
-    .catch( error =&gt; dispatch(failureHandler(error)) )
+<pre><code>	.then( json =&gt; {
+		dispatch(successHandler(json))
+	})
+	.catch( error =&gt; dispatch(failureHandler(error)) )
 </code></pre>
-
 <p>Now, we can include our middleware in the createStore method to ensure it's called as part of the action flow.</p>
-
-<pre><code>let app = combineReducers(reducers)  
-let store = createStore(  
+<pre><code>let app = combineReducers(reducers)
+let store = createStore(
   app,
   applyMiddleware(thunk, fetchMiddleware)
 )
 </code></pre>
-
 <p>Lastly, we just update the action creator to pass the fetchConfig object.</p>
-
-<pre><code>export function fetchData(itemId) {  
-    return {
-        type: "FETCH_ITEM",
+<pre><code>export function fetchData(itemId) {
+	return {
+    	type: "FETCH_ITEM",
         fetchConfig: {
-            path: `${API}/items/${itemId}`,
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${TOKEN}`
-            }
-        }
-    }
+			path: `${API}/items/${itemId}`,
+			method: "GET",
+			headers: {
+				"Authorization": `Bearer ${TOKEN}`
+			}
+		}
+	}
 }
 </code></pre>
-        </section>
-
-        <time class="post-date" datetime="2016-04-12">12 April 2016</time>
-        <footer class="post-footer">
+<!--kg-card-end: markdown-->
+    </div>
 
 
-
-            <section class="author">
-                <h4><a href="http://blog.jakegardner.me/">Jake Gardner</a></h4>
-
-                    <p>Read <a href="http://blog.jakegardner.me/">more posts</a> by this author.</p>
-                <div class="author-meta">
-                    
-                    
-                </div>
-            </section>
+    <footer class="post-content-footer">
 
 
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=Extract%20Fetch%20calls%20with%20Redux%20Middleware&amp;url=http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-            </section>
 
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = "http://blog.jakegardner.me/consolidate-fetch-with-redux-middleware/";
-                    this.page.identifier = "/consolidate-fetch-with-redux-middleware/";
-                    this.page.title = "Extract Fetch calls with Redux Middleware";
-                };
-                (function() {
-                var d = document, s = d.createElement('script');
-                s.src = '//blogjakegardnerme.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </footer>
+
+
+</article>
+
+
+
+            </div>
+        </main>
+
+        <footer class="site-foot">
+            © 2020 <a href="http://localhost:2368">Jake Gardner</a> — Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
         </footer>
 
-    </article>
-
-</main>
+    </div>
 
 
+    <script src="../assets/built/swup.js?v=880c588e56"></script>
+    <script>
+        // Initiate Swup transitions
+        const swup = new Swup();
+    </script>
 
-    <script src="../public/jquery.js?v=df5ec915c8"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Mobile Menu Trigger
+            $('.nav-burger').click(function () {
+                $('body').toggleClass('site-head-open');
+            });
+            $('.site-head-open a').click(function () {
+                $('body').removeClass('site-head-open');
+            });
+        });
+    </script>
 
-    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=df5ec915c8"></script>
-    // <script type="text/javascript" src="/assets/js/index.js?v=df5ec915c8"></script> -->
 
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    })
+</script>
 
-      ga('create', 'UA-70122057-1', 'auto');
-      ga('send', 'pageview');
 
-    </script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    
+
 </body>

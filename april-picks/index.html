@@ -1,182 +1,191 @@
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>April Picks - FP, Asynchrony</title>
-    <meta name="description" content="functional programming in javascript, rethinking asynchronous javascript">
-
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=880c588e56">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=df5ec915c8">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=df5ec915c8">
-    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=df5ec915c8">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
-
-    <link rel="canonical" href="http://blog.jakegardner.me/april-picks/">
+    <meta name="description" content="functional programming in javascript, rethinking asynchronous javascript">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="http://localhost:2368/april-picks/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="http://localhost:2368/april-picks/amp/">
     
     <meta property="og:site_name" content="Jake Gardner">
     <meta property="og:type" content="article">
     <meta property="og:title" content="April Picks - FP, Asynchrony">
-    <meta property="og:description" content="functional programming in javascript, rethinking asynchronous javascript...">
-    <meta property="og:url" content="http://blog.jakegardner.me/april-picks/">
-    <meta property="article:published_time" content="2016-05-02T15:44:30.081Z">
-    <meta property="article:modified_time" content="2016-07-11T03:28:31.241Z">
+    <meta property="og:description" content="functional programming in javascript, rethinking asynchronous javascript">
+    <meta property="og:url" content="http://localhost:2368/april-picks/">
+    <meta property="article:published_time" content="2016-05-02T15:44:30.000Z">
+    <meta property="article:modified_time" content="2016-07-11T03:28:31.000Z">
     <meta property="article:tag" content="picks">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="April Picks - FP, Asynchrony">
-    <meta name="twitter:description" content="functional programming in javascript, rethinking asynchronous javascript...">
-    <meta name="twitter:url" content="http://blog.jakegardner.me/april-picks/">
+    <meta name="twitter:description" content="functional programming in javascript, rethinking asynchronous javascript">
+    <meta name="twitter:url" content="http://localhost:2368/april-picks/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jake Gardner">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="picks">
+    <meta name="twitter:site" content="@jakegardnr">
     
     <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Article",
-    "publisher": "Jake Gardner",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jake Gardner",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
     "author": {
         "@type": "Person",
         "name": "Jake Gardner",
-        "url": "http://blog.jakegardner.me/author/jake",
-        "sameAs": null
+        "url": "http://localhost:2368/author/jake-2/",
+        "sameAs": []
     },
     "headline": "April Picks - FP, Asynchrony",
-    "url": "http://blog.jakegardner.me/april-picks/",
-    "datePublished": "2016-05-02T15:44:30.081Z",
-    "dateModified": "2016-07-11T03:28:31.241Z",
+    "url": "http://localhost:2368/april-picks/",
+    "datePublished": "2016-05-02T15:44:30.000Z",
+    "dateModified": "2016-07-11T03:28:31.000Z",
     "keywords": "picks",
-    "description": "functional programming in javascript, rethinking asynchronous javascript..."
+    "description": "Functional Programming in Javascript\n\nLately, I have been trying to dedicate some time to get more into functional\nprogramming. Since I have a background in Java, I first started with Scala but\nultimately found the resources I could find a bit too academic.\n\nI thought this book by Dan Mantyla was easy to understand yet still explained\nquite a lot. It gently increases from map/filter/reduce to showing how Currying\n&amp; compose work to Category Theory. The last chapter is dedicated to showing how\nto ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.5">
-    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://blog.jakegardner.me/rss/">
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://localhost:2368/rss/">
+
 </head>
 <body class="post-template tag-picks">
-    <nav class="navbar" role="navigation">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
-                    <span class="navbar-brand">
-                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
-                    </span>
-                    <ul class="navbar-social">
-                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
-                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
-                    </ul>
+
+    <div class="site-wrapper">
+
+        <header class="site-head">
+            <div class="site-head-container">
+                <a class="nav-burger" href="index.html#">
+                    <div class="hamburger hamburger--collapse" aria-label="Menu" role="button" aria-controls="navigation">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+                <nav id="swup" class="site-head-left">
+                    <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="http://blog.jakegardner.me">Blog</a></li>
+</ul>
+
+                </nav>
+                <div class="site-head-center">
+                    <a class="site-head-logo" href="http://localhost:2368">Jake Gardner</a>
+                </div>
+                <div class="site-head-right">
+                    <div class="social-links">
+                        <a href="https://twitter.com/jakegardnr" title="Twitter" target="_blank" rel="noopener">Twitter</a>
+                        <a href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener">RSS</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    
-
-
-<main class="post-content" role="main">
-
-    <article class="post tag-picks">
-
-        <header class="post-header">
-            <h1 class="post-title">April Picks - FP, Asynchrony</h1>
-            <section class="post-meta">
-                 on <a href="../tag/picks/">picks</a>
-            </section>
         </header>
 
-        <section class="post-content">
-            <h3 id="functionalprogramminginjavascript">Functional Programming in Javascript</h3>
+        <main id="site-main" class="site-main">
+            <div id="swup" class="transition-fade">
 
-<p><img src="../content/images/2016/05/fpjs.jpeg" alt="">
-Lately, I have been trying to dedicate some time to get more into functional programming. Since I have a background in Java, I first started with Scala but ultimately found the resources I could find a bit too academic. </p>
+            
+<article class="post-content post tag-picks no-image no-image">
 
-<p>I thought this book by Dan Mantyla was easy to understand yet still explained quite a lot. It gently increases from map/filter/reduce to showing how Currying &amp; compose work to Category Theory. The last chapter is dedicated to showing how to mix Javascript's two paradigms, object-oriented and functional, to write applications. </p>
+    <header class="post-content-header">
+        <h1 class="post-content-title">April Picks - FP, Asynchrony</h1>
+    </header>
 
+
+
+    <div class="post-content-body">
+        <!--kg-card-begin: markdown--><h3 id="functionalprogramminginjavascript">Functional Programming in Javascript</h3>
+<p><img src="http://localhost:2368/content/images/2016/05/fpjs.jpeg" alt=""><br>
+Lately, I have been trying to dedicate some time to get more into functional programming. Since I have a background in Java, I first started with Scala but ultimately found the resources I could find a bit too academic.</p>
+<p>I thought this book by Dan Mantyla was easy to understand yet still explained quite a lot. It gently increases from map/filter/reduce to showing how Currying &amp; compose work to Category Theory. The last chapter is dedicated to showing how to mix Javascript's two paradigms, object-oriented and functional, to write applications.</p>
 <p>So I think this an ideal starting point for an FP beginner, especially coming from the Javascript perspective.</p>
-
 <p>A good follow-up from this could be the <a href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/">mostly adequate guide</a> by Brian Lansdorf.</p>
-
 <h3 id="rethinkingasynchronousjavascript">Rethinking Asynchronous Javascript</h3>
-
 <p>There is probably no more in-depth resource on this topic than <a href="https://frontendmasters.com/courses/rethinking-async-js/">this course</a> by Kyle Simpson for Front-End Masters.</p>
-
 <p>Kyle demonstrates all of the available asynchrony models in Javascript, from Promises, to Generators, to Observables, to CSP. This would be an excellent guide if you're just getting into dealing with asynchrony in Javascript or you've been away and want to see what's changed.</p>
-
 <p>I know for me, Generators are not something I've really thought a lot about, and Kyle showed how they can be used effectively for flow control.</p>
-        </section>
-
-        <time class="post-date" datetime="2016-05-03">03 May 2016</time>
-        <footer class="post-footer">
+<!--kg-card-end: markdown-->
+    </div>
 
 
-
-            <section class="author">
-                <h4><a href="http://blog.jakegardner.me/">Jake Gardner</a></h4>
-
-                    <p>Read <a href="http://blog.jakegardner.me/">more posts</a> by this author.</p>
-                <div class="author-meta">
-                    
-                    
-                </div>
-            </section>
+    <footer class="post-content-footer">
 
 
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=April%20Picks%20-%20FP%2C%20Asynchrony&amp;url=http://blog.jakegardner.me/april-picks/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/april-picks/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/april-picks/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-            </section>
 
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = "http://blog.jakegardner.me/april-picks/";
-                    this.page.identifier = "/april-picks/";
-                    this.page.title = "April Picks - FP, Asynchrony";
-                };
-                (function() {
-                var d = document, s = d.createElement('script');
-                s.src = '//blogjakegardnerme.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </footer>
+
+
+</article>
+
+
+
+            </div>
+        </main>
+
+        <footer class="site-foot">
+            © 2020 <a href="http://localhost:2368">Jake Gardner</a> — Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
         </footer>
 
-    </article>
-
-</main>
+    </div>
 
 
+    <script src="../assets/built/swup.js?v=880c588e56"></script>
+    <script>
+        // Initiate Swup transitions
+        const swup = new Swup();
+    </script>
 
-    <script src="../public/jquery.js?v=df5ec915c8"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Mobile Menu Trigger
+            $('.nav-burger').click(function () {
+                $('body').toggleClass('site-head-open');
+            });
+            $('.site-head-open a').click(function () {
+                $('body').removeClass('site-head-open');
+            });
+        });
+    </script>
 
-    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=df5ec915c8"></script>
-    // <script type="text/javascript" src="/assets/js/index.js?v=df5ec915c8"></script> -->
 
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    })
+</script>
 
-      ga('create', 'UA-70122057-1', 'auto');
-      ga('send', 'pageview');
 
-    </script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    
+
 </body>

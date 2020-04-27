@@ -1,222 +1,222 @@
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Functional Fundamentals: Higher Order Functions</title>
-    <meta name="description" content="">
-
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=880c588e56">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css?v=df5ec915c8">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:300,400,700,400italic%7COpen+Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=df5ec915c8">
-    <link rel="stylesheet" type="text/css" href="../assets/css/blog.css?v=df5ec915c8">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/darkula.min.css">
-
-    <link rel="canonical" href="http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="http://localhost:2368/functional-fundamentals-higher-order-functions/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="http://localhost:2368/functional-fundamentals-higher-order-functions/amp/">
     
     <meta property="og:site_name" content="Jake Gardner">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Functional Fundamentals: Higher Order Functions">
-    <meta property="og:description" content="This is part two in my series on functional programming concepts. Last time, we learned about pure functions. This time, we are going to learn about higher order functions. This is the feature that makes functional programming possible. You know...">
-    <meta property="og:url" content="http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/">
-    <meta property="article:published_time" content="2016-05-05T16:10:16.108Z">
-    <meta property="article:modified_time" content="2016-05-14T21:54:51.111Z">
-    
+    <meta property="og:description" content="This is part two in my series on functional programming concepts. Last time, we learned about pure functions.  This time, we are going to learn about higher order functions. This is the feature that makes functional programming possible.  You know what a function is. But, what does higher order mean?">
+    <meta property="og:url" content="http://localhost:2368/functional-fundamentals-higher-order-functions/">
+    <meta property="article:published_time" content="2016-05-05T16:10:16.000Z">
+    <meta property="article:modified_time" content="2016-05-14T21:54:51.000Z">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Functional Fundamentals: Higher Order Functions">
-    <meta name="twitter:description" content="This is part two in my series on functional programming concepts. Last time, we learned about pure functions. This time, we are going to learn about higher order functions. This is the feature that makes functional programming possible. You know...">
-    <meta name="twitter:url" content="http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/">
+    <meta name="twitter:description" content="This is part two in my series on functional programming concepts. Last time, we learned about pure functions.  This time, we are going to learn about higher order functions. This is the feature that makes functional programming possible.  You know what a function is. But, what does higher order mean?">
+    <meta name="twitter:url" content="http://localhost:2368/functional-fundamentals-higher-order-functions/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jake Gardner">
+    <meta name="twitter:site" content="@jakegardnr">
     
     <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Article",
-    "publisher": "Jake Gardner",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jake Gardner",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
     "author": {
         "@type": "Person",
         "name": "Jake Gardner",
-        "url": "http://blog.jakegardner.me/author/jake",
-        "sameAs": null
+        "url": "http://localhost:2368/author/jake-2/",
+        "sameAs": []
     },
     "headline": "Functional Fundamentals: Higher Order Functions",
-    "url": "http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/",
-    "datePublished": "2016-05-05T16:10:16.108Z",
-    "dateModified": "2016-05-14T21:54:51.111Z",
-    "description": "This is part two in my series on functional programming concepts. Last time, we learned about pure functions. This time, we are going to learn about higher order functions. This is the feature that makes functional programming possible. You know..."
+    "url": "http://localhost:2368/functional-fundamentals-higher-order-functions/",
+    "datePublished": "2016-05-05T16:10:16.000Z",
+    "dateModified": "2016-05-14T21:54:51.000Z",
+    "description": "This is part two in my series on functional programming concepts. Last time, we\nlearned about pure functions [/functional-fundamentals-pure-function/].\n\nThis time, we are going to learn about higher order functions. This is the \nfeature that makes functional programming possible.\n\nYou know what a function is. But, what does higher order  mean?\n\nFunction In A Function\nA higher order function is one that takes a function as a parameter, and returns\na new function as a result.\n\nHere is an example:\n",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.5">
-    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://blog.jakegardner.me/rss/">
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="Jake Gardner" href="http://localhost:2368/rss/">
+
 </head>
 <body class="post-template">
-    <nav class="navbar" role="navigation">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 navbar-header">
-                    <span class="navbar-brand">
-                        <a href="../"><span class="nav-link">Jake Gardner</span></a>
-                    </span>
-                    <ul class="navbar-social">
-                        <li><a class="social-link" href="https://github.com/jakegardner"><span class="fa fa-github fa-lg fa-fw"></span></a></li>
-                        <li><a class="social-link" href="https://twitter.com/jakegardnr"><span class="fa fa-twitter fa-lg fa-fw"></span></a></li>
-                    </ul>
+
+    <div class="site-wrapper">
+
+        <header class="site-head">
+            <div class="site-head-container">
+                <a class="nav-burger" href="index.html#">
+                    <div class="hamburger hamburger--collapse" aria-label="Menu" role="button" aria-controls="navigation">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+                <nav id="swup" class="site-head-left">
+                    <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="http://blog.jakegardner.me">Blog</a></li>
+</ul>
+
+                </nav>
+                <div class="site-head-center">
+                    <a class="site-head-logo" href="http://localhost:2368">Jake Gardner</a>
+                </div>
+                <div class="site-head-right">
+                    <div class="social-links">
+                        <a href="https://twitter.com/jakegardnr" title="Twitter" target="_blank" rel="noopener">Twitter</a>
+                        <a href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener">RSS</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    
-
-
-<main class="post-content" role="main">
-
-    <article class="post">
-
-        <header class="post-header">
-            <h1 class="post-title">Functional Fundamentals: Higher Order Functions</h1>
-            <section class="post-meta">
-                
-            </section>
         </header>
 
-        <section class="post-content">
-            <p>This is part two in my series on functional programming concepts. Last time, we learned about <a href="../functional-fundamentals-pure-function/">pure functions</a>.</p>
+        <main id="site-main" class="site-main">
+            <div id="swup" class="transition-fade">
 
+            
+<article class="post-content post no-image no-image">
+
+    <header class="post-content-header">
+        <h1 class="post-content-title">Functional Fundamentals: Higher Order Functions</h1>
+    </header>
+
+
+
+    <div class="post-content-body">
+        <!--kg-card-begin: markdown--><p>This is part two in my series on functional programming concepts. Last time, we learned about <a href="http://localhost:2368/functional-fundamentals-pure-function/">pure functions</a>.</p>
 <p>This time, we are going to learn about higher order functions. This is <em>the</em> feature that makes functional programming possible.</p>
-
 <p>You know what a function is. But, what does <em>higher order</em> mean?</p>
-
 <h4 id="functioninafunction">Function In A Function</h4>
-
 <p>A higher order function is one that takes a function as a parameter, and returns a new function as a result.</p>
-
 <p>Here is an example:</p>
-
-<pre><code>function getPrice() {  
-    return 10;
+<pre><code>function getPrice() {
+	return 10;
 }
 
-function half(func) {  
-    return function() {
-        return func() / 2;
+function half(func) {
+	return function() {
+    	return func() / 2;
     };
 }
 
-var halfPrice = half(getPrice);  
-halfPrice(); // 5  
+var halfPrice = half(getPrice);
+halfPrice(); // 5
 </code></pre>
-
 <h4 id="sowhat">So What?</h4>
-
 <p>Higher order functions allow us to feed one function into another many times over, building up a chain of operations to which can be triggered with a single function call.</p>
-
 <p>Take a moment to appreciate the power of this.</p>
-
 <p>Now you are able to construct things like:</p>
-
-<pre><code>function getPrice() {  
-    return 10;
+<pre><code>function getPrice() {
+	return 10;
 }
 
-function half(func) {  
-    return function() {
-        return func() / 2;
+function half(func) {
+	return function() {
+    	return func() / 2;
     };
 }
 
-var halfPrice = half(getPrice);  
+var halfPrice = half(getPrice);
 halfPrice(); // 5
 
-function discount(func) {  
-    return function() {
-        return 0.80 * func();
+function discount(func) {
+	return function() {
+    	return 0.80 * func();
     };
 }
 
-var discountHalfPrice = discount(halfPrice);  
-discountHalfPrice(); // 4  
+var discountHalfPrice = discount(halfPrice);
+discountHalfPrice(); // 4
 </code></pre>
-
 <p>Ofcourse this is a contrived example, but the idea is that you can perform a series a small operations using a single function call. Eventually, this could trigger your entire program.</p>
-
 <p>Next, we will look at how we can extend this idea to combining multiple functions at the same time - with compose.</p>
-        </section>
-
-        <time class="post-date" datetime="2016-05-06">06 May 2016</time>
-        <footer class="post-footer">
+<!--kg-card-end: markdown-->
+    </div>
 
 
-
-            <section class="author">
-                <h4><a href="http://blog.jakegardner.me/">Jake Gardner</a></h4>
-
-                    <p>Read <a href="http://blog.jakegardner.me/">more posts</a> by this author.</p>
-                <div class="author-meta">
-                    
-                    
-                </div>
-            </section>
+    <footer class="post-content-footer">
 
 
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=Functional%20Fundamentals%3A%20Higher%20Order%20Functions&amp;url=http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-            </section>
 
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = "http://blog.jakegardner.me/functional-fundamentals-higher-order-functions/";
-                    this.page.identifier = "/functional-fundamentals-higher-order-functions/";
-                    this.page.title = "Functional Fundamentals: Higher Order Functions";
-                };
-                (function() {
-                var d = document, s = d.createElement('script');
-                s.src = '//blogjakegardnerme.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </footer>
+
+
+</article>
+
+
+
+            </div>
+        </main>
+
+        <footer class="site-foot">
+            © 2020 <a href="http://localhost:2368">Jake Gardner</a> — Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
         </footer>
 
-    </article>
-
-</main>
+    </div>
 
 
+    <script src="../assets/built/swup.js?v=880c588e56"></script>
+    <script>
+        // Initiate Swup transitions
+        const swup = new Swup();
+    </script>
 
-    <script src="../public/jquery.js?v=df5ec915c8"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Mobile Menu Trigger
+            $('.nav-burger').click(function () {
+                $('body').toggleClass('site-head-open');
+            });
+            $('.site-head-open a').click(function () {
+                $('body').removeClass('site-head-open');
+            });
+        });
+    </script>
 
-    <!-- <script type="text/javascript" src="/assets/js/jquery.fitvids.js?v=df5ec915c8"></script>
-    // <script type="text/javascript" src="/assets/js/index.js?v=df5ec915c8"></script> -->
 
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    })
+</script>
 
-      ga('create', 'UA-70122057-1', 'auto');
-      ga('send', 'pageview');
 
-    </script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    
+
 </body>
